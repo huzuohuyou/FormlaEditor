@@ -110,10 +110,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="PythonFiles\demo.py">
+    <None Include="PythonFiles\急性缺血性脑卒中.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="PythonFiles\demo2.py" />
+    <None Include="单病种质控指标算法-瑞金医院IS.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
