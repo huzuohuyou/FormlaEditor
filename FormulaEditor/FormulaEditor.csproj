@@ -77,16 +77,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCreateFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateFormula.Designer.cs">
+      <DependentUpon>frmCreateFormula.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PyParam.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PyFile.cs" />
+    <Compile Include="PyFunc.cs" />
     <Compile Include="PyList.cs" />
+    <EmbeddedResource Include="frmCreateFormula.resx">
+      <DependentUpon>frmCreateFormula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
