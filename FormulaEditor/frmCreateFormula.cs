@@ -12,64 +12,41 @@ namespace FormulaEditor
 {
     public partial class frmCreateFormula : Form
     {
+        IView view = null;
         PyFile currentPy = null;
-        public frmCreateFormula(PyFile p)
+        public frmCreateFormula(IView view,PyFile p)
         {
             currentPy= p;
+            this.view = view;
             InitializeComponent();
             this.Text =string.Format("{0}_{1}",currentPy.Name.Substring(0, currentPy.Name.LastIndexOf('.')),this.Text);
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            PyFunc pf = new PyFunc() { FunName = txt_name.Text,listParam=GetParam()};
-
+            PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(), FunBody = rtb_fun.Text };
+            PyFile pyFile= currentPy.AddFunc(pf);
+            view.RefreshData(pyFile);
         }
 
         public List<PyParam> GetParam()
         {
             List<PyParam> list = new List<PyParam>();
-            if (txt_p1.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p1", Note = txt_p1.Text });
-            }
-            if (txt_p2.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p2", Note = txt_p2.Text });
-            }
-            if (txt_p3.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p3", Note = txt_p3.Text });
-            }
-            if (txt_p4.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p4", Note = txt_p4.Text });
-            }
-            if (txt_p5.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p5", Note = txt_p5.Text });
-            }
-            if (txt_p6.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p6", Note = txt_p6.Text });
-            }
-            if (txt_p7.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p7", Note = txt_p7.Text });
-            }
-            if (txt_p8.Text.Trim() != string.Empty)
-            {
-                list.Add(new PyParam() { Key = "p8", Note = txt_p8.Text });
-            }
-
+            list.Add(new PyParam() { Key = "p1", Note = txt_p1.Text != string.Empty ? txt_p1.Text : "None" });
+            list.Add(new PyParam() { Key = "p2", Note = txt_p2.Text != string.Empty ? txt_p2.Text : "None" });
+            list.Add(new PyParam() { Key = "p3", Note = txt_p3.Text != string.Empty ? txt_p3.Text : "None" });
+            list.Add(new PyParam() { Key = "p4", Note = txt_p4.Text != string.Empty ? txt_p4.Text : "None" });
+            list.Add(new PyParam() { Key = "p5", Note = txt_p5.Text != string.Empty ? txt_p5.Text : "None" });
+            list.Add(new PyParam() { Key = "p6", Note = txt_p6.Text != string.Empty ? txt_p6.Text : "None" });
+            list.Add(new PyParam() { Key = "p7", Note = txt_p7.Text != string.Empty ? txt_p7.Text : "None" });
+            list.Add(new PyParam() { Key = "p8", Note = txt_p8.Text != string.Empty ? txt_p8.Text : "None" });
             return list;
         }
 
         private void btn_preview_Click(object sender, EventArgs e)
         {
             PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(),FunBody=rtb_fun.Text };
-            string strFun=pf.CombineFunc();
-            MessageBox.Show(strFun);
+            MessageBox.Show(pf.CombineContent());
         }
     }
 }

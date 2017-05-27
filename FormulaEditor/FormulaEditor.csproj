@@ -77,26 +77,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCreateSingel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateSingel.Designer.cs">
+      <DependentUpon>frmCreateSingel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CurrentPyFile.cs" />
     <Compile Include="frmCreateFormula.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCreateFormula.Designer.cs">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\IEntity.cs" />
+    <Compile Include="IView.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PyParam.cs" />
+    <Compile Include="Model\PyParam.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PyFile.cs" />
-    <Compile Include="PyFunc.cs" />
-    <Compile Include="PyFiles.cs" />
+    <Compile Include="Model\PyFile.cs" />
+    <Compile Include="Model\PyFunc.cs" />
+    <Compile Include="Model\PyFiles.cs" />
     <EmbeddedResource Include="frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateSingel.resx">
+      <DependentUpon>frmCreateSingel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -121,9 +133,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="PythonFiles\急性缺血性脑卒中.py">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="PythonFiles\急性缺血性脑卒中.py" />
     <None Include="PythonFiles\demo2.py" />
     <None Include="单病种质控指标算法-瑞金医院IS.xlsx" />
   </ItemGroup>
