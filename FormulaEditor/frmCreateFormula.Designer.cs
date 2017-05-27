@@ -277,7 +277,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_save);
             this.splitContainer2.Panel2.Controls.Add(this.btn_test);
             this.splitContainer2.Size = new System.Drawing.Size(465, 352);
-            this.splitContainer2.SplitterDistance = 317;
+            this.splitContainer2.SplitterDistance = 320;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -288,7 +288,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(465, 317);
+            this.groupBox2.Size = new System.Drawing.Size(465, 320);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "方法体";
@@ -299,13 +299,13 @@
             this.rtb_fun.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_fun.Location = new System.Drawing.Point(3, 17);
             this.rtb_fun.Name = "rtb_fun";
-            this.rtb_fun.Size = new System.Drawing.Size(459, 297);
+            this.rtb_fun.Size = new System.Drawing.Size(459, 300);
             this.rtb_fun.TabIndex = 10;
             this.rtb_fun.Text = "";
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(216, 5);
+            this.btn_preview.Location = new System.Drawing.Point(303, 1);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
@@ -315,7 +315,7 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(297, 5);
+            this.btn_save.Location = new System.Drawing.Point(384, 1);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 11;
@@ -325,12 +325,13 @@
             // 
             // btn_test
             // 
-            this.btn_test.Location = new System.Drawing.Point(378, 5);
+            this.btn_test.Location = new System.Drawing.Point(119, 2);
             this.btn_test.Name = "btn_test";
             this.btn_test.Size = new System.Drawing.Size(75, 23);
             this.btn_test.TabIndex = 12;
             this.btn_test.Text = "测试";
             this.btn_test.UseVisualStyleBackColor = true;
+            this.btn_test.Visible = false;
             // 
             // frmCreateFormula
             // 

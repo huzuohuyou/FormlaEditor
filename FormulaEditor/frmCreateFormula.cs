@@ -27,6 +27,7 @@ namespace FormulaEditor
             PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(), FunBody = rtb_fun.Text };
             PyFile pyFile= currentPy.AddFunc(pf);
             view.RefreshData(pyFile);
+            this.FindForm().Close();
         }
 
         public List<PyParam> GetParam()
