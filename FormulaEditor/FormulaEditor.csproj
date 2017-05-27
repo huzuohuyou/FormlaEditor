@@ -171,6 +171,9 @@
   <ItemGroup>
     <None Include="Resources\QQ截图20170526130606.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\UI.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
