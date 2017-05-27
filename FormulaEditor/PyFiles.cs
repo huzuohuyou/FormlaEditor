@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public class PyList
+    public class PyFiles
     {
-        public List<PyFile> PList = new List<PyFile>();
-        public PyList() {
+        public List<PyFile> PyList = new List<PyFile>();
+        public PyFiles() {
             string pythonDir = string.Format("{0}\\PythonFiles", Application.StartupPath);
             if (!Directory.Exists(pythonDir))
             {
@@ -24,7 +24,7 @@ namespace FormulaEditor
                 foreach (var item in fi)
                 {
                     PyFile pf = new PyFile() {Name=item.Name,Path = item.FullName,Content = File.ReadAllText(item.FullName) };
-                    PList.Add(pf);
+                    PyList.Add(pf);
                 }
             }
         }

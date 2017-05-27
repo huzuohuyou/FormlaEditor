@@ -19,19 +19,33 @@ namespace FormulaEditor
         public PyParam P8 { get; set; }
         public List<PyParam> listParam = new List<PyParam>();
         public string FunBody { get; set; }
-
         
 
-        public string OutPut() {
-            string header= "def {0}({1})";
+        public string CombineFunc() {
+            string strFun= "def {0}({1}):\n\t{2}\n\t{3}";
+            string param = CombineParam();
+            string notes = CombineNotes();
+            return string.Format(strFun, FunName, param, notes, FunBody.Replace("\n","\t\n"));
+        }
+
+        private string CombineNotes() {
+            string notes = "'''\n";
+            foreach (var item in listParam)
+            {
+                notes +=string.Format("\t{0}:{1}\n", item.Key, item.Note);
+            }
+            notes += "\t'''";
+            return notes;
+        }
+
+        private string CombineParam() {
             string param = string.Empty;
             foreach (var item in listParam)
             {
-                param += item.Key+",";
+                param += item.Key + ",";
             }
             param = param.Trim(',');
-            header = string.Format(header, FunName, param);
-            return  header + "\n\t" + FunBody;
+            return param;
         }
 
     }

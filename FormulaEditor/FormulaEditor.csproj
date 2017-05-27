@@ -94,7 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PyFile.cs" />
     <Compile Include="PyFunc.cs" />
-    <Compile Include="PyList.cs" />
+    <Compile Include="PyFiles.cs" />
     <EmbeddedResource Include="frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </EmbeddedResource>

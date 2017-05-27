@@ -28,7 +28,7 @@ namespace FormulaEditor
             else
             {
                 File.WriteAllText(pyFile.Path, pyFile.Content);
-                return new PyList().PList;
+                return new PyFiles().PyList;
             }
         }
 
@@ -66,6 +66,14 @@ namespace FormulaEditor
             {
                 return new PyFile() { Name = Name, Path = path, Content = File.ReadAllText(path) };
             }
+        }
+
+        public void AddFunc(PyFunc pf) {
+            Content += pf.CombineFunc();
+        }
+
+        public void FixMethodFactory(PyFunc pf) {
+
         }
     }
 }
