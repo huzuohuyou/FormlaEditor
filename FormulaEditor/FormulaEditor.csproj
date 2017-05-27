@@ -64,6 +64,10 @@
       <HintPath>..\packages\DynamicLanguageRuntime.1.1.2\lib\Net45\Microsoft.Scripting.Metadata.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -104,6 +108,8 @@
     <Compile Include="Model\PyFile.cs" />
     <Compile Include="Model\PyFunc.cs" />
     <Compile Include="Model\PyFiles.cs" />
+    <Compile Include="Utils\HotKeyManager.cs" />
+    <Compile Include="Utils\SearchManager.cs" />
     <EmbeddedResource Include="frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </EmbeddedResource>
