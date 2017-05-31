@@ -56,6 +56,7 @@
             this.btn_test = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.rtb_note = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +67,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -84,51 +86,36 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(471, 502);
-            this.splitContainer1.SplitterDistance = 170;
+            this.splitContainer1.SplitterDistance = 218;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.rtb_note);
-            this.groupBox1.Controls.Add(this.txt_p8);
-            this.groupBox1.Controls.Add(this.txt_p5);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txt_p2);
-            this.groupBox1.Controls.Add(this.txt_p7);
-            this.groupBox1.Controls.Add(this.txt_p4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txt_p1);
-            this.groupBox1.Controls.Add(this.txt_p6);
-            this.groupBox1.Controls.Add(this.txt_p3);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 170);
+            this.groupBox1.Size = new System.Drawing.Size(471, 218);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "参数";
             // 
             // txt_p8
             // 
-            this.txt_p8.Location = new System.Drawing.Point(208, 144);
+            this.txt_p8.Location = new System.Drawing.Point(204, 75);
             this.txt_p8.Name = "txt_p8";
             this.txt_p8.Size = new System.Drawing.Size(100, 21);
             this.txt_p8.TabIndex = 9;
             // 
             // txt_p5
             // 
-            this.txt_p5.Location = new System.Drawing.Point(208, 116);
+            this.txt_p5.Location = new System.Drawing.Point(204, 47);
             this.txt_p5.Name = "txt_p5";
             this.txt_p5.Size = new System.Drawing.Size(100, 21);
             this.txt_p5.TabIndex = 6;
@@ -136,7 +123,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(183, 148);
+            this.label9.Location = new System.Drawing.Point(179, 79);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(23, 12);
             this.label9.TabIndex = 0;
@@ -145,7 +132,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(183, 120);
+            this.label6.Location = new System.Drawing.Point(179, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 12);
             this.label6.TabIndex = 0;
@@ -153,21 +140,21 @@
             // 
             // txt_p2
             // 
-            this.txt_p2.Location = new System.Drawing.Point(208, 89);
+            this.txt_p2.Location = new System.Drawing.Point(204, 20);
             this.txt_p2.Name = "txt_p2";
             this.txt_p2.Size = new System.Drawing.Size(100, 21);
             this.txt_p2.TabIndex = 3;
             // 
             // txt_p7
             // 
-            this.txt_p7.Location = new System.Drawing.Point(57, 144);
+            this.txt_p7.Location = new System.Drawing.Point(53, 75);
             this.txt_p7.Name = "txt_p7";
             this.txt_p7.Size = new System.Drawing.Size(100, 21);
             this.txt_p7.TabIndex = 8;
             // 
             // txt_p4
             // 
-            this.txt_p4.Location = new System.Drawing.Point(57, 116);
+            this.txt_p4.Location = new System.Drawing.Point(53, 47);
             this.txt_p4.Name = "txt_p4";
             this.txt_p4.Size = new System.Drawing.Size(100, 21);
             this.txt_p4.TabIndex = 5;
@@ -175,7 +162,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 93);
+            this.label3.Location = new System.Drawing.Point(179, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 12);
             this.label3.TabIndex = 0;
@@ -184,7 +171,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(32, 148);
+            this.label8.Location = new System.Drawing.Point(28, 79);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 12);
             this.label8.TabIndex = 0;
@@ -193,7 +180,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 120);
+            this.label5.Location = new System.Drawing.Point(28, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 12);
             this.label5.TabIndex = 0;
@@ -201,21 +188,21 @@
             // 
             // txt_p1
             // 
-            this.txt_p1.Location = new System.Drawing.Point(57, 89);
+            this.txt_p1.Location = new System.Drawing.Point(53, 20);
             this.txt_p1.Name = "txt_p1";
             this.txt_p1.Size = new System.Drawing.Size(100, 21);
             this.txt_p1.TabIndex = 2;
             // 
             // txt_p6
             // 
-            this.txt_p6.Location = new System.Drawing.Point(359, 117);
+            this.txt_p6.Location = new System.Drawing.Point(355, 48);
             this.txt_p6.Name = "txt_p6";
             this.txt_p6.Size = new System.Drawing.Size(100, 21);
             this.txt_p6.TabIndex = 7;
             // 
             // txt_p3
             // 
-            this.txt_p3.Location = new System.Drawing.Point(359, 90);
+            this.txt_p3.Location = new System.Drawing.Point(355, 21);
             this.txt_p3.Name = "txt_p3";
             this.txt_p3.Size = new System.Drawing.Size(100, 21);
             this.txt_p3.TabIndex = 4;
@@ -223,7 +210,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(334, 121);
+            this.label7.Location = new System.Drawing.Point(330, 52);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(23, 12);
             this.label7.TabIndex = 0;
@@ -232,7 +219,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 93);
+            this.label2.Location = new System.Drawing.Point(28, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 12);
             this.label2.TabIndex = 0;
@@ -241,7 +228,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(334, 94);
+            this.label4.Location = new System.Drawing.Point(330, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 12);
             this.label4.TabIndex = 0;
@@ -280,8 +267,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_preview);
             this.splitContainer2.Panel2.Controls.Add(this.btn_save);
             this.splitContainer2.Panel2.Controls.Add(this.btn_test);
-            this.splitContainer2.Size = new System.Drawing.Size(471, 331);
-            this.splitContainer2.SplitterDistance = 302;
+            this.splitContainer2.Size = new System.Drawing.Size(471, 283);
+            this.splitContainer2.SplitterDistance = 254;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -292,7 +279,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(471, 302);
+            this.groupBox2.Size = new System.Drawing.Size(471, 254);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "方法体";
@@ -303,13 +290,13 @@
             this.rtb_fun.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_fun.Location = new System.Drawing.Point(3, 17);
             this.rtb_fun.Name = "rtb_fun";
-            this.rtb_fun.Size = new System.Drawing.Size(465, 282);
+            this.rtb_fun.Size = new System.Drawing.Size(465, 234);
             this.rtb_fun.TabIndex = 10;
             this.rtb_fun.Text = "";
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(303, 1);
+            this.btn_preview.Location = new System.Drawing.Point(312, -1);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
@@ -319,7 +306,7 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(384, 1);
+            this.btn_save.Location = new System.Drawing.Point(393, -1);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 11;
@@ -350,9 +337,34 @@
             // 
             this.rtb_note.Location = new System.Drawing.Point(57, 41);
             this.rtb_note.Name = "rtb_note";
-            this.rtb_note.Size = new System.Drawing.Size(402, 43);
+            this.rtb_note.Size = new System.Drawing.Size(402, 51);
             this.rtb_note.TabIndex = 10;
             this.rtb_note.Text = "";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txt_p1);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.txt_p8);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.txt_p5);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.txt_p3);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.txt_p6);
+            this.groupBox3.Controls.Add(this.txt_p2);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.txt_p7);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.txt_p4);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Location = new System.Drawing.Point(3, 99);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(462, 108);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "数据项";
             // 
             // frmCreateFormula
             // 
@@ -376,6 +388,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -410,5 +424,6 @@
         private System.Windows.Forms.Button btn_preview;
         private System.Windows.Forms.RichTextBox rtb_note;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
