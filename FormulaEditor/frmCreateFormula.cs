@@ -24,7 +24,7 @@ namespace FormulaEditor
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(), FunBody = rtb_fun.Text };
+            PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(), FunBody = rtb_fun.Text ,FunNote = rtb_note.Text.Trim()};
             PyFile pyFile= currentPy.AddFunc(pf);
             view.RefreshData(pyFile);
             this.FindForm().Close();

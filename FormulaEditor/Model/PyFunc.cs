@@ -9,6 +9,7 @@ namespace FormulaEditor
     public class PyFunc
     {
         public string FunName { get; set; }
+        public string FunNote { get; set; }
         public PyParam P1 { get; set; }
         public PyParam P2 { get; set; }
         public PyParam P3 { get; set; }
@@ -34,7 +35,7 @@ namespace FormulaEditor
         }
 
         private string CombineNotes() {
-            string notes = "'''\n";
+            string notes = string.Format("'''\n\t{0}\n",FunNote);
             foreach (var item in listParam)
             {
                 notes +=string.Format("\t{0}:{1}\n", item.Key, item.Note);
