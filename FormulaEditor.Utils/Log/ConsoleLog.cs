@@ -15,7 +15,7 @@ namespace FormulaEditor.utils
         }
         public void log(string msg)
         {
-            textbox.Text += string.Format("{0} : {1}\n",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),msg);
+            textbox.Text = string.Format("{0} : {1}\n",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),msg)+ textbox.Text ;
         }
     }
 }

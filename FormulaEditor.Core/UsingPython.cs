@@ -1,5 +1,6 @@
 ﻿using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,14 +17,23 @@ namespace FormulaEditor.Core
         public UsingPython(string fileName)
         {
 
-            string serverpath = AppDomain.CurrentDomain.BaseDirectory + string.Format("/PythonFiles/{0}",fileName);//所引用python路径
+            string serverpath = AppDomain.CurrentDomain.BaseDirectory + string.Format("PythonFiles\\{0}",fileName);//所引用python路径
             if (!File.Exists(serverpath))
             {
                 throw new Exception(string.Format("{0}文件不存在！",serverpath));
             }
-            pyRuntime = Python.CreateRuntime();
-            engine = pyRuntime.GetEngine("python");
-            engine.ImportModule("sys");
+            var options = new Dictionary<string, object>();
+            options["Frames"] = true;
+            options["FullFrames"] = true;
+            engine = Python.CreateEngine(options);
+            ScriptRuntime pyRuntime = Python.CreateRuntime(options);
+            //ICollection<string> paths = engine.GetSearchPaths();
+            //paths.Add(@"D:\Program Files\IronPython 2.7\DLLs");
+            //paths.Add(@"D:\Program Files\IronPython 2.7\libs");
+            //paths.Add(@"D:\Program Files\IronPython 2.7\Lib");
+            //paths.Add(@"D:\Program Files\IronPython 2.7\Lib\site-packages");
+            //engine.SetSearchPaths(paths);
+            //engine.ImportModule("json");
             scope = engine.CreateScope();
             obj = engine.ExecuteFile(serverpath, scope);
         }
@@ -34,7 +44,8 @@ namespace FormulaEditor.Core
             {
                 if (null != obj)
                 {
-                    return obj.method_factory(methodName, p1, p2,p3,p4,p5,p6,p7,p8);
+                    Object result = obj.method_factory(methodName, p1, p2, p3, p4, p5, p6, p7, p8);
+                    return result;
                 }
                 else
                 {
