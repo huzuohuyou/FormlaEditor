@@ -172,7 +172,10 @@
     <None Include="Resources\QQ截图20170526130606.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\addFormula.png" />
     <Content Include="images\UI.png" />
+    <Content Include="images\产品结构图.png" />
+    <Content Include="images\公式编辑器流程图.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
