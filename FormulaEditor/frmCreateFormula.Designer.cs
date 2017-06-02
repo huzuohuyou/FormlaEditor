@@ -52,14 +52,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rtb_fun = new System.Windows.Forms.RichTextBox();
+            this.TextPanel = new System.Windows.Forms.GroupBox();
             this.btn_preview = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_test = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,7 +69,6 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -310,7 +308,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer2.Panel1.Controls.Add(this.TextPanel);
             // 
             // splitContainer2.Panel2
             // 
@@ -323,27 +321,15 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
-            // groupBox2
+            // TextPanel
             // 
-            this.groupBox2.Controls.Add(this.rtb_fun);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(471, 257);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "方法体";
-            // 
-            // rtb_fun
-            // 
-            this.rtb_fun.AcceptsTab = true;
-            this.rtb_fun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtb_fun.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_fun.Location = new System.Drawing.Point(3, 17);
-            this.rtb_fun.Name = "rtb_fun";
-            this.rtb_fun.Size = new System.Drawing.Size(465, 237);
-            this.rtb_fun.TabIndex = 10;
-            this.rtb_fun.Text = "";
+            this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TextPanel.Location = new System.Drawing.Point(0, 0);
+            this.TextPanel.Name = "TextPanel";
+            this.TextPanel.Size = new System.Drawing.Size(471, 257);
+            this.TextPanel.TabIndex = 0;
+            this.TextPanel.TabStop = false;
+            this.TextPanel.Text = "方法体";
             // 
             // btn_preview
             // 
@@ -392,17 +378,6 @@
             this.splitContainer3.SplitterDistance = 174;
             this.splitContainer3.TabIndex = 1;
             // 
-            // listView1
-            // 
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(3, 17);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(168, 482);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Tile;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.listView1);
@@ -413,6 +388,17 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "数据项";
+            // 
+            // listView1
+            // 
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(3, 17);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(168, 482);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Tile;
             // 
             // frmCreateFormula
             // 
@@ -437,7 +423,6 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
@@ -452,10 +437,9 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox TextPanel;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_test;
-        private System.Windows.Forms.RichTextBox rtb_fun;
         private System.Windows.Forms.TextBox txt_p5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_p2;
