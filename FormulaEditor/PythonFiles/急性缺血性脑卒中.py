@@ -3,7 +3,6 @@ import sys
 import clr
 import System
 sys.path.append(System.AppDomain.CurrentDomain.BaseDirectory+"\PythonFiles\DLLs")
-#return System.AppDomain.CurrentDomain.BaseDirectory
 clr.AddReferenceToFile("Newtonsoft.Json.dll")
 from Newtonsoft.Json import *
 def method_factory(method_name,p1=None,p2=None,p3=None,p4=None,p5=None,p6=None,p7=None,p8=None):

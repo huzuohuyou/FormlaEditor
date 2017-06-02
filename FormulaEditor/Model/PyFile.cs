@@ -14,7 +14,19 @@ namespace FormulaEditor
         public string Path { get; set; }
         public string Content { get; set; }
         public DateTime UpdateTime { get; set; }
-        
+        public string Templet { get; } = @"# -*- coding:UTF-8 -*-
+import sys
+import clr
+import System
+sys.path.append(System.AppDomain.CurrentDomain.BaseDirectory+'\PythonFiles\DLLs')
+clr.AddReferenceToFile('Newtonsoft.Json.dll')
+from Newtonsoft.Json import *
+def method_factory(method_name, p1 = None, p2 = None, p3 = None, p4 = None, p5 = None, p6 = None, p7 = None, p8 = None):
+    func = getattr(Foo(), method_name)
+    return func(p1, p2, p3, p4, p5, p6, p7, p8)
+class Foo :
+    def demo(self, p1=None, p2=None, p3=None, p4=None, p5=None, p6=None, p7=None, p8=None):
+        return '测试方法'";
 
         public PyFile() {
             
@@ -84,13 +96,7 @@ namespace FormulaEditor
         }
 
         public void InitTemplet() {
-            Content = @"# -*- coding:UTF-8 -*-
-def method_factory(method_name,p1=None,p2=None,p3=None,p4=None,p5=None,p6=None,p7=None,p8=None):
-	func = getattr(Foo(),method_name)
-	return func(p1,p2,p3,p4,p5,p6,p7,p8)
-class Foo:
-	def demo(self,p1=None,p2=None,p3=None,p4=None,p5=None,p6=None,p7=None,p8=None):
-		return '测试方法'";
+            Content = Templet;
         }
 
         
