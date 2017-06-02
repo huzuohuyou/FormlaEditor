@@ -15,7 +15,8 @@
 ![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/structure_chart.png)
 ## 产品流程图
 ![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/flow_chart.png)
-## 产品类图
+## [产品类图](http://www.processon.com/view/link/5931347de4b0f57fff75e09b "产品类图")
+
 ![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/class_diagram.png)
 ----------
 
