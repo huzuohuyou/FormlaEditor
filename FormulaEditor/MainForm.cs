@@ -101,14 +101,14 @@ namespace FormulaEditor
                 currentPy = pyFiles.PyList.Find(p => p.Name == tv_singal.SelectedNode.Text);
                 TextArea.Text = currentPy.Content;
                 penigne = new UsingPython(currentPy.Name);
-                List<string> list = penigne.GetFunctions();
-                foreach (var item in list)
-                {
-                    TreeNode tn = new TreeNode(item);
-                    tn.Name = item;
-                    if (!tv_singal.SelectedNode.Nodes.ContainsKey(tn.Name))
-                        tv_singal.SelectedNode.Nodes.Add(tn);
-                }
+                //List<string> list = penigne.GetFunctions();
+                //foreach (var item in list)
+                //{
+                //    TreeNode tn = new TreeNode(item);
+                //    tn.Name = item;
+                //    if (!tv_singal.SelectedNode.Nodes.ContainsKey(tn.Name))
+                //        tv_singal.SelectedNode.Nodes.Add(tn);
+                //}
             }
             catch (Exception ex)
             {

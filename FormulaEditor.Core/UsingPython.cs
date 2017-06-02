@@ -25,17 +25,8 @@ namespace FormulaEditor.Core
             var options = new Dictionary<string, object>();
             options["Frames"] = true;
             options["FullFrames"] = true;
-            engine = Python.CreateEngine(options);
             ScriptRuntime pyRuntime = Python.CreateRuntime(options);
-            //ICollection<string> paths = engine.GetSearchPaths();
-            //paths.Add(@"D:\Program Files\IronPython 2.7\DLLs");
-            //paths.Add(@"D:\Program Files\IronPython 2.7\libs");
-            //paths.Add(@"D:\Program Files\IronPython 2.7\Lib");
-            //paths.Add(@"D:\Program Files\IronPython 2.7\Lib\site-packages");
-            //engine.SetSearchPaths(paths);
-            //engine.ImportModule("json");
-            scope = engine.CreateScope();
-            obj = engine.ExecuteFile(serverpath, scope);
+            obj = pyRuntime.UseFile(serverpath);
         }
 
         public object ExcutePython(string methodName="",object p1 = null, object p2 = null, object p3 = null, object p4 = null, object p5 = null, object p6 = null, object p7 = null, object p8 = null)
