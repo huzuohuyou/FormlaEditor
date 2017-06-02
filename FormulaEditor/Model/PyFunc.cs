@@ -35,12 +35,12 @@ namespace FormulaEditor
         }
 
         private string CombineNotes() {
-            string notes = string.Format("'''\n\t{0}\n",FunNote);
+            string notes =string.Format("\n\t#{0}\n",FunNote.Replace("\n","").Replace("\t",""));
             foreach (var item in listParam)
             {
-                notes +=string.Format("\t{0}:{1}\n", item.Key, item.Note);
+                notes +=string.Format("\t#{0}:{1}\n", item.Key, item.Note);
             }
-            notes += "\t'''";
+            notes = notes.Trim();
             return notes;
         }
 

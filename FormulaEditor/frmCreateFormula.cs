@@ -46,7 +46,7 @@ namespace FormulaEditor
 
         private void btn_preview_Click(object sender, EventArgs e)
         {
-            PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(),FunBody=rtb_fun.Text };
+            PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(),FunBody=rtb_fun.Text ,FunNote=rtb_note.Text};
             MessageBox.Show(pf.CombineContent());
         }
     }

@@ -91,7 +91,7 @@ class Foo :
         }
 
         public PyFile AddFunc(PyFunc pf) {
-            Content +="\n\t"+ pf.CombineContent().Replace("\n","\n\t");
+            Content +="\n    "+ pf.CombineContent().Replace("\n","\n\t");
             return Update();
         }
 
