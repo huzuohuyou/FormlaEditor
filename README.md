@@ -12,9 +12,11 @@
 
 ## 产品结构图
 
-![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/%E4%BA%A7%E5%93%81%E7%BB%93%E6%9E%84%E5%9B%BE.png)
+![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/structure_chart.png)
 ## 产品流程图
-![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91%E5%99%A8%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/flow_chart.png)
+## 产品类图
+![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/class_diagram.png)
 ----------
 
 ## UI
