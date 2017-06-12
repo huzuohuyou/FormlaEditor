@@ -81,25 +81,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCreateSingel.cs">
+    <Compile Include="Views\frmCreateSingel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateSingel.Designer.cs">
+    <Compile Include="Views\frmCreateSingel.Designer.cs">
       <DependentUpon>frmCreateSingel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\CurrentPyFile.cs" />
-    <Compile Include="frmCreateFormula.cs">
+    <Compile Include="Views\frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateFormula.Designer.cs">
+    <Compile Include="Views\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ICallBack.cs" />
+    <Compile Include="Model\CurrentPyFile.cs" />
+    <Compile Include="Views\frmCreateFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmCreateFormula.Designer.cs">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\IEntity.cs" />
-    <Compile Include="IView.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Views\IManageParam.cs" />
+    <Compile Include="Views\IParam.cs" />
+    <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\PyParam.cs" />
@@ -108,15 +117,24 @@
     <Compile Include="Model\PyFile.cs" />
     <Compile Include="Model\PyFunc.cs" />
     <Compile Include="Model\PyFiles.cs" />
+    <Compile Include="Views\UCParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UCParam.Designer.cs">
+      <DependentUpon>UCParam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\HotKeyManager.cs" />
     <Compile Include="Utils\SearchManager.cs" />
-    <EmbeddedResource Include="frmCreateFormula.resx">
+    <EmbeddedResource Include="Views\frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateSingel.resx">
+    <EmbeddedResource Include="Views\frmCreateSingel.resx">
       <DependentUpon>frmCreateSingel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Views\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -129,6 +147,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\UCParam.resx">
+      <DependentUpon>UCParam.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

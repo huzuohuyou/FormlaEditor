@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, IView
+    public partial class MainForm : Form, IView, ICallBack
     {
         UsingPython penigne = null;
         ILog loger = null;
@@ -52,23 +52,10 @@ namespace FormulaEditor
         {
             try
             {
-                UsingPython python = new UsingPython(currentPy.Name);
-                List<Param> list = new List<Param>() {
-                new Param() {Name="first_name",Value="1.11" ,Type="double"},
-                new Param() { Name="last_name",Value="2.34",Type="double"} };
-//                pythonContent = @"args1=last_name
-//args2=first_name
-//result=args1+args2";
-                loger.log( python.ExcuteScriptFile(list).ToString());
-                //loger.log(penigne.ExcutePython(txt_func.Text,
-                //    txt_p1.Text,
-                //    txt_p2.Text,
-                //    txt_p3.Text,
-                //    txt_p4.Text,
-                //    txt_p5.Text,
-                //    txt_p6.Text,
-                //    txt_p7.Text,
-                //    txt_p8.Text).ToString());
+                frmTest frm = new frmTest(this);
+                frm.ShowDialog();
+                
+                
             }
             catch (Exception ex)
             {
@@ -91,10 +78,6 @@ namespace FormulaEditor
                 {
                     SelectPyFle();
                 }
-                else
-                {
-                    SelectFunc();
-                }
             }
             catch (Exception ex)
             {
@@ -109,36 +92,12 @@ namespace FormulaEditor
                 currentPy = pyFiles.PyList.Find(p => p.Name == tv_singal.SelectedNode.Text);
                 TextArea.Text = currentPy.Content;
                 penigne = new UsingPython(currentPy.Name);
-                //List<string> list = penigne.GetFunctions();
-                //foreach (var item in list)
-                //{
-                //    TreeNode tn = new TreeNode(item);
-                //    tn.Name = item;
-                //    if (!tv_singal.SelectedNode.Nodes.ContainsKey(tn.Name))
-                //        tv_singal.SelectedNode.Nodes.Add(tn);
-                //}
             }
             catch (Exception ex)
             {
                 throw ex;
             }
             
-        }
-
-        public void SelectFunc() {
-            try
-            {
-                //string funcName = tv_singal.SelectedNode.Text;
-                //int funIndex = currentPy.Content.Replace("\r","").IndexOf(funcName);
-
-                //rtb_code.Select(funIndex , funcName.Length);
-                //bool b = rtb_code.Focus();
-            }
-            catch (Exception ex)
-            {
-                
-                throw ex;
-            }
         }
 
         private void create_fun_Click(object sender, EventArgs e)
@@ -227,6 +186,12 @@ namespace FormulaEditor
         private void MainForm_Load(object sender, EventArgs e)
         {
             TextPanel.Controls.Add(this.TextArea);
+        }
+
+        public void CallBackParams(List<Param> list)
+        {
+            UsingPython python = new UsingPython(currentPy.Name);
+            loger.log(python.ExcuteScriptFile(list).ToString());
         }
 
         #region 文本编辑器初始化
@@ -502,6 +467,8 @@ namespace FormulaEditor
             TextArea.AutomaticFold = (AutomaticFold.Show | AutomaticFold.Click | AutomaticFold.Change);
 
         }
+
+        
         #endregion
     }
 }

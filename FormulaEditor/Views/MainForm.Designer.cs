@@ -48,26 +48,6 @@
             this.create_pyfile = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_hide_list = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_p8 = new System.Windows.Forms.TextBox();
-            this.txt_p7 = new System.Windows.Forms.TextBox();
-            this.txt_p6 = new System.Windows.Forms.TextBox();
-            this.txt_p5 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_func = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txt_p2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txt_p3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_p4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_p1 = new System.Windows.Forms.TextBox();
             this.TextPanel = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_hide_console = new System.Windows.Forms.Button();
@@ -86,11 +66,6 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.cms_console.SuspendLayout();
             this.SuspendLayout();
@@ -272,224 +247,23 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Panel1.Controls.Add(this.TextPanel);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Size = new System.Drawing.Size(791, 416);
-            this.splitContainer2.SplitterDistance = 314;
+            this.splitContainer2.SplitterDistance = 317;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox3);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.TextPanel);
-            this.splitContainer3.Size = new System.Drawing.Size(791, 314);
-            this.splitContainer3.SplitterDistance = 66;
-            this.splitContainer3.TabIndex = 1;
-            this.splitContainer3.TabStop = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.txt_p8);
-            this.groupBox3.Controls.Add(this.txt_p7);
-            this.groupBox3.Controls.Add(this.txt_p6);
-            this.groupBox3.Controls.Add(this.txt_p5);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.txt_func);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.txt_p2);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.txt_p3);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.txt_p4);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.txt_p1);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(791, 66);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "测试";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "func";
-            // 
-            // txt_p8
-            // 
-            this.txt_p8.Location = new System.Drawing.Point(601, 40);
-            this.txt_p8.Name = "txt_p8";
-            this.txt_p8.Size = new System.Drawing.Size(100, 21);
-            this.txt_p8.TabIndex = 1;
-            this.txt_p8.Text = "8";
-            // 
-            // txt_p7
-            // 
-            this.txt_p7.Location = new System.Drawing.Point(464, 42);
-            this.txt_p7.Name = "txt_p7";
-            this.txt_p7.Size = new System.Drawing.Size(100, 21);
-            this.txt_p7.TabIndex = 1;
-            this.txt_p7.Text = "7";
-            // 
-            // txt_p6
-            // 
-            this.txt_p6.Location = new System.Drawing.Point(327, 40);
-            this.txt_p6.Name = "txt_p6";
-            this.txt_p6.Size = new System.Drawing.Size(100, 21);
-            this.txt_p6.TabIndex = 1;
-            this.txt_p6.Text = "6";
-            // 
-            // txt_p5
-            // 
-            this.txt_p5.Location = new System.Drawing.Point(190, 39);
-            this.txt_p5.Name = "txt_p5";
-            this.txt_p5.Size = new System.Drawing.Size(100, 21);
-            this.txt_p5.TabIndex = 1;
-            this.txt_p5.Text = "5";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(582, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 12);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "p8";
-            // 
-            // txt_func
-            // 
-            this.txt_func.Location = new System.Drawing.Point(37, 12);
-            this.txt_func.Name = "txt_func";
-            this.txt_func.Size = new System.Drawing.Size(100, 21);
-            this.txt_func.TabIndex = 1;
-            this.txt_func.Text = "demo";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(445, 46);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(17, 12);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "p7";
-            // 
-            // txt_p2
-            // 
-            this.txt_p2.Location = new System.Drawing.Point(327, 12);
-            this.txt_p2.Name = "txt_p2";
-            this.txt_p2.Size = new System.Drawing.Size(100, 21);
-            this.txt_p2.TabIndex = 1;
-            this.txt_p2.Text = "2";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(308, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 12);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "p6";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(445, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "p3";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(171, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 12);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "p5";
-            // 
-            // txt_p3
-            // 
-            this.txt_p3.Location = new System.Drawing.Point(464, 13);
-            this.txt_p3.Name = "txt_p3";
-            this.txt_p3.Size = new System.Drawing.Size(100, 21);
-            this.txt_p3.TabIndex = 1;
-            this.txt_p3.Text = "3";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(308, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "p2";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "p1";
-            // 
-            // txt_p4
-            // 
-            this.txt_p4.Location = new System.Drawing.Point(601, 13);
-            this.txt_p4.Name = "txt_p4";
-            this.txt_p4.Size = new System.Drawing.Size(100, 21);
-            this.txt_p4.TabIndex = 1;
-            this.txt_p4.Text = "4";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(582, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "p4";
-            // 
-            // txt_p1
-            // 
-            this.txt_p1.Location = new System.Drawing.Point(190, 12);
-            this.txt_p1.Name = "txt_p1";
-            this.txt_p1.Size = new System.Drawing.Size(100, 21);
-            this.txt_p1.TabIndex = 1;
-            this.txt_p1.Text = "1";
             // 
             // TextPanel
             // 
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(791, 244);
+            this.TextPanel.Size = new System.Drawing.Size(791, 317);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -501,7 +275,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(791, 101);
+            this.groupBox1.Size = new System.Drawing.Size(791, 98);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
@@ -513,7 +287,7 @@
             this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(771, -35);
+            this.btn_hide_console.Location = new System.Drawing.Point(771, -38);
             this.btn_hide_console.Name = "btn_hide_console";
             this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
             this.btn_hide_console.TabIndex = 2;
@@ -527,7 +301,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(785, 81);
+            this.rtb_log.Size = new System.Drawing.Size(785, 78);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 
@@ -571,12 +345,6 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.cms_console.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -598,20 +366,6 @@
         private System.Windows.Forms.ContextMenuStrip cms_zb_manager;
         private System.Windows.Forms.ToolStripMenuItem 新建ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem del_pyfile;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.TextBox txt_p5;
-        private System.Windows.Forms.TextBox txt_p2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_p4;
-        private System.Windows.Forms.TextBox txt_p1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_p3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_func;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox TextPanel;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btn_hide_list;
@@ -624,12 +378,7 @@
         private System.Windows.Forms.ToolStripMenuItem 开始调试ToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip cms_console;
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
-        private System.Windows.Forms.TextBox txt_p8;
-        private System.Windows.Forms.TextBox txt_p7;
-        private System.Windows.Forms.TextBox txt_p6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+
     }
 }
 
