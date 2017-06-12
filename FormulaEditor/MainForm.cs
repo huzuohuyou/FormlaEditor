@@ -52,15 +52,23 @@ namespace FormulaEditor
         {
             try
             {
-                loger.log(penigne.ExcutePython(txt_func.Text,
-                    txt_p1.Text,
-                    txt_p2.Text,
-                    txt_p3.Text,
-                    txt_p4.Text,
-                    txt_p5.Text,
-                    txt_p6.Text,
-                    txt_p7.Text,
-                    txt_p8.Text).ToString());
+                UsingPython python = new UsingPython(currentPy.Name);
+                List<Param> list = new List<Param>() {
+                new Param() {Name="first_name",Value="1.11" ,Type="double"},
+                new Param() { Name="last_name",Value="2.34",Type="double"} };
+//                pythonContent = @"args1=last_name
+//args2=first_name
+//result=args1+args2";
+                loger.log( python.ExcuteScriptFile(list).ToString());
+                //loger.log(penigne.ExcutePython(txt_func.Text,
+                //    txt_p1.Text,
+                //    txt_p2.Text,
+                //    txt_p3.Text,
+                //    txt_p4.Text,
+                //    txt_p5.Text,
+                //    txt_p6.Text,
+                //    txt_p7.Text,
+                //    txt_p8.Text).ToString());
             }
             catch (Exception ex)
             {
@@ -226,7 +234,7 @@ namespace FormulaEditor
 
         public void InitCodeEditor()
         {
-            TextArea = new ScintillaNET.Scintilla();
+            TextArea = new Scintilla();
             TextArea.ContextMenuStrip = cms_code_manager;
             TextPanel.Controls.Add(TextArea);
             TextArea.TextChanged += TextArea_TextChanged;
@@ -326,7 +334,7 @@ namespace FormulaEditor
 
             // Configure the default style
             TextArea.StyleResetDefault();
-            TextArea.Styles[Style.Default].Font = "Consolas";
+            TextArea.Styles[Style.Default].Font = "Monaco";
             TextArea.Styles[Style.Default].Size = 10;
             TextArea.Styles[Style.Default].BackColor = IntToColor(0x212121);
             TextArea.Styles[Style.Default].ForeColor = IntToColor(0xFFFFFF);

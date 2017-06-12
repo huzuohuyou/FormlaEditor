@@ -10,7 +10,19 @@ namespace FormulaEditor
 {
     public class PyFile: IEntity
     {
-        public string Name { get; set; }
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value == string.Empty)
+                {
+                    throw new Exception("名称不能为空");
+                };
+                _name = value;
+            }
+        }
         public string Path { get; set; }
         public string Content { get; set; }
         public DateTime UpdateTime { get; set; }
