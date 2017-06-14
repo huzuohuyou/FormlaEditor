@@ -103,6 +103,7 @@
     <Compile Include="Views\frmCreateFormula.Designer.cs">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ICanClear.cs" />
     <Compile Include="Views\IManageParam.cs" />
     <Compile Include="Views\IParam.cs" />
     <Compile Include="Views\MainForm.cs">
@@ -113,6 +114,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ucDataItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucDataItem.Designer.cs">
+      <DependentUpon>ucDataItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UCParam.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +147,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\ucDataItem.resx">
+      <DependentUpon>ucDataItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UCParam.resx">
       <DependentUpon>UCParam.cs</DependentUpon>
     </EmbeddedResource>

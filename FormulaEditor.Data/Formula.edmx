@@ -82,6 +82,7 @@
           <Property Name="SD_CODE" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="SD_ITEM_CODE" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="SD_ITEM_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="varchar" MaxLength="20" />
           <Property Name="SD_ITEM_ALIAS" Type="varchar" MaxLength="60" />
           <Property Name="ORDER_NO" Type="int" />
           <Property Name="ITEM_TYPE_CODE" Type="varchar" MaxLength="20" Nullable="false" />
@@ -272,6 +273,7 @@
           <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="SD_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_SD_ITEM__REFERENCE_SD_INFO" FromRole="SD_ITEM_INFO" ToRole="SD_INFO" />
+          <Property Name="DATA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ED_KPI_VALUE">
           <Key>
@@ -405,6 +407,7 @@
           <EntitySetMapping Name="SD_ITEM_INFO">
             <EntityTypeMapping TypeName="HJSDR_BJXH_20170303_TESTModel.SD_ITEM_INFO">
               <MappingFragment StoreEntitySet="SD_ITEM_INFO">
+                <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
                 <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
                 <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
                 <ScalarProperty Name="ITEM_UNIT" ColumnName="ITEM_UNIT" />

@@ -8,7 +8,7 @@ using FormulaEditor.Model;
 
 namespace FormulaEditor.Core
 {
-    public class MainViewController : IMainViewController
+    public class MainViewController : IKPI
     {
         public List<KPINode> GetKPIList()
         {

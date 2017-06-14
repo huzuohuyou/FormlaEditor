@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public interface IMainViewController
+    public interface IKPI
     {
         List<KPINode> GetKPIList();
         void RefreshKPIList();

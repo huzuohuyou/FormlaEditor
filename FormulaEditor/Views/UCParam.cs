@@ -48,7 +48,7 @@ namespace FormulaEditor
                 {
                     Name = txt_name.Text,
                     Value = txt_value.Text,
-                    Type = cmb_type.Text
+                    DataType = cmb_type.Text
                 };
             }
             catch (Exception)

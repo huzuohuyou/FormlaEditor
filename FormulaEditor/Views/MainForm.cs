@@ -12,7 +12,7 @@ namespace FormulaEditor
 {
     public partial class MainForm : Form, ICallBack
     {
-        IMainViewController controller;
+        IKPI controller;
         ILog loger = null;
         KPINode currentKpi;
         public Scintilla TextArea;

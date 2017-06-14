@@ -6,13 +6,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using FormulaEditor.Views;
 
 namespace FormulaEditor
 {
-    public partial class frmCreateFormula : Form
+    public partial class frmCreateFormula : Form, ICanClear
     {
         KPINode kpi;
         ICallBack callback;
+        List<ucDataItem> list = new List<ucDataItem>();
+        CreateFormulaController controller;
         /// <summary>
         /// 分子公式
         /// </summary>
@@ -26,7 +29,30 @@ namespace FormulaEditor
             kpi = p;
             callback = cb;
             InitializeComponent();
+            gb_param.AllowDrop = true;
+            controller = new CreateFormulaController();
+            InitDataItems();
             InitCodeEditor();
+        }
+
+        public void InitDataItems() {
+            TreeNode typeNode=null;
+            controller.GetDataItemList().ForEach(r=> {
+                if (!tv_dataItems.Nodes.ContainsKey(r.Type))
+                {
+                    typeNode = new TreeNode(r.Type);
+                    typeNode.Name = r.Type;
+                    tv_dataItems.Nodes.Add(typeNode);
+                }
+                if (typeNode!=null)
+                {
+                    TreeNode node = new TreeNode(r.Name);
+                    node.Name = r.Name;
+                    node.Tag =r;
+                    typeNode.Nodes.Add(node);
+                }
+                
+            });
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -447,9 +473,94 @@ namespace FormulaEditor
 
         }
 
-        
+
+
         #endregion
 
+        private void tv_dataItems_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+            if (e.Button == MouseButtons.Right|| e.Button == MouseButtons.Left)//判断你点的是不是右键
+            {
+                Point ClickPoint = new Point(e.X, e.Y);
+                TreeNode CurrentNode = tv_dataItems.GetNodeAt(ClickPoint);
+                if (CurrentNode != null)//判断你点的是不是一个节点
+                {
+                    tv_dataItems.SelectedNode = CurrentNode;//选中这个节点
+                }
+            }
 
+        }
+
+        private void gb_param_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(Param)) == true)
+            {
+                e.Effect = DragDropEffects.All;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        public Point GetLocation()
+        {
+            int x = 15, y = 15;
+            list.ForEach(
+                r =>
+                {
+                    if (list.Count % 2 == 0)
+                    {
+                        x = 15;
+                    }
+                    else
+                    {
+                        x = 280;
+                    }
+                    y = list.Count / 2 * 36+15;
+                }
+                );
+            return new Point(x, y);
+        }
+
+        private void gb_param_DragDrop(object sender, DragEventArgs e)
+        {
+            Param p = (Param)(e.Data.GetData(typeof(Param)));
+            ucDataItem uc = new ucDataItem(this, p);
+            uc.Location = GetLocation();
+            list.Add(uc);
+            gb_param.Controls.Add(uc);
+            Invalidate();
+        }
+
+        private void tv_dataItems_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(string)) == true)
+            {
+                e.Effect = DragDropEffects.All;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void tv_dataItems_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                TreeNode node = tv_dataItems.SelectedNode;
+                if (node != null)
+                {
+                    DoDragDrop((Param)node.Tag, DragDropEffects.All);
+                }
+            }
+        }
+
+        public void RemoveDataItem(ucDataItem uc)
+        {
+            gb_param.Controls.Remove(uc);
+        }
     }
 }
