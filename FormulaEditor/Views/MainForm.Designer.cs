@@ -193,6 +193,7 @@
             this.tv_singal.Size = new System.Drawing.Size(200, 396);
             this.tv_singal.TabIndex = 2;
             this.tv_singal.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_singal_AfterSelect);
+            this.tv_singal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tv_singal_MouseDown);
             // 
             // cms_zb_manager
             // 
@@ -201,28 +202,30 @@
             this.del_pyfile,
             this.create_pyfile});
             this.cms_zb_manager.Name = "contextMenuStrip1";
-            this.cms_zb_manager.Size = new System.Drawing.Size(125, 70);
+            this.cms_zb_manager.Size = new System.Drawing.Size(149, 70);
             this.cms_zb_manager.Opening += new System.ComponentModel.CancelEventHandler(this.cms_zb_manager_Opening);
             // 
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.新建ToolStripMenuItem.Text = "新建指标";
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.新建ToolStripMenuItem.Text = "编辑指标算法";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.create_fun_Click);
             // 
             // del_pyfile
             // 
             this.del_pyfile.Name = "del_pyfile";
-            this.del_pyfile.Size = new System.Drawing.Size(124, 22);
+            this.del_pyfile.Size = new System.Drawing.Size(152, 22);
             this.del_pyfile.Text = "删除文件";
+            this.del_pyfile.Visible = false;
             this.del_pyfile.Click += new System.EventHandler(this.del_pyfile_Click);
             // 
             // create_pyfile
             // 
             this.create_pyfile.Name = "create_pyfile";
-            this.create_pyfile.Size = new System.Drawing.Size(124, 22);
+            this.create_pyfile.Size = new System.Drawing.Size(152, 22);
             this.create_pyfile.Text = "新建文件";
+            this.create_pyfile.Visible = false;
             this.create_pyfile.Click += new System.EventHandler(this.create_singel_Click);
             // 
             // btn_hide_list
@@ -253,7 +256,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Size = new System.Drawing.Size(791, 416);
-            this.splitContainer2.SplitterDistance = 317;
+            this.splitContainer2.SplitterDistance = 320;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
@@ -263,7 +266,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(791, 317);
+            this.TextPanel.Size = new System.Drawing.Size(791, 320);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -275,7 +278,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(791, 98);
+            this.groupBox1.Size = new System.Drawing.Size(791, 95);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
@@ -287,7 +290,7 @@
             this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(771, -38);
+            this.btn_hide_console.Location = new System.Drawing.Point(771, -41);
             this.btn_hide_console.Name = "btn_hide_console";
             this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
             this.btn_hide_console.TabIndex = 2;
@@ -301,7 +304,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(785, 78);
+            this.rtb_log.Size = new System.Drawing.Size(785, 75);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 

@@ -6,7 +6,7 @@ namespace FormulaEditor.Core
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public string Value { get; set; }
+        public string Value { private get; set; }
 
         public dynamic FixValue{
             get {

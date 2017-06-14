@@ -1,4 +1,6 @@
 ﻿using FormulaEditor.Core;
+using FormulaEditor.Model;
+using FormulaEditor.Presenter;
 using FormulaEditor.utils;
 using ScintillaNET;
 using ScintillaNET.Demo.Utils;
@@ -9,8 +11,9 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, IView, ICallBack
+    public partial class MainForm : Form, IMainForm<ED_KPI_INFO>, ICallBack
     {
+        private MainFormPresentation presentation;
         UsingPython penigne = null;
         ILog loger = null;
         PyFiles pyFiles = null;
@@ -19,34 +22,16 @@ namespace FormulaEditor
         public MainForm()
         {
             InitializeComponent();
+            presentation = new MainFormPresentation(this);
             loger = new ConsoleLog(rtb_log);
-            InitData();
+            presentation.InitTreeView();
             InitCodeEditor();
-            
         }
 
        
 
 
-        public void InitData()
-        {
-            pyFiles = new PyFiles();
-            foreach (var item in pyFiles.PyList)
-            {
-                if (!tv_singal.Nodes.ContainsKey(item.Name))
-                {
-                    tv_singal.Nodes.Add(item.Name, item.Name);
-                }
-            }
-            foreach (TreeNode item in tv_singal.Nodes)
-            {
-                if (item != null && pyFiles.PyList.Find(p => p.Name == item.Name) == null)
-                {
-                    tv_singal.Nodes.Remove(item);
-                }
-            }
-
-        }
+        
 
         private void debug_pyfile_Click(object sender, EventArgs e)
         {
@@ -76,7 +61,7 @@ namespace FormulaEditor
             {
                 if (tv_singal.SelectedNode.Parent == null)
                 {
-                    SelectPyFle();
+                    ShowScript();
                 }
             }
             catch (Exception ex)
@@ -86,9 +71,13 @@ namespace FormulaEditor
             
         }
 
-        public void SelectPyFle() {
+        public void ShowScript()
+        {
             try
             {
+                using (var db = new HJSDR_BJXH_20170303_TESTEntities())
+                {
+                }
                 currentPy = pyFiles.PyList.Find(p => p.Name == tv_singal.SelectedNode.Text);
                 TextArea.Text = currentPy.Content;
                 penigne = new UsingPython(currentPy.Name);
@@ -97,7 +86,7 @@ namespace FormulaEditor
             {
                 throw ex;
             }
-            
+
         }
 
         private void create_fun_Click(object sender, EventArgs e)
@@ -109,14 +98,22 @@ namespace FormulaEditor
 
         private void cms_zb_manager_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (tv_singal.SelectedNode!=null&&tv_singal.SelectedNode.Parent==null)
+            //只有叶子节点才可以编辑指标算法
+            if (tv_singal.SelectedNode != null
+                && tv_singal.SelectedNode.Nodes.Count == 0)
             {
-                新建ToolStripMenuItem.Visible = true;
+                新建ToolStripMenuItem.Enabled = true;
             }
-            else if (tv_singal.SelectedNode != null && tv_singal.SelectedNode.Parent != null)
+            else
             {
-                新建ToolStripMenuItem.Visible = true;
+                //tv_singal.ContextMenuStrip = null;
+                //cms_zb_manager.Visible = false;
+                新建ToolStripMenuItem.Enabled = false;
             }
+            //else if (tv_singal.SelectedNode != null && tv_singal.SelectedNode.Parent != null)
+            //{
+            //    新建ToolStripMenuItem.Visible = true;
+            //}
         }
 
         public void RefreshData(IEntity entity)
@@ -125,7 +122,7 @@ namespace FormulaEditor
             {
                 TextArea.Text = ((PyFile)entity).Content;
                 pyFiles.Refresh();
-                SelectPyFle();
+                ShowScript();
             }
             catch (Exception ex)
             {
@@ -141,7 +138,7 @@ namespace FormulaEditor
                 currentPy.Content = TextArea.Text;
                 currentPy = currentPy.Update();
                 pyFiles.Refresh();
-                SelectPyFle();
+                ShowScript();
                 //TextArea.Text = currentPy.Content;
                 //pyFiles.Refresh();
                 TextPanel.Text = "代码";
@@ -193,6 +190,65 @@ namespace FormulaEditor
             UsingPython python = new UsingPython(currentPy.Name);
             loger.log(python.ExcuteScriptFile(list).ToString());
         }
+
+        public void InitData()
+        {
+            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
+            {
+                pyFiles = new PyFiles();
+                TreeNode rootNode = null;
+                TreeNode typeNode = null;
+                foreach (var item in db.ED_KPI_INFO)
+                {
+                    if (!tv_singal.Nodes.ContainsKey(item.SD_CODE))
+                    {
+                        rootNode = new TreeNode(item.SD_CODE);
+                        rootNode.Name = item.SD_CODE;
+                        tv_singal.Nodes.Add(rootNode);
+                    }
+                    if (!rootNode.Nodes.ContainsKey(item.KPI_TYPE_CODE))
+                    {
+                        typeNode = new TreeNode(item.KPI_TYPE_CODE);
+                        typeNode.Name = item.KPI_TYPE_CODE;
+                        rootNode.Nodes.Add(typeNode);
+                    }
+                    if (typeNode != null)
+                    {
+                        typeNode.Nodes.Add(item.KPI_NAME,item.KPI_NAME);
+                    }
+                }
+                
+            }
+        }
+
+        public void BindingData(ED_KPI_INFO model)
+        {
+            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
+            {
+            }
+        }
+
+        public void RefreshData(ED_KPI_INFO entity)
+        {
+            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
+            {
+            }
+        }
+
+        private void tv_singal_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)//判断你点的是不是右键
+            {
+                Point ClickPoint = new Point(e.X, e.Y);
+                TreeNode CurrentNode = tv_singal.GetNodeAt(ClickPoint);
+                if (CurrentNode != null)//判断你点的是不是一个节点
+                {
+                    tv_singal.SelectedNode = CurrentNode;//选中这个节点
+                }
+            }
+        }
+
+       
 
         #region 文本编辑器初始化
 
@@ -371,6 +427,19 @@ namespace FormulaEditor
         /// </summary>
         private const bool CODEFOLDING_CIRCULAR = true;
 
+        public ED_KPI_INFO Model
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public static Color IntToColor(int rgb)
         {
             return Color.FromArgb(255, (byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb);
@@ -468,7 +537,16 @@ namespace FormulaEditor
 
         }
 
-        
+        public void InitTreeView()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
         #endregion
+
+
     }
 }
