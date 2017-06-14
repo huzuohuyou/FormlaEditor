@@ -90,12 +90,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\frmCreateSingel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmCreateSingel.Designer.cs">
-      <DependentUpon>frmCreateSingel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,9 +123,6 @@
     <Compile Include="Utils\SearchManager.cs" />
     <EmbeddedResource Include="Views\frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmCreateSingel.resx">
-      <DependentUpon>frmCreateSingel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>

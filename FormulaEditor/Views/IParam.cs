@@ -1,4 +1,5 @@
 ﻿using FormulaEditor.Core;
+using FormulaEditor.Model;
 
 namespace FormulaEditor.Views
 {

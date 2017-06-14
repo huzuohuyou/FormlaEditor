@@ -11,7 +11,6 @@ namespace FormulaEditor
 {
     public partial class frmCreateFormula : Form
     {
-        FormulaPresentation presentation = null;
         KPINode kpi;
         ICallBack callback;
         /// <summary>
@@ -32,11 +31,7 @@ namespace FormulaEditor
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            presentation.InsertData(new EP_KPI_SET() {
-                KPI_DESC = rtb_note.Text,
-                NUM_FORMULA = rtb_denominator.Text,
-                FRA_FORMULA = rtb_numerator.Text,
-            });
+            
             callback.RefreshData(kpi);
             this.FindForm().Close();
         }
