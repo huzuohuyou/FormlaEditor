@@ -47,11 +47,12 @@ namespace FormulaEditor
                 {
                     currentKpi = new KPINode()
                     {
+                        KPI_ID = int.Parse(tv_singal.SelectedNode.Name),
                         SD_CODE = tv_singal.SelectedNode.Parent.Parent.Text,
                         KPI_TYPE_CODE = tv_singal.SelectedNode.Parent.Text,
                         KPI_NAME = tv_singal.SelectedNode.Text
                     };
-                    TextArea.Text = controller.GetScript(currentKpi);
+                    TextArea.Text = currentKpi.ScriptString; 
                 }
             }
             catch (Exception ex)
@@ -123,7 +124,9 @@ namespace FormulaEditor
                 }
                 if (typeNode != null)
                 {
-                    typeNode.Nodes.Add(item.KPI_NAME, item.KPI_NAME);
+                    TreeNode kpiNode = new TreeNode(item.KPI_NAME);
+                    kpiNode.Name = item.KPI_ID.ToString();
+                    typeNode.Nodes.Add(kpiNode);
                 }
             }
         }
@@ -149,8 +152,7 @@ namespace FormulaEditor
             {
                 if (tv_singal.SelectedNode.Nodes.Count == 0)
                 {
-                    currentKpi = kpi;
-                    TextArea.Text = controller.GetScript(currentKpi);
+                    TextArea.Text = kpi.ScriptString;
                 }
             }
             catch (Exception ex)

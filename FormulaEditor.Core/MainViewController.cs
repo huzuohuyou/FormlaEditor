@@ -17,7 +17,7 @@ namespace FormulaEditor.Core
             {
                 foreach (var item in db.ED_KPI_INFO)
                 {
-                    list.Add(new KPINode() { SD_CODE = item.SD_CODE, KPI_TYPE_CODE = item.KPI_TYPE_CODE, KPI_NAME = item.KPI_NAME });
+                    list.Add(new KPINode() {KPI_ID=item.KPI_ID, SD_CODE = item.SD_CODE, KPI_TYPE_CODE = item.KPI_TYPE_CODE, KPI_NAME = item.KPI_NAME });
                 }
 
             }

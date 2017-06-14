@@ -9,7 +9,6 @@ namespace FormulaEditor.Core
 {
     public interface IMainViewController
     {
-        string GetScript(KPINode kpi);
         List<KPINode> GetKPIList();
         void RefreshKPIList();
     }
