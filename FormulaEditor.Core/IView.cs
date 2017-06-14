@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormulaEditor.Presenter
+namespace FormulaEditor.Core
 {
     public interface IView<T> where T : class
     {

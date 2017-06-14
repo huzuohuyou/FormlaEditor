@@ -1,5 +1,5 @@
 ﻿using FormulaEditor.Model;
-using FormulaEditor.Presenter;
+using FormulaEditor.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +14,8 @@ namespace FormulaEditor
 {
     public partial class frmCreateSingel : Form
     {
-        IMainForm<ED_KPI_INFO> view = null;
-        public frmCreateSingel(IMainForm<ED_KPI_INFO> v)
+        IMainViewController<ED_KPI_INFO> view = null;
+        public frmCreateSingel(IMainViewController<ED_KPI_INFO> v)
         {
             view = v;
             InitializeComponent();

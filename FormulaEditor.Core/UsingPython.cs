@@ -1,4 +1,5 @@
-﻿using IronPython.Hosting;
+﻿using FormulaEditor.Model;
+using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,13 @@ namespace FormulaEditor.Core
             engine = Python.CreateEngine();
             scope = engine.CreateScope();
             source = engine.CreateScriptSourceFromFile(serverpath);
+        }
+
+        public UsingPython(KPINode kpi)
+        {
+            engine = Python.CreateEngine();
+            scope = engine.CreateScope();
+            source = engine.CreateScriptSourceFromString(kpi.ScriptString);
         }
         public object ExcuteScriptString(string pyContent, List<Param> paramList)
         {

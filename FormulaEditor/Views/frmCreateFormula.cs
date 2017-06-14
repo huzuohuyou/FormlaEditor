@@ -1,5 +1,5 @@
 ﻿using FormulaEditor.Model;
-using FormulaEditor.Presenter;
+using FormulaEditor.Core;
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
@@ -9,10 +9,11 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class frmCreateFormula : Form, IView<EP_KPI_SET>
+    public partial class frmCreateFormula : Form
     {
         FormulaPresentation presentation = null;
-        PyFile currentPy = null;
+        KPINode kpi;
+        ICallBack callback;
         /// <summary>
         /// 分子公式
         /// </summary>
@@ -21,12 +22,12 @@ namespace FormulaEditor
         /// 分母公式
         /// </summary>
         public Scintilla rtb_denominator;
-        public frmCreateFormula(IView<EP_KPI_SET> view,PyFile p)
+        public frmCreateFormula(ICallBack cb, KPINode p)
         {
-            currentPy= p;
+            kpi = p;
+            callback = cb;
             InitializeComponent();
             InitCodeEditor();
-            this.Text =string.Format("{0}_{1}",currentPy.Name.Substring(0, currentPy.Name.LastIndexOf('.')),this.Text);
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -36,25 +37,11 @@ namespace FormulaEditor
                 NUM_FORMULA = rtb_denominator.Text,
                 FRA_FORMULA = rtb_numerator.Text,
             });
-            //PyFunc pf = new PyFunc() { FunName = txt_name.Text.Trim(), listParam = GetParam(), FunBody = rtb_numerator.Text ,FunNote = rtb_note.Text.Trim()};
-            //PyFile pyFile= currentPy.AddFunc(pf);
-            //view.RefreshData(pyFile);
+            callback.RefreshData(kpi);
             this.FindForm().Close();
         }
 
-        public List<PyParam> GetParam()
-        {
-            List<PyParam> list = new List<PyParam>();
-            //list.Add(new PyParam() { Key = "p1", Note = txt_p1.Text != string.Empty ? txt_p1.Text : "None" });
-            //list.Add(new PyParam() { Key = "p2", Note = txt_p2.Text != string.Empty ? txt_p2.Text : "None" });
-            //list.Add(new PyParam() { Key = "p3", Note = txt_p3.Text != string.Empty ? txt_p3.Text : "None" });
-            //list.Add(new PyParam() { Key = "p4", Note = txt_p4.Text != string.Empty ? txt_p4.Text : "None" });
-            //list.Add(new PyParam() { Key = "p5", Note = txt_p5.Text != string.Empty ? txt_p5.Text : "None" });
-            //list.Add(new PyParam() { Key = "p6", Note = txt_p6.Text != string.Empty ? txt_p6.Text : "None" });
-            //list.Add(new PyParam() { Key = "p7", Note = txt_p7.Text != string.Empty ? txt_p7.Text : "None" });
-            //list.Add(new PyParam() { Key = "p8", Note = txt_p8.Text != string.Empty ? txt_p8.Text : "None" });
-            return list;
-        }
+      
 
         private void btn_preview_Click(object sender, EventArgs e)
         {
@@ -97,24 +84,12 @@ namespace FormulaEditor
             // STYLING
             InitColors();
             InitSyntaxColoring();
-
             // NUMBER MARGIN
             InitNumberMargin();
-
             // BOOKMARK MARGIN
             InitBookmarkMargin();
-
-            // CODE FOLDING MARGIN
             InitCodeFolding();
-
-            // DRAG DROP
-            //InitDragDropFile();
-
-            // DEFAULT FILE
-            //LoadDataFromFile("../../MainForm.cs");
-
-            // INIT HOTKEYS
-            //InitHotkeys();
+            
         }
 
         private void TextArea_TextChanged(object sender, EventArgs e)
@@ -477,20 +452,7 @@ namespace FormulaEditor
 
         }
 
-        public void InitData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RefreshData(EP_KPI_SET entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BindingData(EP_KPI_SET model)
-        {
-            throw new NotImplementedException();
-        }
+        
         #endregion
 
 

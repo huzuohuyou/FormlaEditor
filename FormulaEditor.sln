@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEditor", "FormulaEditor\FormulaEditor.csproj", "{B8F079A1-EFAE-403E-9237-B9FF8E6F3C67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEditor.Presenter", "FormulaEditor.Core\FormulaEditor.Presenter.csproj", "{33E2DD11-49AD-4BC2-90E4-485B60116BFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEditor.Core", "FormulaEditor.Core\FormulaEditor.Core.csproj", "{33E2DD11-49AD-4BC2-90E4-485B60116BFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEditor.Utils", "FormulaEditor.Utils\FormulaEditor.Utils.csproj", "{50341D40-3F5E-4A6C-8216-2CEF9367F850}"
 EndProject

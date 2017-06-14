@@ -1,6 +1,5 @@
 ﻿using FormulaEditor.Core;
 using FormulaEditor.Model;
-using FormulaEditor.Presenter;
 using FormulaEditor.utils;
 using ScintillaNET;
 using ScintillaNET.Demo.Utils;
@@ -11,27 +10,20 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, IMainForm<ED_KPI_INFO>, ICallBack
+    public partial class MainForm : Form, ICallBack
     {
-        private MainFormPresentation presentation;
-        UsingPython penigne = null;
+        IMainViewController controller;
         ILog loger = null;
-        PyFiles pyFiles = null;
-        PyFile currentPy = null;
+        KPINode currentKpi;
         public Scintilla TextArea;
         public MainForm()
         {
             InitializeComponent();
-            presentation = new MainFormPresentation(this);
+            controller =new MainViewController();
+            InitKPIList();
             loger = new ConsoleLog(rtb_log);
-            presentation.InitTreeView();
             InitCodeEditor();
         }
-
-       
-
-
-        
 
         private void debug_pyfile_Click(object sender, EventArgs e)
         {
@@ -39,29 +31,27 @@ namespace FormulaEditor
             {
                 frmTest frm = new frmTest(this);
                 frm.ShowDialog();
-                
-                
             }
             catch (Exception ex)
             {
                 loger.log(ex.ToString());
             }
             
-        }
-
-        private void lv_py_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            currentPy = pyFiles.PyList.Find(p=> p.Name == tv_singal.SelectedNode.Text);
-            TextArea.Text = currentPy.Content;
         }
 
         private void tv_singal_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
             {
-                if (tv_singal.SelectedNode.Parent == null)
+                if (tv_singal.SelectedNode.Nodes.Count == 0)
                 {
-                    ShowScript();
+                    currentKpi = new KPINode()
+                    {
+                        SD_CODE = tv_singal.SelectedNode.Parent.Parent.Text,
+                        KPI_TYPE_CODE = tv_singal.SelectedNode.Parent.Text,
+                        KPI_NAME = tv_singal.SelectedNode.Text
+                    };
+                    TextArea.Text = controller.GetScript(currentKpi);
                 }
             }
             catch (Exception ex)
@@ -71,27 +61,9 @@ namespace FormulaEditor
             
         }
 
-        public void ShowScript()
-        {
-            try
-            {
-                using (var db = new HJSDR_BJXH_20170303_TESTEntities())
-                {
-                }
-                currentPy = pyFiles.PyList.Find(p => p.Name == tv_singal.SelectedNode.Text);
-                TextArea.Text = currentPy.Content;
-                penigne = new UsingPython(currentPy.Name);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
         private void create_fun_Click(object sender, EventArgs e)
         {
-            frmCreateFormula frm = new frmCreateFormula(this,currentPy);
+            frmCreateFormula frm = new frmCreateFormula(this,currentKpi);
             frm.ShowDialog();
             
         }
@@ -106,64 +78,10 @@ namespace FormulaEditor
             }
             else
             {
-                //tv_singal.ContextMenuStrip = null;
-                //cms_zb_manager.Visible = false;
                 新建ToolStripMenuItem.Enabled = false;
             }
-            //else if (tv_singal.SelectedNode != null && tv_singal.SelectedNode.Parent != null)
-            //{
-            //    新建ToolStripMenuItem.Visible = true;
-            //}
         }
-
-        public void RefreshData(IEntity entity)
-        {
-            try
-            {
-                TextArea.Text = ((PyFile)entity).Content;
-                pyFiles.Refresh();
-                ShowScript();
-            }
-            catch (Exception ex)
-            {
-                loger.log(ex.Message);
-            }
-           
-        }
-
-        private void Save_Singel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                currentPy.Content = TextArea.Text;
-                currentPy = currentPy.Update();
-                pyFiles.Refresh();
-                ShowScript();
-                //TextArea.Text = currentPy.Content;
-                //pyFiles.Refresh();
-                TextPanel.Text = "代码";
-            }
-            catch (Exception ex)
-            {
-                loger.log(ex.Message);
-            }
-            
-        }
-
-        private void create_singel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmCreateSingel frm = new frmCreateSingel(this);
-                frm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                loger.log(ex.ToString());
-            }
-           
-        }
-
+                      
         private void clear_console_Click(object sender, EventArgs e)
         {
             rtb_log.Text = string.Empty;
@@ -174,12 +92,6 @@ namespace FormulaEditor
             this.FindForm().Close();
         }
 
-        private void del_pyfile_Click(object sender, EventArgs e)
-        {
-            currentPy.Del();
-            InitData();
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             TextPanel.Controls.Add(this.TextArea);
@@ -187,53 +99,36 @@ namespace FormulaEditor
 
         public void CallBackParams(List<Param> list)
         {
-            UsingPython python = new UsingPython(currentPy.Name);
+            UsingPython python = new UsingPython(currentKpi);
             loger.log(python.ExcuteScriptFile(list).ToString());
         }
 
-        public void InitData()
+        public void InitKPIList()
         {
-            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
+            TreeNode rootNode = null;
+            TreeNode typeNode = null;
+            foreach (var item in controller.GetKPIList())
             {
-                pyFiles = new PyFiles();
-                TreeNode rootNode = null;
-                TreeNode typeNode = null;
-                foreach (var item in db.ED_KPI_INFO)
+                if (!tv_singal.Nodes.ContainsKey(item.SD_CODE))
                 {
-                    if (!tv_singal.Nodes.ContainsKey(item.SD_CODE))
-                    {
-                        rootNode = new TreeNode(item.SD_CODE);
-                        rootNode.Name = item.SD_CODE;
-                        tv_singal.Nodes.Add(rootNode);
-                    }
-                    if (!rootNode.Nodes.ContainsKey(item.KPI_TYPE_CODE))
-                    {
-                        typeNode = new TreeNode(item.KPI_TYPE_CODE);
-                        typeNode.Name = item.KPI_TYPE_CODE;
-                        rootNode.Nodes.Add(typeNode);
-                    }
-                    if (typeNode != null)
-                    {
-                        typeNode.Nodes.Add(item.KPI_NAME,item.KPI_NAME);
-                    }
+                    rootNode = new TreeNode(item.SD_CODE);
+                    rootNode.Name = item.SD_CODE;
+                    tv_singal.Nodes.Add(rootNode);
                 }
-                
+                if (!rootNode.Nodes.ContainsKey(item.KPI_TYPE_CODE))
+                {
+                    typeNode = new TreeNode(item.KPI_TYPE_CODE);
+                    typeNode.Name = item.KPI_TYPE_CODE;
+                    rootNode.Nodes.Add(typeNode);
+                }
+                if (typeNode != null)
+                {
+                    typeNode.Nodes.Add(item.KPI_NAME, item.KPI_NAME);
+                }
             }
         }
 
-        public void BindingData(ED_KPI_INFO model)
-        {
-            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
-            {
-            }
-        }
-
-        public void RefreshData(ED_KPI_INFO entity)
-        {
-            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
-            {
-            }
-        }
+        
 
         private void tv_singal_MouseDown(object sender, MouseEventArgs e)
         {
@@ -248,7 +143,22 @@ namespace FormulaEditor
             }
         }
 
-       
+        public void RefreshData(KPINode kpi)
+        {
+            try
+            {
+                if (tv_singal.SelectedNode.Nodes.Count == 0)
+                {
+                    currentKpi = kpi;
+                    TextArea.Text = controller.GetScript(currentKpi);
+                }
+            }
+            catch (Exception ex)
+            {
+                loger.log(ex.ToString());
+            }
+        }
+
 
         #region 文本编辑器初始化
 
@@ -536,17 +446,8 @@ namespace FormulaEditor
             TextArea.AutomaticFold = (AutomaticFold.Show | AutomaticFold.Click | AutomaticFold.Change);
 
         }
-
-        public void InitTreeView()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
+              
 
         #endregion
-
-
     }
 }

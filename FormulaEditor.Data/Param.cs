@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FormulaEditor.Core
+namespace FormulaEditor.Model
 {
     public class Param
     {

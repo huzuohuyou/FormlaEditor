@@ -1,4 +1,5 @@
 ﻿using FormulaEditor.Core;
+using FormulaEditor.Model;
 using FormulaEditor.Views;
 using System;
 using System.Collections.Generic;
