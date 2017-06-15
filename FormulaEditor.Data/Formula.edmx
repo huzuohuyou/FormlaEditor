@@ -31,24 +31,25 @@
         </EntityType>
         <EntityType Name="EP_KPI_PARAM">
           <Key>
-            <PropertyRef Name="KPI_ID" />
-            <PropertyRef Name="KPI_PARAM_NAME" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="KPI_ID" Type="int" Nullable="false" />
-          <Property Name="KPI_PARAM_NAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="SD_ITEM_ID" Type="int" Nullable="false" />
+          <Property Name="KPI_PARAM_NAME" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
           <Property Name="UPD_DATE" Type="datetime" />
+          <Property Name="KPI_ID" Type="int" />
         </EntityType>
         <EntityType Name="EP_KPI_SET">
           <Key>
-            <PropertyRef Name="KPI_ID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="KPI_ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KPI_ID" Type="int" />
           <Property Name="KPI_DESC" Type="varchar" MaxLength="2000" />
           <Property Name="NUM_FORMULA" Type="varchar" MaxLength="1000" />
           <Property Name="FRA_FORMULA" Type="varchar" MaxLength="1000" />
-          <Property Name="INVALID_FLAG" Type="int" Nullable="false" />
+          <Property Name="INVALID_FLAG" Type="int" />
           <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
           <Property Name="UPD_DATE" Type="datetime" />
         </EntityType>
@@ -115,9 +116,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="EP_KPI_PARAM" Type="Self.EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+          <End Role="SD_ITEM_INFO" Type="Self.SD_ITEM_INFO" Multiplicity="1" />
+          <End Role="EP_KPI_PARAM" Type="Self.EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I">
-          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="1" />
-          <End Role="EP_KPI_SET" Type="Self.EP_KPI_SET" Multiplicity="0..1" />
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="EP_KPI_SET" Type="Self.EP_KPI_SET" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ED_KPI_INFO">
               <PropertyRef Name="KPI_ID" />
@@ -155,6 +180,14 @@
             <End Role="SD_CPATS" EntitySet="SD_CPATS" />
             <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
           </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I" Association="Self.FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_" Association="Self.FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
           <AssociationSet Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I" Association="Self.FK_EP_KPI_S_REFERENCE_ED_KPI_I">
             <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
             <End Role="EP_KPI_SET" EntitySet="EP_KPI_SET" />
@@ -170,27 +203,35 @@
       <Schema Namespace="HJSDR_BJXH_20170303_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="HJSDR_BJXH_20170303_TESTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ED_KPI_INFO" EntityType="HJSDR_BJXH_20170303_TESTModel.ED_KPI_INFO" />
+          <EntitySet Name="ED_KPI_VALUE" EntityType="HJSDR_BJXH_20170303_TESTModel.ED_KPI_VALUE" />
           <EntitySet Name="EP_KPI_PARAM" EntityType="HJSDR_BJXH_20170303_TESTModel.EP_KPI_PARAM" />
           <EntitySet Name="EP_KPI_SET" EntityType="HJSDR_BJXH_20170303_TESTModel.EP_KPI_SET" />
           <EntitySet Name="SD_CPATS" EntityType="HJSDR_BJXH_20170303_TESTModel.SD_CPATS" />
           <EntitySet Name="SD_INFO" EntityType="HJSDR_BJXH_20170303_TESTModel.SD_INFO" />
           <EntitySet Name="SD_ITEM_INFO" EntityType="HJSDR_BJXH_20170303_TESTModel.SD_ITEM_INFO" />
-          <EntitySet Name="ED_KPI_VALUE" EntityType="HJSDR_BJXH_20170303_TESTModel.ED_KPI_VALUE" />
-          <AssociationSet Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I" Association="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_S_REFERENCE_ED_KPI_I">
-            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
-            <End Role="EP_KPI_SET" EntitySet="EP_KPI_SET" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SD_ITEM__REFERENCE_SD_INFO" Association="HJSDR_BJXH_20170303_TESTModel.FK_SD_ITEM__REFERENCE_SD_INFO">
-            <End Role="SD_INFO" EntitySet="SD_INFO" />
-            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
-          </AssociationSet>
           <AssociationSet Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I" Association="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_ED_KPI_I">
             <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
             <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
           </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I" Association="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I" Association="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_S_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_SET" EntitySet="EP_KPI_SET" />
+          </AssociationSet>
           <AssociationSet Name="FK_ED_KPI_V_REFERENCE_SD_CPATS" Association="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_SD_CPATS">
             <End Role="SD_CPATS" EntitySet="SD_CPATS" />
             <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_" Association="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SD_ITEM__REFERENCE_SD_INFO" Association="HJSDR_BJXH_20170303_TESTModel.FK_SD_ITEM__REFERENCE_SD_INFO">
+            <End Role="SD_INFO" EntitySet="SD_INFO" />
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ED_KPI_INFO">
@@ -206,29 +247,45 @@
           <Property Name="ORDER_NO" Type="Int32" />
           <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="EP_KPI_SET" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_S_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="EP_KPI_SET" />
           <NavigationProperty Name="ED_KPI_VALUE" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="ED_KPI_VALUE" />
+          <NavigationProperty Name="EP_KPI_PARAM" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="EP_KPI_PARAM" />
+          <NavigationProperty Name="EP_KPI_SET" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_S_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="EP_KPI_SET" />
+        </EntityType>
+        <EntityType Name="ED_KPI_VALUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SD_CPAT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="KPI_ID" Type="Int32" />
+          <Property Name="INDEX_VALUE" Type="Int32" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ED_KPI_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_ED_KPI_I" FromRole="ED_KPI_VALUE" ToRole="ED_KPI_INFO" />
+          <NavigationProperty Name="SD_CPATS" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_SD_CPATS" FromRole="ED_KPI_VALUE" ToRole="SD_CPATS" />
         </EntityType>
         <EntityType Name="EP_KPI_PARAM">
           <Key>
-            <PropertyRef Name="KPI_ID" />
-            <PropertyRef Name="KPI_PARAM_NAME" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="KPI_ID" Type="Int32" Nullable="false" />
-          <Property Name="KPI_PARAM_NAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SD_ITEM_ID" Type="Int32" Nullable="false" />
+          <Property Name="KPI_PARAM_NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="KPI_ID" Type="Int32" />
+          <NavigationProperty Name="ED_KPI_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_ED_KPI_I" FromRole="EP_KPI_PARAM" ToRole="ED_KPI_INFO" />
+          <NavigationProperty Name="SD_ITEM_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_SD_ITEM_" FromRole="EP_KPI_PARAM" ToRole="SD_ITEM_INFO" />
         </EntityType>
         <EntityType Name="EP_KPI_SET">
           <Key>
-            <PropertyRef Name="KPI_ID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="KPI_ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KPI_ID" Type="Int32" />
           <Property Name="KPI_DESC" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="NUM_FORMULA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="FRA_FORMULA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="INVALID_FLAG" Type="Int32" Nullable="false" />
+          <Property Name="INVALID_FLAG" Type="Int32" />
           <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ED_KPI_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_S_REFERENCE_ED_KPI_I" FromRole="EP_KPI_SET" ToRole="ED_KPI_INFO" />
@@ -265,6 +322,7 @@
           <Property Name="SD_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SD_ITEM_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SD_ITEM_NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SD_ITEM_ALIAS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="ORDER_NO" Type="Int32" />
           <Property Name="ITEM_TYPE_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -272,45 +330,9 @@
           <Property Name="ITEM_UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EP_KPI_PARAM" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_SD_ITEM_" FromRole="SD_ITEM_INFO" ToRole="EP_KPI_PARAM" />
           <NavigationProperty Name="SD_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_SD_ITEM__REFERENCE_SD_INFO" FromRole="SD_ITEM_INFO" ToRole="SD_INFO" />
-          <Property Name="DATA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="ED_KPI_VALUE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="SD_CPAT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="KPI_ID" Type="Int32" />
-          <Property Name="INDEX_VALUE" Type="Int32" />
-          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ED_KPI_INFO" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_ED_KPI_I" FromRole="ED_KPI_VALUE" ToRole="ED_KPI_INFO" />
-          <NavigationProperty Name="SD_CPATS" Relationship="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_SD_CPATS" FromRole="ED_KPI_VALUE" ToRole="SD_CPATS" />
-        </EntityType>
-        <Association Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I">
-          <End Type="HJSDR_BJXH_20170303_TESTModel.ED_KPI_INFO" Role="ED_KPI_INFO" Multiplicity="1" />
-          <End Type="HJSDR_BJXH_20170303_TESTModel.EP_KPI_SET" Role="EP_KPI_SET" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="ED_KPI_INFO">
-              <PropertyRef Name="KPI_ID" />
-            </Principal>
-            <Dependent Role="EP_KPI_SET">
-              <PropertyRef Name="KPI_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SD_ITEM__REFERENCE_SD_INFO">
-          <End Type="HJSDR_BJXH_20170303_TESTModel.SD_INFO" Role="SD_INFO" Multiplicity="1" />
-          <End Type="HJSDR_BJXH_20170303_TESTModel.SD_ITEM_INFO" Role="SD_ITEM_INFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SD_INFO">
-              <PropertyRef Name="SD_CODE" />
-            </Principal>
-            <Dependent Role="SD_ITEM_INFO">
-              <PropertyRef Name="SD_CODE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I">
           <End Type="HJSDR_BJXH_20170303_TESTModel.ED_KPI_INFO" Role="ED_KPI_INFO" Multiplicity="0..1" />
           <End Type="HJSDR_BJXH_20170303_TESTModel.ED_KPI_VALUE" Role="ED_KPI_VALUE" Multiplicity="*" />
@@ -319,6 +341,30 @@
               <PropertyRef Name="KPI_ID" />
             </Principal>
             <Dependent Role="ED_KPI_VALUE">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+          <End Type="HJSDR_BJXH_20170303_TESTModel.ED_KPI_INFO" Role="ED_KPI_INFO" Multiplicity="0..1" />
+          <End Type="HJSDR_BJXH_20170303_TESTModel.EP_KPI_PARAM" Role="EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I">
+          <End Type="HJSDR_BJXH_20170303_TESTModel.ED_KPI_INFO" Role="ED_KPI_INFO" Multiplicity="0..1" />
+          <End Type="HJSDR_BJXH_20170303_TESTModel.EP_KPI_SET" Role="EP_KPI_SET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_SET">
               <PropertyRef Name="KPI_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -335,7 +381,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+          <End Type="HJSDR_BJXH_20170303_TESTModel.SD_ITEM_INFO" Role="SD_ITEM_INFO" Multiplicity="1" />
+          <End Type="HJSDR_BJXH_20170303_TESTModel.EP_KPI_PARAM" Role="EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SD_ITEM__REFERENCE_SD_INFO">
+          <End Type="HJSDR_BJXH_20170303_TESTModel.SD_INFO" Role="SD_INFO" Multiplicity="1" />
+          <End Type="HJSDR_BJXH_20170303_TESTModel.SD_ITEM_INFO" Role="SD_ITEM_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_INFO">
+              <PropertyRef Name="SD_CODE" />
+            </Principal>
+            <Dependent Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -356,14 +426,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ED_KPI_VALUE">
+            <EntityTypeMapping TypeName="HJSDR_BJXH_20170303_TESTModel.ED_KPI_VALUE">
+              <MappingFragment StoreEntitySet="ED_KPI_VALUE">
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+                <ScalarProperty Name="INDEX_VALUE" ColumnName="INDEX_VALUE" />
+                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+                <ScalarProperty Name="SD_CPAT_NO" ColumnName="SD_CPAT_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="EP_KPI_PARAM">
             <EntityTypeMapping TypeName="HJSDR_BJXH_20170303_TESTModel.EP_KPI_PARAM">
               <MappingFragment StoreEntitySet="EP_KPI_PARAM">
+                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
                 <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
                 <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
-                <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
                 <ScalarProperty Name="KPI_PARAM_NAME" ColumnName="KPI_PARAM_NAME" />
-                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+                <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -377,6 +459,7 @@
                 <ScalarProperty Name="NUM_FORMULA" ColumnName="NUM_FORMULA" />
                 <ScalarProperty Name="KPI_DESC" ColumnName="KPI_DESC" />
                 <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -407,7 +490,6 @@
           <EntitySetMapping Name="SD_ITEM_INFO">
             <EntityTypeMapping TypeName="HJSDR_BJXH_20170303_TESTModel.SD_ITEM_INFO">
               <MappingFragment StoreEntitySet="SD_ITEM_INFO">
-                <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
                 <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
                 <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
                 <ScalarProperty Name="ITEM_UNIT" ColumnName="ITEM_UNIT" />
@@ -415,21 +497,11 @@
                 <ScalarProperty Name="ITEM_TYPE_CODE" ColumnName="ITEM_TYPE_CODE" />
                 <ScalarProperty Name="ORDER_NO" ColumnName="ORDER_NO" />
                 <ScalarProperty Name="SD_ITEM_ALIAS" ColumnName="SD_ITEM_ALIAS" />
+                <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
                 <ScalarProperty Name="SD_ITEM_NAME" ColumnName="SD_ITEM_NAME" />
                 <ScalarProperty Name="SD_ITEM_CODE" ColumnName="SD_ITEM_CODE" />
                 <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
                 <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ED_KPI_VALUE">
-            <EntityTypeMapping TypeName="HJSDR_BJXH_20170303_TESTModel.ED_KPI_VALUE">
-              <MappingFragment StoreEntitySet="ED_KPI_VALUE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
-                <ScalarProperty Name="INDEX_VALUE" ColumnName="INDEX_VALUE" />
-                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
-                <ScalarProperty Name="SD_CPAT_NO" ColumnName="SD_CPAT_NO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

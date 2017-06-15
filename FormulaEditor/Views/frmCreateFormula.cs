@@ -14,7 +14,7 @@ namespace FormulaEditor
     {
         KPINode kpi;
         ICallBack callback;
-        List<ucDataItem> list = new List<ucDataItem>();
+        List<ucDataItem> kpiParamList = new List<ucDataItem>();
         CreateFormulaController controller;
         /// <summary>
         /// 分子公式
@@ -60,12 +60,29 @@ namespace FormulaEditor
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string note = string.Empty;
+                List<EP_KPI_PARAM> list = new List<EP_KPI_PARAM>();
+                kpiParamList.ForEach(r =>
+                {
+                    note += r.param.Note + "\n";
+                    list.Add(new EP_KPI_PARAM() { KPI_ID = kpi.KPI_ID, SD_ITEM_ID = r.param.Id, KPI_PARAM_NAME = r.param.Code.Trim() });
+                }
+                );
+                controller.SavaFormulaBody(new EP_KPI_SET() { KPI_ID = kpi.KPI_ID, KPI_DESC = rtb_note.Text+"\n"+ note.Trim(), NUM_FORMULA = rtb_denominator.Text, FRA_FORMULA = rtb_numerator.Text });
+                controller.SaveFormulaParam(list);
+                callback.RefreshData(kpi);
+                this.FindForm().Close();
+            }
+            catch (Exception ex)
+            {
+                callback.log(ex.Message);
+            }
             
-            callback.RefreshData(kpi);
-            this.FindForm().Close();
         }
 
-      
+
 
         private void btn_preview_Click(object sender, EventArgs e)
         {
@@ -510,10 +527,10 @@ namespace FormulaEditor
         public Point GetNextLocation()
         {
             int x = 10, y = 2;
-            list.ForEach(
+            kpiParamList.ForEach(
                 r =>
                 {
-                    y = list.Count * 36;
+                    y = kpiParamList.Count * 36;
                 }
                 );
             return new Point(x, y);
@@ -524,7 +541,7 @@ namespace FormulaEditor
             Param p = (Param)(e.Data.GetData(typeof(Param)));
             ucDataItem uc = new ucDataItem(this, p);
             uc.Location = GetNextLocation();
-            list.Add(uc);
+            kpiParamList.Add(uc);
             panel_param.Controls.Add(uc);
             RefreshDataItem();
             Invalidate();
@@ -556,17 +573,17 @@ namespace FormulaEditor
 
         public void RemoveDataItem(ucDataItem uc)
         {
-            list.Remove(uc);
+            kpiParamList.Remove(uc);
             panel_param.Controls.Remove(uc);
             RefreshDataItem();
         }
 
         public void RefreshDataItem() {
             int x = 10, y = 2;
-            list.ForEach(
+            kpiParamList.ForEach(
                 r =>
                 {
-                    y= list.IndexOf(r)* 36 ;
+                    y= kpiParamList.IndexOf(r)* 36 ;
                     r.Location = new Point(x,y);
                 }
                 );

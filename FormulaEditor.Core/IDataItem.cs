@@ -6,5 +6,7 @@ namespace FormulaEditor.Core
     interface IDataItem
     {
         List<Param> GetDataItemList();
+
+
     }
 }

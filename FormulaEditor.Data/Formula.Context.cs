@@ -26,11 +26,11 @@ namespace FormulaEditor.Model
         }
     
         public virtual DbSet<ED_KPI_INFO> ED_KPI_INFO { get; set; }
+        public virtual DbSet<ED_KPI_VALUE> ED_KPI_VALUE { get; set; }
         public virtual DbSet<EP_KPI_PARAM> EP_KPI_PARAM { get; set; }
         public virtual DbSet<EP_KPI_SET> EP_KPI_SET { get; set; }
         public virtual DbSet<SD_CPATS> SD_CPATS { get; set; }
         public virtual DbSet<SD_INFO> SD_INFO { get; set; }
         public virtual DbSet<SD_ITEM_INFO> SD_ITEM_INFO { get; set; }
-        public virtual DbSet<ED_KPI_VALUE> ED_KPI_VALUE { get; set; }
     }
 }

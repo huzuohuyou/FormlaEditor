@@ -14,7 +14,8 @@ namespace FormulaEditor.Views
     public partial class ucDataItem : UserControl
     {
         ICanClear continer;
-        Param param;
+        public
+        Param param { get; }
         public ucDataItem(ICanClear c,Param p)
         {
             continer = c;

@@ -13,7 +13,6 @@ namespace FormulaEditor
     public partial class MainForm : Form, ICallBack
     {
         IKPI controller;
-        ILog loger = null;
         KPINode currentKpi;
         public Scintilla TextArea;
         public MainForm()
@@ -21,7 +20,6 @@ namespace FormulaEditor
             InitializeComponent();
             controller =new MainViewController();
             InitKPIList();
-            loger = new ConsoleLog(rtb_log);
             InitCodeEditor();
         }
 
@@ -34,7 +32,7 @@ namespace FormulaEditor
             }
             catch (Exception ex)
             {
-                loger.log(ex.ToString());
+                log(ex.ToString());
             }
             
         }
@@ -57,7 +55,7 @@ namespace FormulaEditor
             }
             catch (Exception ex)
             {
-                loger.log(ex.ToString());
+                log(ex.ToString());
             }
             
         }
@@ -101,7 +99,7 @@ namespace FormulaEditor
         public void CallBackParams(List<Param> list)
         {
             UsingPython python = new UsingPython(currentKpi);
-            loger.log(python.ExcuteScriptFile(list).ToString());
+            log(python.ExcuteScriptFile(list).ToString());
         }
 
         public void InitKPIList()
@@ -157,7 +155,7 @@ namespace FormulaEditor
             }
             catch (Exception ex)
             {
-                loger.log(ex.ToString());
+                log(ex.ToString());
             }
         }
 
@@ -448,7 +446,13 @@ namespace FormulaEditor
             TextArea.AutomaticFold = (AutomaticFold.Show | AutomaticFold.Click | AutomaticFold.Change);
 
         }
-              
+
+        public void log(string msg)
+        {
+            rtb_log.Text = string.Format("{0} : {1}\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg) + rtb_log.Text;
+
+        }
+
 
         #endregion
     }

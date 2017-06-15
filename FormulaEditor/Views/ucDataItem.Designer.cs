@@ -36,7 +36,7 @@
             this.btn_del = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.lb_code = new System.Windows.Forms.Label();
+            this.lb_code = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +66,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(170, 7);
+            this.label2.Location = new System.Drawing.Point(184, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 2;
@@ -76,9 +76,9 @@
             // 
             this.lb_dataItem.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_dataItem.ForeColor = System.Drawing.Color.White;
-            this.lb_dataItem.Location = new System.Drawing.Point(206, 7);
+            this.lb_dataItem.Location = new System.Drawing.Point(220, 7);
             this.lb_dataItem.Name = "lb_dataItem";
-            this.lb_dataItem.Size = new System.Drawing.Size(215, 12);
+            this.lb_dataItem.Size = new System.Drawing.Size(197, 12);
             this.lb_dataItem.TabIndex = 3;
             this.lb_dataItem.Text = "___________";
             this.lb_dataItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,14 +107,10 @@
             // 
             // lb_code
             // 
-            this.lb_code.AutoSize = true;
-            this.lb_code.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_code.ForeColor = System.Drawing.Color.White;
-            this.lb_code.Location = new System.Drawing.Point(122, 7);
+            this.lb_code.Location = new System.Drawing.Point(121, 3);
             this.lb_code.Name = "lb_code";
-            this.lb_code.Size = new System.Drawing.Size(41, 12);
+            this.lb_code.Size = new System.Drawing.Size(61, 21);
             this.lb_code.TabIndex = 6;
-            this.lb_code.Text = "______";
             // 
             // ucDataItem
             // 
@@ -144,6 +140,6 @@
         private System.Windows.Forms.Button btn_del;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lb_code;
+        private System.Windows.Forms.TextBox lb_code;
     }
 }
