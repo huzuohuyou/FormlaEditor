@@ -14,7 +14,7 @@ namespace FormulaEditor
     {
         KPINode kpi;
         ICallBack callback;
-        List<ucDataItem> kpiParamList = new List<ucDataItem>();
+        List<ucDataItem> ucList = new List<ucDataItem>();
         CreateFormulaController controller;
         /// <summary>
         /// 分子公式
@@ -32,13 +32,14 @@ namespace FormulaEditor
             InitializeComponent();
             panel_param.AllowDrop = true;
             controller = new CreateFormulaController();
-            InitDataItems();
+            InitLeftDataItems();
             InitCodeEditor();
             panel_param.VerticalScroll.Visible = true;
             panel_param.AutoScroll = true;
+            
         }
 
-        public void InitDataItems() {
+        public void InitLeftDataItems() {
             TreeNode typeNode=null;
             controller.GetDataItemList().ForEach(r=> {
                 if (!tv_dataItems.Nodes.ContainsKey(r.Type))
@@ -58,13 +59,29 @@ namespace FormulaEditor
             });
         }
 
+        public void InitKpiFormulaInfo(int kpiId)
+        {
+            List<Param> list = controller.GetKPIDataItemList(kpiId);
+            EP_KPI_SET eks = controller.GetKPIFormulaBody(kpiId);
+            list.ForEach(
+                r =>
+                {
+                    ucList.Add(new ucDataItem(this, r));
+                }
+                );
+            rtb_denominator.Text = eks.NUM_FORMULA;
+            rtb_numerator.Text = eks.FRA_FORMULA;
+            rtb_note.Text = eks.KPI_DESC;
+            LoadKPIDataItem();
+        }
+
         private void btn_save_Click(object sender, EventArgs e)
         {
             try
             {
                 string note = string.Empty;
                 List<EP_KPI_PARAM> list = new List<EP_KPI_PARAM>();
-                kpiParamList.ForEach(r =>
+                ucList.ForEach(r =>
                 {
                     note += r.param.Note + "\n";
                     list.Add(new EP_KPI_PARAM() { KPI_ID = kpi.KPI_ID, SD_ITEM_ID = r.param.Id, KPI_PARAM_NAME = r.param.Code.Trim() });
@@ -527,10 +544,10 @@ namespace FormulaEditor
         public Point GetNextLocation()
         {
             int x = 10, y = 2;
-            kpiParamList.ForEach(
+            ucList.ForEach(
                 r =>
                 {
-                    y = kpiParamList.Count * 36;
+                    y = ucList.Count * 36;
                 }
                 );
             return new Point(x, y);
@@ -541,9 +558,9 @@ namespace FormulaEditor
             Param p = (Param)(e.Data.GetData(typeof(Param)));
             ucDataItem uc = new ucDataItem(this, p);
             uc.Location = GetNextLocation();
-            kpiParamList.Add(uc);
+            ucList.Add(uc);
             panel_param.Controls.Add(uc);
-            RefreshDataItem();
+            DelDataItemRefresh();
             Invalidate();
         }
 
@@ -573,21 +590,39 @@ namespace FormulaEditor
 
         public void RemoveDataItem(ucDataItem uc)
         {
-            kpiParamList.Remove(uc);
+            ucList.Remove(uc);
             panel_param.Controls.Remove(uc);
-            RefreshDataItem();
+            DelDataItemRefresh();
         }
 
-        public void RefreshDataItem() {
+        public void DelDataItemRefresh() {
             int x = 10, y = 2;
-            kpiParamList.ForEach(
+            ucList.ForEach(
                 r =>
                 {
-                    y= kpiParamList.IndexOf(r)* 36 ;
+                    y= ucList.IndexOf(r)* 36 ;
                     r.Location = new Point(x,y);
                 }
                 );
             Invalidate();
+        }
+
+        public void LoadKPIDataItem() {
+            int x = 10, y = 2;
+            ucList.ForEach(
+                r =>
+                {
+                    y = ucList.IndexOf(r) * 36;
+                    r.Location = new Point(x, y);
+                    panel_param.Controls.Add(r);
+                }
+                );
+            Invalidate();
+        }
+
+        private void frmCreateFormula_Load(object sender, EventArgs e)
+        {
+            InitKpiFormulaInfo(kpi.KPI_ID);
         }
     }
 }

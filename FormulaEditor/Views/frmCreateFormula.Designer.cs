@@ -160,7 +160,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_save);
             this.splitContainer2.Panel2.Controls.Add(this.btn_test);
             this.splitContainer2.Size = new System.Drawing.Size(505, 247);
-            this.splitContainer2.SplitterDistance = 213;
+            this.splitContainer2.SplitterDistance = 216;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -171,7 +171,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(505, 213);
+            this.TextPanel.Size = new System.Drawing.Size(505, 216);
             this.TextPanel.TabIndex = 0;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "方法体";
@@ -190,8 +190,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.gb_fz);
-            this.splitContainer4.Size = new System.Drawing.Size(499, 193);
-            this.splitContainer4.SplitterDistance = 97;
+            this.splitContainer4.Size = new System.Drawing.Size(499, 196);
+            this.splitContainer4.SplitterDistance = 98;
             this.splitContainer4.TabIndex = 0;
             // 
             // gb_fm
@@ -199,7 +199,7 @@
             this.gb_fm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_fm.Location = new System.Drawing.Point(0, 0);
             this.gb_fm.Name = "gb_fm";
-            this.gb_fm.Size = new System.Drawing.Size(499, 97);
+            this.gb_fm.Size = new System.Drawing.Size(499, 98);
             this.gb_fm.TabIndex = 0;
             this.gb_fm.TabStop = false;
             this.gb_fm.Text = "分母公式";
@@ -209,14 +209,14 @@
             this.gb_fz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_fz.Location = new System.Drawing.Point(0, 0);
             this.gb_fz.Name = "gb_fz";
-            this.gb_fz.Size = new System.Drawing.Size(499, 92);
+            this.gb_fz.Size = new System.Drawing.Size(499, 94);
             this.gb_fz.TabIndex = 1;
             this.gb_fz.TabStop = false;
             this.gb_fz.Text = "分子公式";
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(338, 3);
+            this.btn_preview.Location = new System.Drawing.Point(338, 0);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
@@ -226,7 +226,7 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(419, 3);
+            this.btn_save.Location = new System.Drawing.Point(419, 0);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 11;
@@ -295,6 +295,7 @@
             this.Name = "frmCreateFormula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "创建指标算法";
+            this.Load += new System.EventHandler(this.frmCreateFormula_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

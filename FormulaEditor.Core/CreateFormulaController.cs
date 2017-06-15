@@ -64,5 +64,50 @@ namespace FormulaEditor.Core
             }
             
         }
+
+        public List<Param> GetKPIDataItemList(int kpiId)
+        {
+            try
+            {
+                List<Param> list = new List<Param>();
+                using (var db = new KPIContext())
+                {
+                    var query=db.EP_KPI_PARAM.ToList().Where(r=>r.KPI_ID==kpiId);
+                    query.ToList().ForEach(
+                        r => {
+                            SD_ITEM_INFO sdi = db.SD_ITEM_INFO.ToList().FirstOrDefault(i => i.SD_ITEM_ID == r.SD_ITEM_ID);
+                            list.Add(new Param() {
+                                Id = r.ID,
+                                Code = sdi.SD_ITEM_CODE,
+                                Name = sdi.SD_ITEM_NAME,
+                                DataType = sdi.ITEM_DATA_TYPE
+                        });
+                        }
+                        );
+                    return list;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public EP_KPI_SET GetKPIFormulaBody(int kpiId)
+        {
+            try
+            {
+                using (var db = new KPIContext())
+                {
+                    var query = db.EP_KPI_SET.FirstOrDefault(r => r.KPI_ID == kpiId);
+                    return query;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
