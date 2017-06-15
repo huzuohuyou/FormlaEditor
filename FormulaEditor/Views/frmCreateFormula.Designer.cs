@@ -33,6 +33,7 @@
             this.rtb_note = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gb_param1 = new System.Windows.Forms.GroupBox();
+            this.panel_param = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.TextPanel = new System.Windows.Forms.GroupBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
@@ -44,7 +45,6 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tv_dataItems = new System.Windows.Forms.TreeView();
-            this.gb_param = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -82,8 +82,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(561, 502);
-            this.splitContainer1.SplitterDistance = 153;
+            this.splitContainer1.Size = new System.Drawing.Size(576, 502);
+            this.splitContainer1.SplitterDistance = 254;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
@@ -96,7 +96,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(561, 153);
+            this.groupBox1.Size = new System.Drawing.Size(576, 254);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "方法名";
@@ -105,7 +105,7 @@
             // 
             this.rtb_note.Location = new System.Drawing.Point(58, 20);
             this.rtb_note.Name = "rtb_note";
-            this.rtb_note.Size = new System.Drawing.Size(501, 53);
+            this.rtb_note.Size = new System.Drawing.Size(506, 53);
             this.rtb_note.TabIndex = 2;
             this.rtb_note.Text = "";
             // 
@@ -121,16 +121,26 @@
             // 
             // gb_param1
             // 
-            this.gb_param1.Controls.Add(this.gb_param);
+            this.gb_param1.Controls.Add(this.panel_param);
             this.gb_param1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gb_param1.Location = new System.Drawing.Point(3, 79);
             this.gb_param1.Name = "gb_param1";
-            this.gb_param1.Size = new System.Drawing.Size(555, 71);
+            this.gb_param1.Size = new System.Drawing.Size(570, 172);
             this.gb_param1.TabIndex = 11;
             this.gb_param1.TabStop = false;
             this.gb_param1.Text = "参数";
             this.gb_param1.DragDrop += new System.Windows.Forms.DragEventHandler(this.gb_param_DragDrop);
             this.gb_param1.DragEnter += new System.Windows.Forms.DragEventHandler(this.gb_param_DragEnter);
+            // 
+            // panel_param
+            // 
+            this.panel_param.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_param.Location = new System.Drawing.Point(3, 17);
+            this.panel_param.Name = "panel_param";
+            this.panel_param.Size = new System.Drawing.Size(564, 152);
+            this.panel_param.TabIndex = 0;
+            this.panel_param.DragDrop += new System.Windows.Forms.DragEventHandler(this.gb_param_DragDrop);
+            this.panel_param.DragEnter += new System.Windows.Forms.DragEventHandler(this.gb_param_DragEnter);
             // 
             // splitContainer2
             // 
@@ -149,8 +159,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_preview);
             this.splitContainer2.Panel2.Controls.Add(this.btn_save);
             this.splitContainer2.Panel2.Controls.Add(this.btn_test);
-            this.splitContainer2.Size = new System.Drawing.Size(561, 348);
-            this.splitContainer2.SplitterDistance = 322;
+            this.splitContainer2.Size = new System.Drawing.Size(576, 247);
+            this.splitContainer2.SplitterDistance = 213;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -161,7 +171,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(561, 322);
+            this.TextPanel.Size = new System.Drawing.Size(576, 213);
             this.TextPanel.TabIndex = 0;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "方法体";
@@ -180,8 +190,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.gb_fz);
-            this.splitContainer4.Size = new System.Drawing.Size(555, 302);
-            this.splitContainer4.SplitterDistance = 153;
+            this.splitContainer4.Size = new System.Drawing.Size(570, 193);
+            this.splitContainer4.SplitterDistance = 97;
             this.splitContainer4.TabIndex = 0;
             // 
             // gb_fm
@@ -189,7 +199,7 @@
             this.gb_fm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_fm.Location = new System.Drawing.Point(0, 0);
             this.gb_fm.Name = "gb_fm";
-            this.gb_fm.Size = new System.Drawing.Size(555, 153);
+            this.gb_fm.Size = new System.Drawing.Size(570, 97);
             this.gb_fm.TabIndex = 0;
             this.gb_fm.TabStop = false;
             this.gb_fm.Text = "分母公式";
@@ -199,14 +209,14 @@
             this.gb_fz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_fz.Location = new System.Drawing.Point(0, 0);
             this.gb_fz.Name = "gb_fz";
-            this.gb_fz.Size = new System.Drawing.Size(555, 145);
+            this.gb_fz.Size = new System.Drawing.Size(570, 92);
             this.gb_fz.TabIndex = 1;
             this.gb_fz.TabStop = false;
             this.gb_fz.Text = "分子公式";
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(312, -1);
+            this.btn_preview.Location = new System.Drawing.Point(413, 5);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
@@ -216,7 +226,7 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(393, -1);
+            this.btn_save.Location = new System.Drawing.Point(494, 5);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 11;
@@ -247,8 +257,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainer3.Size = new System.Drawing.Size(771, 502);
-            this.splitContainer3.SplitterDistance = 206;
+            this.splitContainer3.Size = new System.Drawing.Size(791, 502);
+            this.splitContainer3.SplitterDistance = 211;
             this.splitContainer3.TabIndex = 1;
             // 
             // groupBox4
@@ -257,7 +267,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(206, 502);
+            this.groupBox4.Size = new System.Drawing.Size(211, 502);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "数据项";
@@ -268,28 +278,17 @@
             this.tv_dataItems.ItemHeight = 24;
             this.tv_dataItems.Location = new System.Drawing.Point(3, 17);
             this.tv_dataItems.Name = "tv_dataItems";
-            this.tv_dataItems.Size = new System.Drawing.Size(200, 482);
+            this.tv_dataItems.Size = new System.Drawing.Size(205, 482);
             this.tv_dataItems.TabIndex = 0;
             this.tv_dataItems.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tv_dataItems_ItemDrag);
             this.tv_dataItems.DragEnter += new System.Windows.Forms.DragEventHandler(this.tv_dataItems_DragEnter);
             this.tv_dataItems.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tv_dataItems_MouseDown);
             // 
-            // gb_param
-            // 
-            this.gb_param.AutoScroll = true;
-            this.gb_param.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gb_param.Location = new System.Drawing.Point(3, 17);
-            this.gb_param.Name = "gb_param";
-            this.gb_param.Size = new System.Drawing.Size(549, 51);
-            this.gb_param.TabIndex = 0;
-            this.gb_param.DragDrop += new System.Windows.Forms.DragEventHandler(this.gb_param_DragDrop);
-            this.gb_param.DragEnter += new System.Windows.Forms.DragEventHandler(this.gb_param_DragEnter);
-            // 
             // frmCreateFormula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 502);
+            this.ClientSize = new System.Drawing.Size(791, 502);
             this.Controls.Add(this.splitContainer3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -339,6 +338,6 @@
         private System.Windows.Forms.RichTextBox rtb_note;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TreeView tv_dataItems;
-        private System.Windows.Forms.Panel gb_param;
+        private System.Windows.Forms.Panel panel_param;
     }
 }

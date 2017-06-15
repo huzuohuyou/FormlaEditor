@@ -26,13 +26,16 @@ namespace FormulaEditor
         public Scintilla rtb_denominator;
         public frmCreateFormula(ICallBack cb, KPINode p)
         {
+            
             kpi = p;
             callback = cb;
             InitializeComponent();
-            gb_param.AllowDrop = true;
+            panel_param.AllowDrop = true;
             controller = new CreateFormulaController();
             InitDataItems();
             InitCodeEditor();
+            panel_param.VerticalScroll.Visible = true;
+            panel_param.AutoScroll = true;
         }
 
         public void InitDataItems() {
@@ -504,21 +507,21 @@ namespace FormulaEditor
             }
         }
 
-        public Point GetLocation()
+        public Point GetNextLocation()
         {
-            int x = 15, y = 15;
+            int x = 5, y = 2;
             list.ForEach(
                 r =>
                 {
                     if (list.Count % 2 == 0)
                     {
-                        x = 15;
+                        x = 5;
                     }
                     else
                     {
                         x = 280;
                     }
-                    y = list.Count / 2 * 36+15;
+                    y = list.Count / 2 * 36+2;
                 }
                 );
             return new Point(x, y);
@@ -528,9 +531,10 @@ namespace FormulaEditor
         {
             Param p = (Param)(e.Data.GetData(typeof(Param)));
             ucDataItem uc = new ucDataItem(this, p);
-            uc.Location = GetLocation();
+            uc.Location = GetNextLocation();
             list.Add(uc);
-            gb_param.Controls.Add(uc);
+            panel_param.Controls.Add(uc);
+            RefreshDataItem();
             Invalidate();
         }
 
@@ -560,7 +564,22 @@ namespace FormulaEditor
 
         public void RemoveDataItem(ucDataItem uc)
         {
-            gb_param.Controls.Remove(uc);
+            list.Remove(uc);
+            panel_param.Controls.Remove(uc);
+            RefreshDataItem();
+        }
+
+        public void RefreshDataItem() {
+            int x = 5, y = 2;
+            list.ForEach(
+                r =>
+                {
+                    x=list.IndexOf(r)%2==0?x=5:x=280;
+                    y= list.IndexOf(r) / 2 * 36 + 2;
+                    r.Location = new Point(x,y);
+                }
+                );
+            Invalidate();
         }
     }
 }
