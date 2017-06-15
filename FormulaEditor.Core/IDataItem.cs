@@ -10,5 +10,7 @@ namespace FormulaEditor.Core
         List<Param> GetKPIDataItemList(int kpiId);
 
         EP_KPI_SET GetKPIFormulaBody(int kpiId);
+
+        bool CheckFormula();
     }
 }

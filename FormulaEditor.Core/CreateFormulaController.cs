@@ -15,7 +15,7 @@ namespace FormulaEditor.Core
                 using (var db = new HJSDR_BJXH_20170303_TESTEntities())
                 {
                     var dataItems = db.SD_ITEM_INFO.ToList().Where(r => r.SD_CODE == "1");
-                    dataItems.ToList().ForEach(r => { list.Add(new Param() {Id=r.SD_ITEM_ID,Code=r.SD_ITEM_CODE, Name = r.SD_ITEM_NAME,Type=r.ITEM_TYPE_CODE, DataType = r.DATA_TYPE }); });
+                    dataItems.ToList().ForEach(r => { list.Add(new Param() {DataItemId=r.SD_ITEM_ID,Code=r.SD_ITEM_CODE, Name = r.SD_ITEM_NAME,Type=r.ITEM_TYPE_CODE, DataType = r.DATA_TYPE }); });
                 }
                 return list;
             }
@@ -31,6 +31,9 @@ namespace FormulaEditor.Core
             {
                 using (var db = new KPIContext())
                 {
+                    db.EP_KPI_PARAM.ToList().Where(r=>r.KPI_ID== list[0].KPI_ID).ToList().ForEach(r=> {
+                        db.EP_KPI_PARAM.Remove(r);
+                    });
                     list.ForEach(r =>
                     {
                         db.EP_KPI_PARAM.Add(r);
@@ -77,7 +80,8 @@ namespace FormulaEditor.Core
                         r => {
                             SD_ITEM_INFO sdi = db.SD_ITEM_INFO.ToList().FirstOrDefault(i => i.SD_ITEM_ID == r.SD_ITEM_ID);
                             list.Add(new Param() {
-                                Id = r.ID,
+                                Id=r.ID,
+                                DataItemId = r.SD_ITEM_ID,
                                 Code = sdi.SD_ITEM_CODE,
                                 Name = sdi.SD_ITEM_NAME,
                                 DataType = sdi.ITEM_DATA_TYPE
@@ -108,6 +112,11 @@ namespace FormulaEditor.Core
             {
                 throw;
             }
+        }
+
+        public bool CheckFormula()
+        {
+            throw new NotImplementedException();
         }
     }
 }

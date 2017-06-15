@@ -84,7 +84,7 @@ namespace FormulaEditor
                 ucList.ForEach(r =>
                 {
                     note += r.param.Note + "\n";
-                    list.Add(new EP_KPI_PARAM() { KPI_ID = kpi.KPI_ID, SD_ITEM_ID = r.param.Id, KPI_PARAM_NAME = r.param.Code.Trim() });
+                    list.Add(new EP_KPI_PARAM() { KPI_ID = kpi.KPI_ID, SD_ITEM_ID = r.param.DataItemId, KPI_PARAM_NAME = r.param.Code.Trim() });
                 }
                 );
                 controller.SavaFormulaBody(new EP_KPI_SET() { KPI_ID = kpi.KPI_ID, KPI_DESC = rtb_note.Text+"\n"+ note.Trim(), NUM_FORMULA = rtb_denominator.Text, FRA_FORMULA = rtb_numerator.Text });
