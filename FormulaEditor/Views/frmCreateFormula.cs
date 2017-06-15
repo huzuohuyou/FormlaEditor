@@ -509,19 +509,11 @@ namespace FormulaEditor
 
         public Point GetNextLocation()
         {
-            int x = 5, y = 2;
+            int x = 10, y = 2;
             list.ForEach(
                 r =>
                 {
-                    if (list.Count % 2 == 0)
-                    {
-                        x = 5;
-                    }
-                    else
-                    {
-                        x = 280;
-                    }
-                    y = list.Count / 2 * 36+2;
+                    y = list.Count * 36;
                 }
                 );
             return new Point(x, y);
@@ -570,12 +562,11 @@ namespace FormulaEditor
         }
 
         public void RefreshDataItem() {
-            int x = 5, y = 2;
+            int x = 10, y = 2;
             list.ForEach(
                 r =>
                 {
-                    x=list.IndexOf(r)%2==0?x=5:x=280;
-                    y= list.IndexOf(r) / 2 * 36 + 2;
+                    y= list.IndexOf(r)* 36 ;
                     r.Location = new Point(x,y);
                 }
                 );

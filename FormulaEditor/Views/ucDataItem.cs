@@ -20,6 +20,7 @@ namespace FormulaEditor.Views
             continer = c;
             param = p;
             InitializeComponent();
+            lb_code.Text = p.Code;
             lb_type.Text = p.DataType;
             lb_dataItem.Text = p.Name;
             toolTip1.IsBalloon = true;
