@@ -469,7 +469,7 @@ namespace FormulaEditor
         private void rUN_KPI_Click(object sender, EventArgs e)
         {
             RunKPIController controller = new RunKPIController(this);
-            controller.Run("","");
+            controller.Run("YXA", "16391862");
         }
     }
 }

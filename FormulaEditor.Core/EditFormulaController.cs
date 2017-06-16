@@ -15,7 +15,7 @@ namespace FormulaEditor.Core
                 using (var db = new HJSDR_BJXH_20170303_TESTEntities())
                 {
                     var dataItems = db.SD_ITEM_INFO.ToList().Where(r => r.SD_CODE == sdCode);
-                    dataItems.ToList().ForEach(r => { list.Add(new Param() {DataItemId=r.SD_ITEM_ID,Code=r.SD_ITEM_CODE, Name = r.SD_ITEM_NAME,Type=r.ITEM_TYPE_CODE, DataType = r.DATA_TYPE }); });
+                    dataItems.ToList().ForEach(r => { list.Add(new Param() {DataItemId=r.SD_ITEM_ID,Code=r.SD_ITEM_CODE, Name = r.SD_ITEM_NAME,Type=r.ITEM_TYPE_CODE, DataType = r.ITEM_DATA_TYPE }); });
                 }
                 return list;
             }

@@ -53,7 +53,7 @@ namespace FormulaEditor.Core
                 scope.SetVariable("result", "");
                 foreach (var item in paramList)
                 {
-                    scope.SetVariable(item.Code.Trim(), item.FixValue);
+                    scope.SetVariable(item.Code.Trim(), item.FixValue??"");
                 }
                 source.Execute(scope);
                 return scope.GetVariable("result").ToString();

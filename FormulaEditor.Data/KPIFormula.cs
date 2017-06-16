@@ -16,15 +16,22 @@ namespace FormulaEditor.Model
         public int? Status { get; set; }
         private EP_KPI_SET ep_kpi_set {  get;  set; }
         private List<EP_KPI_PARAM> paramList {  get;  set; }
-        public KPIFormula(EP_KPI_SET body,List<EP_KPI_PARAM> paramList) { }
+        public KPIFormula(EP_KPI_SET body, List<EP_KPI_PARAM> pList)
+        {
+            ep_kpi_set = body;
+            paramList = pList;
+        }
         public string KPIScript
         {
             get
             {
                 try
                 {
+                    if (ep_kpi_set==null)
+                    {
+                        throw new Exception("null kpi script exist!!!");
+                    }
                     string param = string.Empty, body = string.Empty, note = string.Empty;
-
                     if (ep_kpi_set.NUM_FORMULA == string.Empty)
                     {
                         body += string.Format(@"result={0}", ep_kpi_set.FRA_FORMULA.Trim());
