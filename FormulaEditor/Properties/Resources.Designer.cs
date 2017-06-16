@@ -63,16 +63,6 @@ namespace FormulaEditor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap _136254a50_5T0 {
-            get {
-                object obj = ResourceManager.GetObject("136254a50-5T0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap QQ截图20170526130606 {
             get {
                 object obj = ResourceManager.GetObject("QQ截图20170526130606", resourceCulture);
@@ -86,6 +76,26 @@ namespace FormulaEditor.Properties {
         internal static System.Drawing.Bitmap QQ截图20170615192637 {
             get {
                 object obj = ResourceManager.GetObject("QQ截图20170615192637", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap QQ截图20170616135935 {
+            get {
+                object obj = ResourceManager.GetObject("QQ截图20170616135935", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap QQ截图201706161359351 {
+            get {
+                object obj = ResourceManager.GetObject("QQ截图201706161359351", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

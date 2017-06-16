@@ -1,6 +1,7 @@
 ﻿using FormulaEditor.Core;
 using FormulaEditor.Model;
 using FormulaEditor.utils;
+using FormulaEditor.Views;
 using ScintillaNET;
 using ScintillaNET.Demo.Utils;
 using System;

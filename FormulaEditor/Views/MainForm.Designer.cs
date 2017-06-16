@@ -45,14 +45,14 @@
             this.cms_zb_manager = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.il_data_satate = new System.Windows.Forms.ImageList(this.components);
-            this.btn_hide_list = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.TextPanel = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_hide_console = new System.Windows.Forms.Button();
             this.rtb_log = new System.Windows.Forms.RichTextBox();
             this.cms_console = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_hide_list = new System.Windows.Forms.Button();
+            this.btn_hide_console = new System.Windows.Forms.Button();
             this.cms_code_manager.SuspendLayout();
             this.ms_singel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -90,7 +90,7 @@
             this.调试ToolStripMenuItem});
             this.ms_singel.Location = new System.Drawing.Point(0, 0);
             this.ms_singel.Name = "ms_singel";
-            this.ms_singel.Size = new System.Drawing.Size(998, 25);
+            this.ms_singel.Size = new System.Drawing.Size(1008, 25);
             this.ms_singel.TabIndex = 1;
             this.ms_singel.Text = "menuStrip1";
             // 
@@ -152,7 +152,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(998, 416);
+            this.splitContainer1.Size = new System.Drawing.Size(1008, 604);
             this.splitContainer1.SplitterDistance = 206;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 2;
@@ -165,7 +165,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(206, 416);
+            this.groupBox4.Size = new System.Drawing.Size(206, 604);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "病种列表";
@@ -183,7 +183,7 @@
             this.tv_singal.Location = new System.Drawing.Point(3, 17);
             this.tv_singal.Name = "tv_singal";
             this.tv_singal.SelectedImageIndex = 0;
-            this.tv_singal.Size = new System.Drawing.Size(200, 396);
+            this.tv_singal.Size = new System.Drawing.Size(200, 584);
             this.tv_singal.TabIndex = 2;
             this.tv_singal.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_singal_AfterSelect);
             this.tv_singal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tv_singal_MouseDown);
@@ -211,18 +211,6 @@
             this.il_data_satate.Images.SetKeyName(1, "Greentech_48px.png");
             this.il_data_satate.Images.SetKeyName(2, "No Idea_48px.png");
             // 
-            // btn_hide_list
-            // 
-            this.btn_hide_list.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
-            this.btn_hide_list.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_hide_list.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hide_list.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_list.Location = new System.Drawing.Point(188, 1);
-            this.btn_hide_list.Name = "btn_hide_list";
-            this.btn_hide_list.Size = new System.Drawing.Size(16, 16);
-            this.btn_hide_list.TabIndex = 1;
-            this.btn_hide_list.UseVisualStyleBackColor = true;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -238,8 +226,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(791, 416);
-            this.splitContainer2.SplitterDistance = 335;
+            this.splitContainer2.Size = new System.Drawing.Size(801, 604);
+            this.splitContainer2.SplitterDistance = 482;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
@@ -249,7 +237,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(791, 335);
+            this.TextPanel.Size = new System.Drawing.Size(801, 482);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -261,23 +249,10 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(791, 80);
+            this.groupBox1.Size = new System.Drawing.Size(801, 121);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
-            // 
-            // btn_hide_console
-            // 
-            this.btn_hide_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_hide_console.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
-            this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(771, -56);
-            this.btn_hide_console.Name = "btn_hide_console";
-            this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
-            this.btn_hide_console.TabIndex = 2;
-            this.btn_hide_console.UseVisualStyleBackColor = true;
             // 
             // rtb_log
             // 
@@ -287,7 +262,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(785, 60);
+            this.rtb_log.Size = new System.Drawing.Size(795, 101);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 
@@ -305,18 +280,44 @@
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.clear_console_Click);
             // 
+            // btn_hide_list
+            // 
+            this.btn_hide_list.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
+            this.btn_hide_list.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_hide_list.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hide_list.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_hide_list.Location = new System.Drawing.Point(188, 1);
+            this.btn_hide_list.Name = "btn_hide_list";
+            this.btn_hide_list.Size = new System.Drawing.Size(16, 16);
+            this.btn_hide_list.TabIndex = 1;
+            this.btn_hide_list.UseVisualStyleBackColor = true;
+            // 
+            // btn_hide_console
+            // 
+            this.btn_hide_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_hide_console.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
+            this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_hide_console.Location = new System.Drawing.Point(781, -15);
+            this.btn_hide_console.Name = "btn_hide_console";
+            this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
+            this.btn_hide_console.TabIndex = 2;
+            this.btn_hide_console.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 441);
+            this.ClientSize = new System.Drawing.Size(1008, 629);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ms_singel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.ms_singel;
             this.Name = "MainForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormulaEditor";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.cms_code_manager.ResumeLayout(false);
             this.ms_singel.ResumeLayout(false);

@@ -47,6 +47,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>Less or Equal 2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -116,6 +124,7 @@
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ICanClear.cs" />
+    <Compile Include="Views\ILoading.cs" />
     <Compile Include="Views\IManageParam.cs" />
     <Compile Include="Views\IParam.cs" />
     <Compile Include="Views\MainForm.cs">
@@ -219,6 +228,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\QQ截图20170615192637.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QQ截图20170616135935.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QQ截图201706161359351.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Less or Equal 2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
