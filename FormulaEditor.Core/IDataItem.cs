@@ -1,4 +1,5 @@
 ﻿using FormulaEditor.Model;
+using System;
 using System.Collections.Generic;
 
 namespace FormulaEditor.Core
@@ -11,6 +12,6 @@ namespace FormulaEditor.Core
 
         EP_KPI_SET GetKPIFormulaBody(int kpiId);
 
-        bool CheckFormula();
+        Tuple<string, bool> CheckFormula(string script, List<Param> list);
     }
 }

@@ -12,33 +12,47 @@ namespace FormulaEditor.Model
         public string SD_CODE { get; set; }
         public string KPI_TYPE_CODE { get; set; }
         public string KPI_NAME { get; set; }
-
+        public int? Status { get; set; }
         public string ScriptString
         {
             get
             {
-                string param = string.Empty, body = string.Empty,note=string.Empty;
-                using (var db = new KPIContext())
+                try
                 {
-                    var formula = db.EP_KPI_SET.FirstOrDefault(r => r.KPI_ID == KPI_ID);
-                    if (formula.NUM_FORMULA == string.Empty)
+                    string param = string.Empty, body = string.Empty, note = string.Empty;
+                    using (var db = new KPIContext())
                     {
-                        body += string.Format(@"result={0}", formula.FRA_FORMULA);
+                        var formula = db.EP_KPI_SET.FirstOrDefault(r => r.KPI_ID == KPI_ID);
+                        if (formula.NUM_FORMULA == string.Empty)
+                        {
+                            body += string.Format(@"result={0}", formula.FRA_FORMULA.Trim());
+                        }
+                        else
+                        {
+                            body = string.Format(@"if(({0})==1):
+    result={1}", formula.NUM_FORMULA.Trim(), formula.FRA_FORMULA.Trim());
+                        }
+                        body = string.Format("\n{0}",  body);
+                        note = string.Format("{0}\n", formula.KPI_DESC);
                     }
-                    else
-                    {
-                        body = string.Format(@"if(({0})==1):
-    result={1}", formula.NUM_FORMULA, formula.FRA_FORMULA);
-                    }
-                    body = string.Format("'''\n{0}\n'''\n{1}",formula.KPI_DESC,body);
-                }
 
-                using (var db = new HJSDR_BJXH_20170303_TESTEntities())
-                {
-                    var pyParams = db.EP_KPI_PARAM.ToList<EP_KPI_PARAM>().Where(r => r.KPI_ID == KPI_ID);
-                    pyParams.ToList().ForEach(r => { param += string.Format("{0}\n", r.KPI_PARAM_NAME); });
+                    using (var db = new KPIContext())
+                    {
+                        var pyParams = db.EP_KPI_PARAM.ToList().Where(r => r.KPI_ID == KPI_ID);
+                        pyParams.ToList().ForEach(r => {
+                            param += string.Format("{0}\n", r.KPI_PARAM_NAME.Trim());
+                            var dataItem = db.SD_ITEM_INFO.FirstOrDefault(i => i.SD_ITEM_ID == r.SD_ITEM_ID);
+                            note += string.Format("编码：{0} 名称：{1} 数据类型：{2}\n", dataItem.SD_ITEM_CODE.Trim(), dataItem.SD_ITEM_NAME.Trim(), dataItem.ITEM_DATA_TYPE.Trim());
+                        });
+                    }
+                    return string.Format("'''\n{2}'''\n{0}{1}", param, body,note);
                 }
-                return string.Format(@"{0}{1}", param, body);
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
             }
         }
     }

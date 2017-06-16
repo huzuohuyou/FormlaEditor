@@ -13,11 +13,17 @@ namespace FormulaEditor.Core
         public List<KPINode> GetKPIList()
         {
             List<KPINode> list = new List<KPINode>();
-            using (var db = new HJSDR_BJXH_20170303_TESTEntities())
+            using (var db = new KPIContext())
             {
                 foreach (var item in db.ED_KPI_INFO)
                 {
-                    list.Add(new KPINode() {KPI_ID=item.KPI_ID, SD_CODE = item.SD_CODE, KPI_TYPE_CODE = item.KPI_TYPE_CODE, KPI_NAME = item.KPI_NAME });
+                    list.Add(new KPINode() {
+                        KPI_ID = item.KPI_ID,
+                        SD_CODE = item.SD_CODE,
+                        KPI_TYPE_CODE = item.KPI_TYPE_CODE,
+                        KPI_NAME = item.KPI_NAME,
+                        Status = db.EP_KPI_SET.FirstOrDefault(r =>  r.KPI_ID == item.KPI_ID ).INVALID_FLAG
+                        });
                 }
 
             }

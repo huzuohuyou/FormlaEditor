@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormulaEditor.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +16,10 @@ namespace FormulaEditor
         static void Main()
         {
             Application.EnableVisualStyles();
+            
             Application.SetCompatibleTextRenderingDefault(false);
+            frmLoading startform = new frmLoading();
+            startform.ShowDialog();
             Application.Run(new MainForm());
         }
     }

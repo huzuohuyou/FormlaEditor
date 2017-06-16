@@ -124,6 +124,15 @@ namespace FormulaEditor
                 {
                     TreeNode kpiNode = new TreeNode(item.KPI_NAME);
                     kpiNode.Name = item.KPI_ID.ToString();
+                    if (item.Status == null||item.Status==1)
+                    {
+                        kpiNode.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        kpiNode.ForeColor = Color.Red;
+                    }
+                    //kpiNode.ImageIndex = item.Status == null ? 1 : (int)item.Status;
                     typeNode.Nodes.Add(kpiNode);
                 }
             }

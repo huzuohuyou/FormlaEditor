@@ -216,12 +216,13 @@
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(338, 0);
+            this.btn_preview.Location = new System.Drawing.Point(47, 0);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
             this.btn_preview.Text = "预览";
             this.btn_preview.UseVisualStyleBackColor = true;
+            this.btn_preview.Visible = false;
             this.btn_preview.Click += new System.EventHandler(this.btn_preview_Click);
             // 
             // btn_save
@@ -236,13 +237,13 @@
             // 
             // btn_test
             // 
-            this.btn_test.Location = new System.Drawing.Point(119, 2);
+            this.btn_test.Location = new System.Drawing.Point(338, 0);
             this.btn_test.Name = "btn_test";
             this.btn_test.Size = new System.Drawing.Size(75, 23);
             this.btn_test.TabIndex = 12;
-            this.btn_test.Text = "测试";
+            this.btn_test.Text = "校验";
             this.btn_test.UseVisualStyleBackColor = true;
-            this.btn_test.Visible = false;
+            this.btn_test.Click += new System.EventHandler(this.btn_test_Click);
             // 
             // splitContainer3
             // 

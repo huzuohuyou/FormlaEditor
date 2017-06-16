@@ -90,6 +90,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\frmConnSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmConnSetting.Designer.cs">
+      <DependentUpon>frmConnSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,8 +140,14 @@
     </Compile>
     <Compile Include="Utils\HotKeyManager.cs" />
     <Compile Include="Utils\SearchManager.cs" />
+    <EmbeddedResource Include="Views\frmConnSetting.resx">
+      <DependentUpon>frmConnSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
@@ -163,9 +181,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="PythonFiles\急性缺血性脑卒中.py" />
-    <None Include="PythonFiles\demo2.py" />
-    <None Include="单病种质控指标算法-瑞金医院IS.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -200,13 +215,10 @@
     <None Include="Resources\QQ截图20170526130606.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\addFormula.png" />
-    <Content Include="images\UI.png" />
-    <Content Include="images\产品结构图.png" />
-    <Content Include="images\公式编辑器流程图.png" />
-    <Content Include="PythonFiles\DLLs\Newtonsoft.Json.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\136254a50-5T0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QQ截图20170615192637.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

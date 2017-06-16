@@ -56,6 +56,9 @@ namespace FormulaEditor.Core
             {
                 using (var db = new KPIContext())
                 {
+                    db.EP_KPI_SET.ToList().Where(r => r.KPI_ID == body.KPI_ID).ToList().ForEach(r => {
+                        db.EP_KPI_SET.Remove(r);
+                    });
                     db.EP_KPI_SET.Add(body);
                     return db.SaveChanges();
                 }
@@ -114,9 +117,18 @@ namespace FormulaEditor.Core
             }
         }
 
-        public bool CheckFormula()
+        public Tuple< string,bool> CheckFormula(string script, List<Param> list)
         {
-            throw new NotImplementedException();
+            try
+            {
+                UsingPython python = new UsingPython(script);
+                python.ExcuteScriptFile(list).ToString();
+                return new Tuple<string, bool>("语法验证通过！！！", true);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

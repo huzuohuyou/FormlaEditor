@@ -15,6 +15,41 @@ namespace FormulaEditor
         KPINode kpi;
         ICallBack callback;
         List<ucDataItem> ucList = new List<ucDataItem>();
+        List<Param> ParamList
+        {
+            get
+            {
+                List<Param> temp = new List<Param>();
+                ucList.ForEach(r =>
+                {
+                    r.param.Value = "1";
+                    temp.Add(r.param);
+                });
+                return temp;
+            }
+        }
+        string TempScript
+        {
+            get
+            {
+                string body = string.Empty, param = string.Empty;
+                if (rtb_denominator.Text.Trim() == string.Empty)
+                {
+                    body += string.Format(@"result={0}", rtb_numerator.Text.Trim());
+                }
+                else
+                {
+                    body = string.Format(@"if(({0})==1):
+    result={1}", rtb_denominator.Text.Trim(), rtb_numerator.Text.Trim());
+                }
+                ucList.ForEach(r =>
+                {
+                    param += r.param.Code + "\n";
+                });
+                return string.Format("{1}{0}", body, param);
+            }
+        }
+
         CreateFormulaController controller;
         /// <summary>
         /// 分子公式
@@ -79,18 +114,29 @@ namespace FormulaEditor
         {
             try
             {
-                string note = string.Empty;
-                List<EP_KPI_PARAM> list = new List<EP_KPI_PARAM>();
-                ucList.ForEach(r =>
+                Tuple<string,bool> checkInfo=controller.CheckFormula(TempScript, ParamList);
+                if (checkInfo.Item2)
                 {
-                    note += r.param.Note + "\n";
-                    list.Add(new EP_KPI_PARAM() { KPI_ID = kpi.KPI_ID, SD_ITEM_ID = r.param.DataItemId, KPI_PARAM_NAME = r.param.Code.Trim() });
+                    List<EP_KPI_PARAM> list = new List<EP_KPI_PARAM>();
+                    ucList.ForEach(r =>
+                    {
+                        list.Add(new EP_KPI_PARAM() { KPI_ID = kpi.KPI_ID, SD_ITEM_ID = r.param.DataItemId, KPI_PARAM_NAME = r.param.Code.Trim() });
+                    }
+                    );
+                    controller.SavaFormulaBody(new EP_KPI_SET() { KPI_ID = kpi.KPI_ID, KPI_DESC = rtb_note.Text, NUM_FORMULA = rtb_denominator.Text, FRA_FORMULA = rtb_numerator.Text });
+                    controller.SaveFormulaParam(list);
+                    callback.RefreshData(kpi);
+                    callback.log("保存成功！！！");
+                    this.FindForm().Close();
+                    
                 }
-                );
-                controller.SavaFormulaBody(new EP_KPI_SET() { KPI_ID = kpi.KPI_ID, KPI_DESC = rtb_note.Text+"\n"+ note.Trim(), NUM_FORMULA = rtb_denominator.Text, FRA_FORMULA = rtb_numerator.Text });
-                controller.SaveFormulaParam(list);
-                callback.RefreshData(kpi);
-                this.FindForm().Close();
+                else
+                {
+                    callback.log("存在语法错误请校验修正后保存！！！");
+                    callback.log(checkInfo.Item1);
+                    return;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -623,6 +669,22 @@ namespace FormulaEditor
         private void frmCreateFormula_Load(object sender, EventArgs e)
         {
             InitKpiFormulaInfo(kpi.KPI_ID);
+        }
+
+        
+        
+        private void btn_test_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                callback.log(controller.CheckFormula(TempScript, ParamList).Item1);
+            }
+            catch (Exception ex)
+            {
+                callback.log(ex.ToString());
+            }
+            
         }
     }
 }

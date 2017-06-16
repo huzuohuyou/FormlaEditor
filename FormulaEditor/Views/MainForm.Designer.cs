@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.cms_code_manager = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.开始调试ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ms_singel = new System.Windows.Forms.MenuStrip();
@@ -43,6 +44,7 @@
             this.tv_singal = new System.Windows.Forms.TreeView();
             this.cms_zb_manager = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.il_data_satate = new System.Windows.Forms.ImageList(this.components);
             this.btn_hide_list = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.TextPanel = new System.Windows.Forms.GroupBox();
@@ -72,7 +74,7 @@
             this.cms_code_manager.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.开始调试ToolStripMenuItem1});
             this.cms_code_manager.Name = "cms_code_manager";
-            this.cms_code_manager.Size = new System.Drawing.Size(153, 48);
+            this.cms_code_manager.Size = new System.Drawing.Size(125, 26);
             // 
             // 开始调试ToolStripMenuItem1
             // 
@@ -174,10 +176,13 @@
             this.tv_singal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tv_singal.FullRowSelect = true;
             this.tv_singal.HideSelection = false;
+            this.tv_singal.ImageIndex = 0;
+            this.tv_singal.ImageList = this.il_data_satate;
             this.tv_singal.Indent = 12;
             this.tv_singal.ItemHeight = 24;
             this.tv_singal.Location = new System.Drawing.Point(3, 17);
             this.tv_singal.Name = "tv_singal";
+            this.tv_singal.SelectedImageIndex = 0;
             this.tv_singal.Size = new System.Drawing.Size(200, 396);
             this.tv_singal.TabIndex = 2;
             this.tv_singal.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_singal_AfterSelect);
@@ -197,6 +202,14 @@
             this.新建ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.新建ToolStripMenuItem.Text = "编辑指标算法";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.create_fun_Click);
+            // 
+            // il_data_satate
+            // 
+            this.il_data_satate.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("il_data_satate.ImageStream")));
+            this.il_data_satate.TransparentColor = System.Drawing.Color.Transparent;
+            this.il_data_satate.Images.SetKeyName(0, "Delete Property_64px.png");
+            this.il_data_satate.Images.SetKeyName(1, "Greentech_48px.png");
+            this.il_data_satate.Images.SetKeyName(2, "No Idea_48px.png");
             // 
             // btn_hide_list
             // 
@@ -226,7 +239,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Size = new System.Drawing.Size(791, 416);
-            this.splitContainer2.SplitterDistance = 326;
+            this.splitContainer2.SplitterDistance = 335;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
@@ -236,7 +249,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(791, 326);
+            this.TextPanel.Size = new System.Drawing.Size(791, 335);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -248,7 +261,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(791, 89);
+            this.groupBox1.Size = new System.Drawing.Size(791, 80);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
@@ -260,7 +273,7 @@
             this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(771, -47);
+            this.btn_hide_console.Location = new System.Drawing.Point(771, -56);
             this.btn_hide_console.Name = "btn_hide_console";
             this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
             this.btn_hide_console.TabIndex = 2;
@@ -274,7 +287,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(785, 69);
+            this.rtb_log.Size = new System.Drawing.Size(785, 60);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 
@@ -348,7 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem 开始调试ToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip cms_console;
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
-
+        private System.Windows.Forms.ImageList il_data_satate;
     }
 }
 
