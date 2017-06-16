@@ -8,7 +8,7 @@ using FormulaEditor.Model;
 
 namespace FormulaEditor.Core
 {
-    public class MainViewController : IKPI
+    public class ShowFormulaController : IKPI
     {
         public List<KPINode> GetKPIList()
         {
@@ -22,7 +22,7 @@ namespace FormulaEditor.Core
                         SD_CODE = item.SD_CODE,
                         KPI_TYPE_CODE = item.KPI_TYPE_CODE,
                         KPI_NAME = item.KPI_NAME,
-                        Status = db.EP_KPI_SET.FirstOrDefault(r =>  r.KPI_ID == item.KPI_ID ).INVALID_FLAG
+                        Status = db.EP_KPI_SET.FirstOrDefault(r =>  r.KPI_ID == item.KPI_ID )?.INVALID_FLAG
                         });
                 }
 

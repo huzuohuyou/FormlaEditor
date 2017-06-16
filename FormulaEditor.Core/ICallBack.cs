@@ -3,7 +3,7 @@ using FormulaEditor.Model;
 using FormulaEditor.utils;
 using System.Collections.Generic;
 
-namespace FormulaEditor
+namespace FormulaEditor.Core
 {
     public interface ICallBack:ILog
     {

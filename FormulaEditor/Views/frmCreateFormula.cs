@@ -50,7 +50,7 @@ namespace FormulaEditor
             }
         }
 
-        CreateFormulaController controller;
+        EditFormulaController controller;
         /// <summary>
         /// 分子公式
         /// </summary>
@@ -66,7 +66,7 @@ namespace FormulaEditor
             callback = cb;
             InitializeComponent();
             panel_param.AllowDrop = true;
-            controller = new CreateFormulaController();
+            controller = new EditFormulaController();
             InitLeftDataItems();
             InitCodeEditor();
             panel_param.VerticalScroll.Visible = true;
@@ -74,24 +74,35 @@ namespace FormulaEditor
             
         }
 
-        public void InitLeftDataItems() {
-            TreeNode typeNode=null;
-            controller.GetDataItemList().ForEach(r=> {
-                if (!tv_dataItems.Nodes.ContainsKey(r.Type))
+        public void InitLeftDataItems()
+        {
+            try
+            {
+                TreeNode typeNode = null;
+                controller.GetDataItemList(kpi.SD_CODE).ForEach(r =>
                 {
-                    typeNode = new TreeNode(r.Type);
-                    typeNode.Name = r.Type;
-                    tv_dataItems.Nodes.Add(typeNode);
-                }
-                if (typeNode!=null)
-                {
-                    TreeNode node = new TreeNode(r.Name);
-                    node.Name = r.Name;
-                    node.Tag =r;
-                    typeNode.Nodes.Add(node);
-                }
-                
-            });
+                    if (!tv_dataItems.Nodes.ContainsKey(r.Type))
+                    {
+                        typeNode = new TreeNode(r.Type);
+                        typeNode.Name = r.Type;
+                        tv_dataItems.Nodes.Add(typeNode);
+                    }
+                    if (typeNode != null)
+                    {
+                        TreeNode node = new TreeNode(r.Name);
+                        node.Name = r.Name;
+                        node.Tag = r;
+                        typeNode.Nodes.Add(node);
+                    }
+
+                });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         public void InitKpiFormulaInfo(int kpiId)
@@ -104,9 +115,9 @@ namespace FormulaEditor
                     ucList.Add(new ucDataItem(this, r));
                 }
                 );
-            rtb_denominator.Text = eks.NUM_FORMULA;
-            rtb_numerator.Text = eks.FRA_FORMULA;
-            rtb_note.Text = eks.KPI_DESC;
+            rtb_denominator.Text = eks?.NUM_FORMULA;
+            rtb_numerator.Text = eks?.FRA_FORMULA ;
+            rtb_note.Text = eks?.KPI_DESC;
             LoadKPIDataItem();
         }
 

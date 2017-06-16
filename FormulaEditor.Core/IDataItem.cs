@@ -6,7 +6,7 @@ namespace FormulaEditor.Core
 {
     interface IDataItem
     {
-        List<Param> GetDataItemList();
+        List<Param> GetDataItemList(string sdCode);
 
         List<Param> GetKPIDataItemList(int kpiId);
 

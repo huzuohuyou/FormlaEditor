@@ -18,6 +18,7 @@
         <AssociationConnector Association="HJSDR_BJXH_20170303_TESTModel.FK_ED_KPI_V_REFERENCE_SD_CPATS" />
         <AssociationConnector Association="HJSDR_BJXH_20170303_TESTModel.FK_EP_KPI_P_REFERENCE_SD_ITEM_" />
         <AssociationConnector Association="HJSDR_BJXH_20170303_TESTModel.FK_SD_ITEM__REFERENCE_SD_INFO" />
+        <EntityTypeShape EntityType="HJSDR_BJXH_20170303_TESTModel.PAT_SD_ITEM_RESULT" Width="1.5" PointX="6.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

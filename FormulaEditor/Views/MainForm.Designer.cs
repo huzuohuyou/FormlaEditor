@@ -45,14 +45,16 @@
             this.cms_zb_manager = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.il_data_satate = new System.Windows.Forms.ImageList(this.components);
+            this.btn_hide_list = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.TextPanel = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_hide_console = new System.Windows.Forms.Button();
             this.rtb_log = new System.Windows.Forms.RichTextBox();
             this.cms_console = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_hide_list = new System.Windows.Forms.Button();
-            this.btn_hide_console = new System.Windows.Forms.Button();
+            this.kPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rUN_KPI = new System.Windows.Forms.ToolStripMenuItem();
             this.cms_code_manager.SuspendLayout();
             this.ms_singel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -87,7 +89,8 @@
             // 
             this.ms_singel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
-            this.调试ToolStripMenuItem});
+            this.调试ToolStripMenuItem,
+            this.kPIToolStripMenuItem});
             this.ms_singel.Location = new System.Drawing.Point(0, 0);
             this.ms_singel.Name = "ms_singel";
             this.ms_singel.Size = new System.Drawing.Size(1008, 25);
@@ -134,7 +137,7 @@
             // 开始调试ToolStripMenuItem
             // 
             this.开始调试ToolStripMenuItem.Name = "开始调试ToolStripMenuItem";
-            this.开始调试ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.开始调试ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.开始调试ToolStripMenuItem.Text = "开始调试";
             this.开始调试ToolStripMenuItem.Click += new System.EventHandler(this.debug_pyfile_Click);
             // 
@@ -211,6 +214,18 @@
             this.il_data_satate.Images.SetKeyName(1, "Greentech_48px.png");
             this.il_data_satate.Images.SetKeyName(2, "No Idea_48px.png");
             // 
+            // btn_hide_list
+            // 
+            this.btn_hide_list.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
+            this.btn_hide_list.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_hide_list.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hide_list.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_hide_list.Location = new System.Drawing.Point(188, 1);
+            this.btn_hide_list.Name = "btn_hide_list";
+            this.btn_hide_list.Size = new System.Drawing.Size(16, 16);
+            this.btn_hide_list.TabIndex = 1;
+            this.btn_hide_list.UseVisualStyleBackColor = true;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -227,7 +242,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Size = new System.Drawing.Size(801, 604);
-            this.splitContainer2.SplitterDistance = 482;
+            this.splitContainer2.SplitterDistance = 485;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
@@ -237,7 +252,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(801, 482);
+            this.TextPanel.Size = new System.Drawing.Size(801, 485);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -249,10 +264,23 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(801, 121);
+            this.groupBox1.Size = new System.Drawing.Size(801, 118);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
+            // 
+            // btn_hide_console
+            // 
+            this.btn_hide_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_hide_console.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
+            this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_hide_console.Location = new System.Drawing.Point(781, -18);
+            this.btn_hide_console.Name = "btn_hide_console";
+            this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
+            this.btn_hide_console.TabIndex = 2;
+            this.btn_hide_console.UseVisualStyleBackColor = true;
             // 
             // rtb_log
             // 
@@ -262,7 +290,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(795, 101);
+            this.rtb_log.Size = new System.Drawing.Size(795, 98);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 
@@ -280,30 +308,20 @@
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.clear_console_Click);
             // 
-            // btn_hide_list
+            // kPIToolStripMenuItem
             // 
-            this.btn_hide_list.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
-            this.btn_hide_list.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_hide_list.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hide_list.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_list.Location = new System.Drawing.Point(188, 1);
-            this.btn_hide_list.Name = "btn_hide_list";
-            this.btn_hide_list.Size = new System.Drawing.Size(16, 16);
-            this.btn_hide_list.TabIndex = 1;
-            this.btn_hide_list.UseVisualStyleBackColor = true;
+            this.kPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rUN_KPI});
+            this.kPIToolStripMenuItem.Name = "kPIToolStripMenuItem";
+            this.kPIToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
+            this.kPIToolStripMenuItem.Text = "KPI";
             // 
-            // btn_hide_console
+            // rUN_KPI
             // 
-            this.btn_hide_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_hide_console.BackgroundImage = global::FormulaEditor.Properties.Resources.QQ截图20170526130606;
-            this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(781, -15);
-            this.btn_hide_console.Name = "btn_hide_console";
-            this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
-            this.btn_hide_console.TabIndex = 2;
-            this.btn_hide_console.UseVisualStyleBackColor = true;
+            this.rUN_KPI.Name = "rUN_KPI";
+            this.rUN_KPI.Size = new System.Drawing.Size(152, 22);
+            this.rUN_KPI.Text = "RUN";
+            this.rUN_KPI.Click += new System.EventHandler(this.rUN_KPI_Click);
             // 
             // MainForm
             // 
@@ -318,6 +336,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormulaEditor";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.cms_code_manager.ResumeLayout(false);
             this.ms_singel.ResumeLayout(false);
@@ -363,6 +382,8 @@
         private System.Windows.Forms.ContextMenuStrip cms_console;
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
         private System.Windows.Forms.ImageList il_data_satate;
+        private System.Windows.Forms.ToolStripMenuItem kPIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rUN_KPI;
     }
 }
 

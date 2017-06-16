@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="KPIFormula.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="ED_KPI_INFO.cs">
       <DependentUpon>Formula.tt</DependentUpon>
@@ -83,6 +83,9 @@
     <Compile Include="KPIContext.cs" />
     <Compile Include="KPINode.cs" />
     <Compile Include="Param.cs" />
+    <Compile Include="PAT_SD_ITEM_RESULT.cs">
+      <DependentUpon>Formula.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SD_CPATS.cs">
       <DependentUpon>Formula.tt</DependentUpon>

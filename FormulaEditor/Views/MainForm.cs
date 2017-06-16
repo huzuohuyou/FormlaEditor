@@ -19,7 +19,7 @@ namespace FormulaEditor
         public MainForm()
         {
             InitializeComponent();
-            controller =new MainViewController();
+            controller =new ShowFormulaController();
             InitKPIList();
             InitCodeEditor();
         }
@@ -465,5 +465,11 @@ namespace FormulaEditor
 
 
         #endregion
+
+        private void rUN_KPI_Click(object sender, EventArgs e)
+        {
+            RunKPIController controller = new RunKPIController(this);
+            controller.Run("","");
+        }
     }
 }

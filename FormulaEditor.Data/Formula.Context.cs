@@ -32,5 +32,6 @@ namespace FormulaEditor.Model
         public virtual DbSet<SD_CPATS> SD_CPATS { get; set; }
         public virtual DbSet<SD_INFO> SD_INFO { get; set; }
         public virtual DbSet<SD_ITEM_INFO> SD_ITEM_INFO { get; set; }
+        public virtual DbSet<PAT_SD_ITEM_RESULT> PAT_SD_ITEM_RESULT { get; set; }
     }
 }

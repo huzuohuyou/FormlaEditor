@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormulaEditor.Data
+namespace FormulaEditor.Core
 {
-    public class Class1
+    interface ICalKPIJob
     {
+        void Run(string sdCode, string patientId,string KPIId="");
     }
 }

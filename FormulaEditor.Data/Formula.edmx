@@ -33,7 +33,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SD_ITEM_ID" Type="int" Nullable="false" />
           <Property Name="KPI_PARAM_NAME" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
@@ -52,6 +52,20 @@
           <Property Name="INVALID_FLAG" Type="int" />
           <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
           <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PAT_SD_ITEM_RESULT">
+          <Key>
+            <PropertyRef Name="SD_CODE" />
+            <PropertyRef Name="PATIENT_ID" />
+            <PropertyRef Name="SD_ITEM_CODE" />
+          </Key>
+          <Property Name="SD_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SD_ITEM_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SD_ITEM_VALUE" Type="varchar" MaxLength="500" />
+          <Property Name="SD_ITEM_U_VALUE" Type="varchar" MaxLength="500" />
+          <Property Name="UPDATE_USER_ID" Type="varchar" MaxLength="20" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="SD_CPATS">
           <Key>
@@ -169,6 +183,7 @@
           <EntitySet Name="ED_KPI_VALUE" EntityType="Self.ED_KPI_VALUE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EP_KPI_PARAM" EntityType="Self.EP_KPI_PARAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EP_KPI_SET" EntityType="Self.EP_KPI_SET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAT_SD_ITEM_RESULT" EntityType="Self.PAT_SD_ITEM_RESULT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SD_CPATS" EntityType="Self.SD_CPATS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SD_INFO" EntityType="Self.SD_INFO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SD_ITEM_INFO" EntityType="Self.SD_ITEM_INFO" Schema="dbo" store:Type="Tables" />
@@ -233,6 +248,7 @@
             <End Role="SD_INFO" EntitySet="SD_INFO" />
             <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
           </AssociationSet>
+          <EntitySet Name="PAT_SD_ITEM_RESULT" EntityType="HJSDR_BJXH_20170303_TESTModel.PAT_SD_ITEM_RESULT" />
         </EntityContainer>
         <EntityType Name="ED_KPI_INFO">
           <Key>
@@ -405,6 +421,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PAT_SD_ITEM_RESULT">
+          <Key>
+            <PropertyRef Name="SD_CODE" />
+            <PropertyRef Name="PATIENT_ID" />
+            <PropertyRef Name="SD_ITEM_CODE" />
+          </Key>
+          <Property Name="SD_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SD_ITEM_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SD_ITEM_VALUE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SD_ITEM_U_VALUE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -502,6 +532,19 @@
                 <ScalarProperty Name="SD_ITEM_CODE" ColumnName="SD_ITEM_CODE" />
                 <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
                 <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAT_SD_ITEM_RESULT">
+            <EntityTypeMapping TypeName="HJSDR_BJXH_20170303_TESTModel.PAT_SD_ITEM_RESULT">
+              <MappingFragment StoreEntitySet="PAT_SD_ITEM_RESULT">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER_ID" ColumnName="UPDATE_USER_ID" />
+                <ScalarProperty Name="SD_ITEM_U_VALUE" ColumnName="SD_ITEM_U_VALUE" />
+                <ScalarProperty Name="SD_ITEM_VALUE" ColumnName="SD_ITEM_VALUE" />
+                <ScalarProperty Name="SD_ITEM_CODE" ColumnName="SD_ITEM_CODE" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
