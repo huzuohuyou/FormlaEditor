@@ -39,6 +39,8 @@
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.调试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开始调试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rUN_KPI = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tv_singal = new System.Windows.Forms.TreeView();
@@ -53,8 +55,6 @@
             this.rtb_log = new System.Windows.Forms.RichTextBox();
             this.cms_console = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rUN_KPI = new System.Windows.Forms.ToolStripMenuItem();
             this.cms_code_manager.SuspendLayout();
             this.ms_singel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -137,9 +137,24 @@
             // 开始调试ToolStripMenuItem
             // 
             this.开始调试ToolStripMenuItem.Name = "开始调试ToolStripMenuItem";
-            this.开始调试ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.开始调试ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.开始调试ToolStripMenuItem.Text = "开始调试";
             this.开始调试ToolStripMenuItem.Click += new System.EventHandler(this.debug_pyfile_Click);
+            // 
+            // kPIToolStripMenuItem
+            // 
+            this.kPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rUN_KPI});
+            this.kPIToolStripMenuItem.Name = "kPIToolStripMenuItem";
+            this.kPIToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
+            this.kPIToolStripMenuItem.Text = "KPI";
+            // 
+            // rUN_KPI
+            // 
+            this.rUN_KPI.Name = "rUN_KPI";
+            this.rUN_KPI.Size = new System.Drawing.Size(103, 22);
+            this.rUN_KPI.Text = "RUN";
+            this.rUN_KPI.Click += new System.EventHandler(this.rUN_KPI_Click);
             // 
             // splitContainer1
             // 
@@ -232,7 +247,6 @@
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
@@ -242,7 +256,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Size = new System.Drawing.Size(801, 604);
-            this.splitContainer2.SplitterDistance = 485;
+            this.splitContainer2.SplitterDistance = 327;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
@@ -252,7 +266,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(801, 485);
+            this.TextPanel.Size = new System.Drawing.Size(327, 604);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -264,7 +278,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(801, 118);
+            this.groupBox1.Size = new System.Drawing.Size(473, 604);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
@@ -276,7 +290,7 @@
             this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(781, -18);
+            this.btn_hide_console.Location = new System.Drawing.Point(453, 468);
             this.btn_hide_console.Name = "btn_hide_console";
             this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
             this.btn_hide_console.TabIndex = 2;
@@ -290,7 +304,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(795, 98);
+            this.rtb_log.Size = new System.Drawing.Size(467, 584);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 
@@ -307,21 +321,6 @@
             this.清空ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.clear_console_Click);
-            // 
-            // kPIToolStripMenuItem
-            // 
-            this.kPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rUN_KPI});
-            this.kPIToolStripMenuItem.Name = "kPIToolStripMenuItem";
-            this.kPIToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
-            this.kPIToolStripMenuItem.Text = "KPI";
-            // 
-            // rUN_KPI
-            // 
-            this.rUN_KPI.Name = "rUN_KPI";
-            this.rUN_KPI.Size = new System.Drawing.Size(152, 22);
-            this.rUN_KPI.Text = "RUN";
-            this.rUN_KPI.Click += new System.EventHandler(this.rUN_KPI_Click);
             // 
             // MainForm
             // 

@@ -15,12 +15,15 @@ namespace FormulaEditor.Model
         {
             get { return string.Format("字段：{0} 描述：{1} 数据类型：{2}", Code.Trim(), Name.Trim(),DataType).Trim(); }
         }
-        public dynamic FixValue{
-            get {
-                if (DataType== "int")
+        public dynamic FixValue
+        {
+            get
+            {
+                if (DataType == "int")
                 {
                     return Convert.ToInt32(Value);
-                }else if (DataType == "double")
+                }
+                else if (DataType == "double")
                 {
                     return Convert.ToDouble(Value);
                 }
