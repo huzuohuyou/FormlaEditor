@@ -10,6 +10,14 @@
 > * 创建单病种统计指标
 > * 测试指标算法
 
+## 分支介绍
+
+| 分子名        | python存储方式           | 连接数据库  |给提供的接口|
+| ------------- |:-------------:| -----:|-----:|
+| xcdr      | .py文件本地存储 | 无 |无|
+| dataitem_api      | 数据库存储      |   EF直连 |无|
+| kpi_editor_client | 数据库存储      |    通过webapi访问 |有|
+
 ## 产品结构图
 
 ![cmd-markdown-logo](https://raw.githubusercontent.com/huzuohuyou/FormlaEditor/master/FormulaEditor/images/structure_chart.png)

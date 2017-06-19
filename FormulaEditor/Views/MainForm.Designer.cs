@@ -244,9 +244,9 @@
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
@@ -256,7 +256,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Size = new System.Drawing.Size(801, 604);
-            this.splitContainer2.SplitterDistance = 327;
+            this.splitContainer2.SplitterDistance = 330;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             this.splitContainer2.TabStop = false;
@@ -266,7 +266,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(327, 604);
+            this.TextPanel.Size = new System.Drawing.Size(801, 330);
             this.TextPanel.TabIndex = 1;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "代码";
@@ -278,7 +278,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(473, 604);
+            this.groupBox1.Size = new System.Drawing.Size(801, 273);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输出";
@@ -290,7 +290,7 @@
             this.btn_hide_console.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_hide_console.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hide_console.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_hide_console.Location = new System.Drawing.Point(453, 468);
+            this.btn_hide_console.Location = new System.Drawing.Point(781, 137);
             this.btn_hide_console.Name = "btn_hide_console";
             this.btn_hide_console.Size = new System.Drawing.Size(16, 16);
             this.btn_hide_console.TabIndex = 2;
@@ -304,7 +304,7 @@
             this.rtb_log.ForeColor = System.Drawing.Color.Lime;
             this.rtb_log.Location = new System.Drawing.Point(3, 17);
             this.rtb_log.Name = "rtb_log";
-            this.rtb_log.Size = new System.Drawing.Size(467, 584);
+            this.rtb_log.Size = new System.Drawing.Size(795, 253);
             this.rtb_log.TabIndex = 0;
             this.rtb_log.Text = "";
             // 
