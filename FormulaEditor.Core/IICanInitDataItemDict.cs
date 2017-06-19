@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public interface IKPI
+    public interface ICanInitDataItemDict
     {
-        void ShowKPIDict();
-        List<KPINode> GetKPIList();
-        void RefreshKPIList();
+        void InitDataItemDict(List<Param> list);
     }
 }

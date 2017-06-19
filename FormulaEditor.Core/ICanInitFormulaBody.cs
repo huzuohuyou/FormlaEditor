@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public interface IKPI
+    public interface ICanInitFormulaBody: ICanDo
     {
-        void ShowKPIDict();
-        List<KPINode> GetKPIList();
-        void RefreshKPIList();
+        void InitFormulaBody(FormulaBody set);
     }
 }

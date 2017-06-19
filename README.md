@@ -16,7 +16,7 @@
 | ------------- |:-------------:| -----:|-----:|
 | xcdr      | .py文件本地存储 | 无 |无|
 | dataitem_api      | 数据库存储      |   EF直连 |无|
-| kpi_editor_client | 数据库存储      |    通过webapi访问 |有|
+| kpi_editor_client | 数据库存储      |    通过[webapi](https://github.com/huzuohuyou/KPIWebAPI)访问 |有|
 
 ## 产品结构图
 

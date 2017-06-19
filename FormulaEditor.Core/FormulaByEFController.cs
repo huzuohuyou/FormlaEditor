@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FormulaEditor.Core
 {
-    public class EditFormulaController : IDataItem
+    public class FormulaByEFController : IFormula
     {
         public List<Param> GetDataItemList(string sdCode)
         {
@@ -71,7 +71,7 @@ namespace FormulaEditor.Core
             
         }
 
-        public List<Param> GetKPIDataItemList(int kpiId)
+        public List<Param> GetKPIParams(int kpiId)
         {
             try
             {
@@ -129,6 +129,31 @@ namespace FormulaEditor.Core
             {
                 throw;
             }
+        }
+
+        public void ShowDataItemDict(string sdCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowKPIForParams(int kpiId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowKPIForBody(int kpiId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SaveFormulaParam(List<Param> list)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SavaFormulaBody(FormulaBody body)
+        {
+            throw new NotImplementedException();
         }
     }
 }

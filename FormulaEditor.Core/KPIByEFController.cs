@@ -8,7 +8,7 @@ using FormulaEditor.Model;
 
 namespace FormulaEditor.Core
 {
-    public class ShowFormulaController : IKPI
+    public class KPIByEFController : IKPI
     {
         public List<KPINode> GetKPIList()
         {
@@ -36,6 +36,11 @@ namespace FormulaEditor.Core
         }
 
         public string GetScript(KPINode kpi)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowKPIDict()
         {
             throw new NotImplementedException();
         }

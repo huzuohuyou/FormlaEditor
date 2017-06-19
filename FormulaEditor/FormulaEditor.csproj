@@ -98,6 +98,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\CodEditor.cs" />
     <Compile Include="Views\frmConnSetting.cs">
       <SubType>Form</SubType>
     </Compile>
