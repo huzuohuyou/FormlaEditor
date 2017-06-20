@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormulaBody.cs" />
+    <Compile Include="KPIContext.cs" />
     <Compile Include="KPIFormula.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="ED_KPI_INFO.cs">
@@ -81,7 +82,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Formula.edmx</DependentUpon>
     </Compile>
-    <Compile Include="KPIContext.cs" />
     <Compile Include="KPINode.cs" />
     <Compile Include="KpiResultParam.cs" />
     <Compile Include="Param.cs" />
