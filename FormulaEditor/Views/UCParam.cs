@@ -46,6 +46,7 @@ namespace FormulaEditor
                 CheckType();
                 return new Param()
                 {
+                    Code = txt_name.Text,
                     Name = txt_name.Text,
                     Value = txt_value.Text,
                     DataType = cmb_type.Text
