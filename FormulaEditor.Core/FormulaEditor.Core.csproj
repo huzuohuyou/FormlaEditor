@@ -80,30 +80,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormulaByWebApiController.cs" />
-    <Compile Include="ICallBack.cs" />
-    <Compile Include="ICanDo.cs" />
-    <Compile Include="ICanInitFormulaBody.cs" />
-    <Compile Include="ICanInitKPIList.cs" />
-    <Compile Include="ICanInitKPIParam.cs" />
-    <Compile Include="ICanShowKpiScript.cs" />
-    <Compile Include="ICanSaveFormulaBody.cs" />
-    <Compile Include="ICanSaveFormulaParams.cs" />
-    <Compile Include="ICanShowSaveResult.cs" />
-    <Compile Include="IICanInitDataItemDict.cs" />
-    <Compile Include="RunKPIController.cs" />
-    <Compile Include="FormulaByEFController.cs" />
-    <Compile Include="IFormula.cs" />
-    <Compile Include="IJob.cs" />
-    <Compile Include="IKPI.cs" />
-    <Compile Include="KPIByWebApiController.cs" />
-    <Compile Include="KPIByEFController.cs" />
+    <Compile Include="Controllers\FormulaByWebApiController.cs" />
+    <Compile Include="Interfaces\ICallBack.cs" />
+    <Compile Include="Interfaces\ICanDo.cs" />
+    <Compile Include="Interfaces\ICanInitFormulaBody.cs" />
+    <Compile Include="Interfaces\ICanInitKPIList.cs" />
+    <Compile Include="Interfaces\ICanInitKPIParam.cs" />
+    <Compile Include="Interfaces\ICanShowKpiScript.cs" />
+    <Compile Include="Interfaces\ICanSaveFormulaBody.cs" />
+    <Compile Include="Interfaces\ICanSaveFormulaParams.cs" />
+    <Compile Include="Interfaces\ICanShowSaveResult.cs" />
+    <Compile Include="Interfaces\IICanInitDataItemDict.cs" />
+    <Compile Include="Controllers\RunKPIController.cs" />
+    <Compile Include="Controllers\FormulaByEFController.cs" />
+    <Compile Include="Interfaces\IFormula.cs" />
+    <Compile Include="Interfaces\IJob.cs" />
+    <Compile Include="Interfaces\IKPI.cs" />
+    <Compile Include="Controllers\KPIByWebApiController.cs" />
+    <Compile Include="Controllers\KPIByEFController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowKPIForBody.cs" />
-    <Compile Include="ShowKPIParams.cs" />
-    <Compile Include="ShowKpiScript.cs" />
-    <Compile Include="ShowSaveForBodyResult.cs" />
-    <Compile Include="ShowSaveParamResult.cs" />
+    <Compile Include="Modules\ShowKPIForBody.cs" />
+    <Compile Include="Modules\ShowKPIParams.cs" />
+    <Compile Include="Modules\ShowKpiScript.cs" />
+    <Compile Include="Modules\ShowSaveForBodyResult.cs" />
+    <Compile Include="Modules\ShowSaveParamResult.cs" />
     <Compile Include="UsingPython.cs" />
   </ItemGroup>
   <ItemGroup>
