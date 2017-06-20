@@ -11,11 +11,12 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, ICallBack, ICanInitKPIDict
+    public partial class MainForm : Form, ICallBack, ICanInitKPIDict, ICanShowKpiScript
     {
         IKPI controller;
         KPINode currentKpi;
         public Scintilla TextArea;
+
         public MainForm()
         {
             InitializeComponent();
@@ -135,8 +136,6 @@ namespace FormulaEditor
             }
         }
 
-        
-
         private void tv_singal_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)//判断你点的是不是右键
@@ -150,13 +149,27 @@ namespace FormulaEditor
             }
         }
 
-        public void RefreshData(KPINode kpi)
+        
+        
+        public void log(string msg)
+        {
+            rtb_log.Text = string.Format("{0} : {1}\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg) + rtb_log.Text;
+
+        }
+
+        private void rUN_KPI_Click(object sender, EventArgs e)
+        {
+            RunKPIController controller = new RunKPIController(this);
+            controller.Run("YXA", "16391862");
+        }
+
+        public void ShowKpiScript(string script)
         {
             try
             {
                 if (tv_singal.SelectedNode.Nodes.Count == 0)
                 {
-                    TextArea.Text = kpi.ScriptString;
+                    TextArea.Text = script;
                 }
             }
             catch (Exception ex)
@@ -164,16 +177,10 @@ namespace FormulaEditor
                 log(ex.ToString());
             }
         }
-        
-        public void log(string msg)
-        {
-            rtb_log.Text = string.Format("{0} : {1}\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg) + rtb_log.Text;
 
-        }
-        private void rUN_KPI_Click(object sender, EventArgs e)
+        public void RefreshKpiScript(int kpiid)
         {
-            RunKPIController controller = new RunKPIController(this);
-            controller.Run("YXA", "16391862");
+            controller.RefreshKpiScript(kpiid);
         }
     }
 }

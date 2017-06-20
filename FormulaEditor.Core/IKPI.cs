@@ -12,5 +12,6 @@ namespace FormulaEditor.Core
         void ShowKPIDict();
         List<KPINode> GetKPIList();
         void RefreshKPIList();
+        void RefreshKpiScript(int kpiId);
     }
 }

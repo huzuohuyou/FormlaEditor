@@ -22,5 +22,6 @@ namespace FormulaEditor.Core
         int SaveFormulaParam(List<Param> list);
 
         int SavaFormulaBody(FormulaBody body);
+        //void RefreshKpiScript(int kPI_ID);
     }
 }

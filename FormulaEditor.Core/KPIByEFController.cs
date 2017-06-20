@@ -44,5 +44,10 @@ namespace FormulaEditor.Core
         {
             throw new NotImplementedException();
         }
+
+        public void RefreshKpiScript(int kpiId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

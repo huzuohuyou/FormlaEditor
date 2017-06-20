@@ -102,7 +102,7 @@ namespace FormulaEditor
 
 
                     controller.SaveFormulaParam(list);
-                    callback.RefreshData(kpi);
+                    callback.RefreshKpiScript(kpi.KPI_ID);
                     callback.log("保存成功！！！");
                     this.FindForm().Close();
                     

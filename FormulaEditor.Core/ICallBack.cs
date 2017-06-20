@@ -8,6 +8,6 @@ namespace FormulaEditor.Core
     public interface ICallBack:ILog
     {
         void CallBackParams(List<Param> list);
-        void RefreshData(KPINode kpi);
+        void RefreshKpiScript(int kpiid);
     }
 }

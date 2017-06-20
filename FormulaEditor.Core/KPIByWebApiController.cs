@@ -12,14 +12,13 @@ namespace FormulaEditor.Core
     public class KPIByWebApiController : IKPI,IWork
     {
 
-        ICanInitKPIDict can;
+        ICanDo can;
 
-
-        public KPIByWebApiController(ICanInitKPIDict c) { this.can = c; }
+        public KPIByWebApiController(ICanDo c) { this.can = c; }
 
         public void Do(string json)
         {
-            can.InitKPIDict(JsonConvert.DeserializeObject<List<KPINode>>(json));
+            (can as ICanInitKPIDict).InitKPIDict(JsonConvert.DeserializeObject<List<KPINode>>(json));
         }
 
         public List<KPINode> GetKPIList()
@@ -31,6 +30,11 @@ namespace FormulaEditor.Core
         public void RefreshKPIList()
         {
             throw new NotImplementedException();
+        }
+
+        public void RefreshKpiScript(int kpiId)
+        {
+            WebApiHelper.doPost("kpi/script",new Dictionary<string, string>() { { "", kpiId.ToString() } }, new ShowKpiScript(can as ICanShowKpiScript));
         }
 
         public void ShowKPIDict()
