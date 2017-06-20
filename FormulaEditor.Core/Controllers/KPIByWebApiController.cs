@@ -11,7 +11,6 @@ namespace FormulaEditor.Core
 {
     public class KPIByWebApiController : IKPI,IWork
     {
-
         ICanDo can;
 
         public KPIByWebApiController(ICanDo c) { this.can = c; }
@@ -41,7 +40,6 @@ namespace FormulaEditor.Core
         {
             WebApiHelper.doGet("kpi/all", this);
         }
-
        
     }
 }

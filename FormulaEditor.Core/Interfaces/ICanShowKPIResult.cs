@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormulaEditor.Core
+namespace FormulaEditor.Core.Interfaces
 {
-    interface ICalKPIJob
+    public interface ICanShowKPIResult : ICanDo
     {
-        void Run(string sdCode, List<string> pList, string KPIId="");
+        void ShowKPIResult(string result);
     }
 }

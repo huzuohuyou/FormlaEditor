@@ -15,6 +15,9 @@ namespace FormulaEditor.Utils.WebApi
     public static class WebApiHelper
     {
         public static readonly string BaseUrl = "http://localhost:6920//";
+
+        #region 字典传参
+
         /// <summary>
         /// HttpClient实现Get请求
         /// </summary>
@@ -62,20 +65,42 @@ namespace FormulaEditor.Utils.WebApi
 
         }
 
+
+        #endregion
+
+
+        #region 实体传参
         public static async void doPut<T>(string url, T param, IWork work)
         {
             url = BaseUrl + url;
             var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
             using (var client = new HttpClient(handler))
             {
-                var response = await client.PutAsync(url,param,formatter);
-                    response.EnsureSuccessStatusCode();
-                    work.Do(await response.Content.ReadAsStringAsync());
+                var response = await client.PutAsync(url, param, formatter);
+                response.EnsureSuccessStatusCode();
+                work.Do(await response.Content.ReadAsStringAsync());
             }
         }
+
+        public static async void doPost<T>(string url, T param, IWork work)
+        {
+            url = BaseUrl + url;
+            var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+            using (var client = new HttpClient(handler))
+            {
+                var response = await client.PostAsync(url, param, formatter);
+                response.EnsureSuccessStatusCode();
+                work.Do(await response.Content.ReadAsStringAsync());
+            }
+        }
+
         private static JsonMediaTypeFormatter formatter = GlobalConfiguration.Configuration.Formatters.Where(f =>
         {
             return f.SupportedMediaTypes.Any(v => v.MediaType.Equals("application/json", StringComparison.CurrentCultureIgnoreCase));
         }).FirstOrDefault() as JsonMediaTypeFormatter;
+
+        #endregion
+
+
     }
 }

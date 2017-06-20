@@ -12,6 +12,7 @@ namespace FormulaEditor.Core
     public class FormulaByWebApiController : IFormula, IWork
     {
         ICanDo can;
+
         public FormulaByWebApiController(ICanDo c) { can = c; }
 
         public void Do(string json)
@@ -23,6 +24,7 @@ namespace FormulaEditor.Core
         {
             WebApiHelper.doPost("formula/datatiemdict", new Dictionary<string, string>() { { "", sdCode } }, this);
         }
+
         public void ShowKPIForParams(int kpiId)
         {
             WebApiHelper.doPost("formula/kpiparam", new Dictionary<string, string>() { {"", kpiId.ToString() } }, new ShowKPIParams(can as ICanInitKPIParam));
@@ -43,7 +45,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception)
             {
-                return new Tuple<string, bool>("语法验证通过！！！", true);
+                //return new Tuple<string, bool>("语法验证通过！！！", true);
                 throw;
             }
         }
@@ -117,7 +119,6 @@ namespace FormulaEditor.Core
                 throw;
             }
         }
-
 
     }
 }

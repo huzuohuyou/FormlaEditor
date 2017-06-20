@@ -1,4 +1,5 @@
 ﻿using FormulaEditor.Core;
+using FormulaEditor.Core.Interfaces;
 using FormulaEditor.Model;
 using FormulaEditor.utils;
 using FormulaEditor.Views;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, ICallBack, ICanInitKPIDict, ICanShowKpiScript
+    public partial class MainForm : Form, ICallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult
     {
         IKPI controller;
         KPINode currentKpi;
@@ -159,8 +160,7 @@ namespace FormulaEditor
 
         private void rUN_KPI_Click(object sender, EventArgs e)
         {
-            RunKPIController controller = new RunKPIController(this);
-            controller.Run("YXA", "16391862");
+            new RunKPIController(this).Run("YXA", new List<string>() { "16391862" });
         }
 
         public void ShowKpiScript(string script)
@@ -181,6 +181,11 @@ namespace FormulaEditor
         public void RefreshKpiScript(int kpiid)
         {
             controller.RefreshKpiScript(kpiid);
+        }
+
+        public void ShowKPIResult(string result)
+        {
+            log(result);
         }
     }
 }

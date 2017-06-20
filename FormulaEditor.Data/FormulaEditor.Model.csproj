@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="KPIContext.cs" />
     <Compile Include="KPINode.cs" />
+    <Compile Include="KpiResultParam.cs" />
     <Compile Include="Param.cs" />
     <Compile Include="PAT_SD_ITEM_RESULT.cs">
       <DependentUpon>Formula.tt</DependentUpon>

@@ -1,40 +1,30 @@
-﻿using FormulaEditor.Model;
+﻿using FormulaEditor.Core.Interfaces;
+using FormulaEditor.Core.Modules;
+using FormulaEditor.Model;
+using FormulaEditor.Utils.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
     public class RunKPIController : ICalKPIJob
     {
-        ICallBack callBack;
-        public RunKPIController(ICallBack cb) { callBack = cb; }
-        public void Run(string sdCode, string patientId, string KPIId = "")
+        ICanDo can;
+
+        public RunKPIController(ICanDo cb) { can = cb; }
+
+        public void Run(string sdCode, List<string> pList, string KPIId = "")
         {
             try
             {
-                using (var db = new KPIContext())
-                {
-                    db.ED_KPI_INFO.ToList().ForEach(
-                        r =>
-                        {
-                            var body = db.EP_KPI_SET.FirstOrDefault(b => b.KPI_ID == r.KPI_ID);
-                            var param = db.EP_KPI_PARAM.ToList().Where(b => b.KPI_ID == r.KPI_ID).ToList();
-                            KPIFormula formula = new KPIFormula(body, param);
-                            UsingPython python = new UsingPython(formula.KPIScript);
-                            callBack.log(python.ExcuteScriptFile(GetParamList(patientId, param)).ToString());
-                        //存库.. 
-                    }
-                        );
-                }
+                WebApiHelper.doPost("kpiresult/sdcode",new KpiResultParam() {SdCode =sdCode,KpiId=KPIId,PatientList= pList }, new GetKPIResult(can as ICanShowKPIResult));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                callBack.log(ex.ToString());
+
+                throw;
             }
-            
         }
 
         public List<Param> GetParamList(string patientId, List<EP_KPI_PARAM> ep_kpi_param_List)
