@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public interface ICanShowSaveResult
+    public interface ICanShowSaveResult:ICanDo
     {
         void ShowResult(string msg);
     }

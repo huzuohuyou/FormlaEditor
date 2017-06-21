@@ -1,4 +1,5 @@
-﻿using FormulaEditor.Model;
+﻿using FormulaEditor.Core.Controllers;
+using FormulaEditor.Model;
 using FormulaEditor.Utils.WebApi;
 using Newtonsoft.Json;
 using System;
@@ -9,13 +10,12 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public class ShowKPIParams : IWork
+    public class ShowKPIParams : AbsWork
     {
-        ICanInitKPIParam can;
-        public ShowKPIParams(ICanInitKPIParam c) { can = c; }
-        public void Do(string json)
+        public ShowKPIParams(ICanInitKPIParam c):base(c){  }
+        public override void Do(string json)
         {
-            can.InitKPIParam(JsonConvert.DeserializeObject<List<Param>>(json));
+            (can as ICanInitKPIParam).InitKPIParam(JsonConvert.DeserializeObject<List<Param>>(json));
         }
     }
 }

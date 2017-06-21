@@ -10,8 +10,6 @@ namespace FormulaEditor.Core
     public interface IKPI
     {
         void ShowKPIDict();
-        List<KPINode> GetKPIList();
-        void RefreshKPIList();
         void RefreshKpiScript(int kpiId);
     }
 }

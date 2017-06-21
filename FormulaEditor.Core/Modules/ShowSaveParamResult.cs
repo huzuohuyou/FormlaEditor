@@ -1,4 +1,5 @@
-﻿using FormulaEditor.Utils.WebApi;
+﻿using FormulaEditor.Core.Controllers;
+using FormulaEditor.Utils.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public class ShowSaveParamResult : IWork
+    public class ShowSaveParamResult : AbsWork
     {
-        private ICanShowSaveResult canShowSaveResult;
 
-        public ShowSaveParamResult(ICanShowSaveResult canShowSaveResult)
-        {
-            this.canShowSaveResult = canShowSaveResult;
-        }
+        public ShowSaveParamResult(ICanShowSaveResult c) : base(c) { }
 
-        public void Do(string json)
+        public override void Do(string json)
         {
-            canShowSaveResult.ShowResult(json);
+            (can as ICanShowSaveResult).ShowResult(json);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FormulaEditor.Model;
+﻿using FormulaEditor.Core.Controllers;
+using FormulaEditor.Model;
 using FormulaEditor.Utils.WebApi;
 using Newtonsoft.Json;
 using System;
@@ -9,18 +10,14 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public class ShowKpiScript : IWork
+    public class ShowKpiScript : AbsWork
     {
-        private ICanShowKpiScript canShowKpiScript;
 
-        public ShowKpiScript(ICanShowKpiScript canShowKpiScript)
-        {
-            this.canShowKpiScript = canShowKpiScript;
-        }
+        public ShowKpiScript(ICanShowKpiScript c):base(c){}
 
-        public void Do(string json)
+        public override void Do(string json)
         {
-            canShowKpiScript.ShowKpiScript(JsonConvert.DeserializeObject<KPINode>(json).ScriptString);
+            (can as ICanShowKpiScript).ShowKpiScript(JsonConvert.DeserializeObject<KPINode>(json).ScriptString);
         }
     }
 }

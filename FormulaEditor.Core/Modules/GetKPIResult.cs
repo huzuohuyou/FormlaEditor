@@ -1,17 +1,14 @@
-﻿using FormulaEditor.Core.Interfaces;
-using FormulaEditor.Utils.WebApi;
-using Newtonsoft.Json;
-using System;
+﻿using FormulaEditor.Core.Controllers;
+using FormulaEditor.Core.Interfaces;
 
 namespace FormulaEditor.Core.Modules
 {
-    public class GetKPIResult : IWork
+    public class GetKPIResult : AbsWork
     {
-        ICanShowKPIResult can;
-        public GetKPIResult(ICanShowKPIResult c) { can = c; }
-        public void Do(string json)
+        public GetKPIResult(ICanShowKPIResult c):base(c) {  }
+        public override void Do(string json)
         {
-            can.ShowKPIResult(json);
+            (can as ICanShowKPIResult).ShowKPIResult(json);
         }
     }
 }

@@ -1,44 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FormulaEditor.Model;
 using FormulaEditor.Utils.WebApi;
 using Newtonsoft.Json;
+using FormulaEditor.Core.Controllers;
 
 namespace FormulaEditor.Core
 {
-    public class KPIByWebApiController : IKPI,IWork
+    public class KPIByWebApiController : AbsWork, IKPI
     {
-        ICanDo can;
 
-        public KPIByWebApiController(ICanDo c) { this.can = c; }
+        public KPIByWebApiController(ICanDo c):base(c) {}
 
-        public void Do(string json)
+        public override void Do(string json)
         {
-            (can as ICanInitKPIDict).InitKPIDict(JsonConvert.DeserializeObject<List<KPINode>>(json));
-        }
-
-        public List<KPINode> GetKPIList()
-        {
-            
-            throw new NotImplementedException();
-        }
-
-        public void RefreshKPIList()
-        {
-            throw new NotImplementedException();
+            try
+            {
+                (can as ICanInitKPIDict).InitKPIDict(JsonConvert.DeserializeObject<List<KPINode>>(json));
+            }
+            catch (Exception ex)
+            {
+                (can as ICallBack).log(ex.Message);
+            }
         }
 
         public void RefreshKpiScript(int kpiId)
         {
-            WebApiHelper.doPost("kpi/script",new Dictionary<string, string>() { { "", kpiId.ToString() } }, new ShowKpiScript(can as ICanShowKpiScript));
+            try
+            {
+                WebApiHelper.doPost("kpi/script", new Dictionary<string, string>() { { "", kpiId.ToString() } }, new ShowKpiScript(can as ICanShowKpiScript));
+            }
+            catch (Exception ex)
+            {
+                (can as ICallBack).log(ex.Message);
+            }
         }
 
         public void ShowKPIDict()
         {
-            WebApiHelper.doGet("kpi/all", this);
+            try
+            {
+                WebApiHelper.doGet("kpi/all", this);
+            }
+            catch (Exception ex)
+            {
+                (can as ICallBack).log(ex.Message);
+            }
         }
        
     }

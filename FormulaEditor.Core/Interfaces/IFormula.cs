@@ -6,11 +6,8 @@ namespace FormulaEditor.Core
 {
     public interface IFormula
     {
-        List<Param> GetDataItemList(string sdCode);
 
-        List<Param> GetKPIParams(int kpiId);
 
-        EP_KPI_SET GetKPIFormulaBody(int kpiId);
 
         Tuple<string, bool> CheckFormula(string script, List<Param> list);
 

@@ -23,29 +23,46 @@ namespace FormulaEditor.Utils.WebApi
         /// </summary>
         public static async void doGet(string url, IWork work)
         {
-            url = BaseUrl + url;
-            var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
-            using (var http = new HttpClient(handler))
+            try
             {
-                var response = await http.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                work.Do(await response.Content.ReadAsStringAsync());
+                url = BaseUrl + url;
+                var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+                using (var http = new HttpClient(handler))
+                {
+                    var response = await http.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    work.Do(await response.Content.ReadAsStringAsync());
+                }
             }
+            catch (Exception ex)
+            {
+                work.SendExMsg(ex.Message);
+            }
+            
         }
         /// <summary>
         /// HttpClient实现Post请求
         /// </summary>
         public static async void doPost(string url, Dictionary<string, string> data, IWork work)
         {
-            url = BaseUrl + url;
-            var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
-            using (var http = new HttpClient(handler))
+            try
             {
-                var content = new FormUrlEncodedContent(data);
-                var response = await http.PostAsync(url, content);
-                response.EnsureSuccessStatusCode();
-                work.Do(await response.Content.ReadAsStringAsync());
+                url = BaseUrl + url;
+                var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+                using (var http = new HttpClient(handler))
+                {
+                    var content = new FormUrlEncodedContent(data);
+                    var response = await http.PostAsync(url, content);
+                    response.EnsureSuccessStatusCode();
+                    work.Do(await response.Content.ReadAsStringAsync());
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
         }
         /// <summary>
@@ -53,15 +70,24 @@ namespace FormulaEditor.Utils.WebApi
         /// </summary>
         public static async void doPut(string url, Dictionary<string, string> data, IWork work)
         {
-            url = BaseUrl + url;
-            var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
-            using (var http = new HttpClient(handler))
+            try
             {
-                var content = new FormUrlEncodedContent(data);
-                var response = await http.PutAsync(url, content);
-                response.EnsureSuccessStatusCode();
-                work.Do(await response.Content.ReadAsStringAsync());
+                url = BaseUrl + url;
+                var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+                using (var http = new HttpClient(handler))
+                {
+                    var content = new FormUrlEncodedContent(data);
+                    var response = await http.PutAsync(url, content);
+                    response.EnsureSuccessStatusCode();
+                    work.Do(await response.Content.ReadAsStringAsync());
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
         }
 
@@ -72,26 +98,44 @@ namespace FormulaEditor.Utils.WebApi
         #region 实体传参
         public static async void doPut<T>(string url, T param, IWork work)
         {
-            url = BaseUrl + url;
-            var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
-            using (var client = new HttpClient(handler))
+            try
             {
-                var response = await client.PutAsync(url, param, formatter);
-                response.EnsureSuccessStatusCode();
-                work.Do(await response.Content.ReadAsStringAsync());
+                url = BaseUrl + url;
+                var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+                using (var client = new HttpClient(handler))
+                {
+                    var response = await client.PutAsync(url, param, formatter);
+                    response.EnsureSuccessStatusCode();
+                    work.Do(await response.Content.ReadAsStringAsync());
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public static async void doPost<T>(string url, T param, IWork work)
         {
-            url = BaseUrl + url;
-            var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
-            using (var client = new HttpClient(handler))
+            try
             {
-                var response = await client.PostAsync(url, param, formatter);
-                response.EnsureSuccessStatusCode();
-                work.Do(await response.Content.ReadAsStringAsync());
+                url = BaseUrl + url;
+                var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+                using (var client = new HttpClient(handler))
+                {
+                    var response = await client.PostAsync(url, param, formatter);
+                    response.EnsureSuccessStatusCode();
+                    work.Do(await response.Content.ReadAsStringAsync());
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         private static JsonMediaTypeFormatter formatter = GlobalConfiguration.Configuration.Formatters.Where(f =>
