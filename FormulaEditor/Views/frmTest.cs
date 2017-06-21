@@ -13,9 +13,9 @@ namespace FormulaEditor
         private UCParam ucParam1;
         private UCParam ucParam2;
         private UCParam ucParam3;
-        ICallBack callback;
+        ICanCallBack callback;
         List<UCParam> uclist;
-        public frmTest(ICallBack cb)
+        public frmTest(ICanCallBack cb)
         {
             InitializeComponent();
             this.callback = cb;

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, ICallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult
+    public partial class MainForm : Form, ICanCallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult
     {
         IKPI controller;
         KPINode currentKpi;

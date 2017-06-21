@@ -20,7 +20,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.Message);
+                (can as ICanCallBack).log(ex.Message);
             }
         }
 
@@ -32,7 +32,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.Message);
+                (can as ICanCallBack).log(ex.Message);
             }
         }
 
@@ -44,7 +44,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.Message);
+                (can as ICanCallBack).log(ex.Message);
             }
         }
        

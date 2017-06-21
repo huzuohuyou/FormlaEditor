@@ -10,10 +10,10 @@ using FormulaEditor.Views;
 
 namespace FormulaEditor
 {
-    public partial class frmCreateFormula : Form, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanShowSaveResult
+    public partial class frmCreateFormula : Form, ICanCallBack, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanShowSaveResult
     {
         KPINode kpi;
-        ICallBack callback;
+        ICanCallBack callback;
         List<ucDataItem> ucList = new List<ucDataItem>();
         List<Param> ParamList
         {
@@ -59,7 +59,7 @@ namespace FormulaEditor
         /// 分母公式
         /// </summary>
         public Scintilla rtb_denominator;
-        public frmCreateFormula(ICallBack cb, KPINode p)
+        public frmCreateFormula(ICanCallBack cb, KPINode p)
         {
             
             kpi = p;
@@ -103,8 +103,7 @@ namespace FormulaEditor
 
                     controller.SaveFormulaParam(list);
                     callback.RefreshKpiScript(kpi.KPI_ID);
-                    callback.log("保存成功！！！");
-                    this.FindForm().Close();
+                    FindForm().Close();
                     
                 }
                 else
@@ -283,6 +282,21 @@ namespace FormulaEditor
         
 
         public void ShowResult(string msg)
+        {
+            callback.log(msg);
+        }
+
+        public void CallBackParams(List<Param> list)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RefreshKpiScript(int kpiid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void log(string msg)
         {
             callback.log(msg);
         }

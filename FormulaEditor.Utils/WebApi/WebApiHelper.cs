@@ -57,12 +57,11 @@ namespace FormulaEditor.Utils.WebApi
                     work.Do(await response.Content.ReadAsStringAsync());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                work.SendExMsg(ex.Message);
             }
-            
+
 
         }
         /// <summary>
@@ -82,12 +81,11 @@ namespace FormulaEditor.Utils.WebApi
                     work.Do(await response.Content.ReadAsStringAsync());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                work.SendExMsg(ex.Message);
             }
-            
+
 
         }
 
@@ -109,12 +107,11 @@ namespace FormulaEditor.Utils.WebApi
                     work.Do(await response.Content.ReadAsStringAsync());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                work.SendExMsg(ex.Message);
             }
-            
+
         }
 
         public static async void doPost<T>(string url, T param, IWork work)
@@ -130,12 +127,11 @@ namespace FormulaEditor.Utils.WebApi
                     work.Do(await response.Content.ReadAsStringAsync());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                work.SendExMsg(ex.Message);
             }
-            
+
         }
 
         private static JsonMediaTypeFormatter formatter = GlobalConfiguration.Configuration.Formatters.Where(f =>

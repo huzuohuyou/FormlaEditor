@@ -23,7 +23,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
             }
         }
 
@@ -36,7 +36,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
             }
         }
 
@@ -49,7 +49,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
             }
         }
 
@@ -62,7 +62,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
             }
         }
 
@@ -76,7 +76,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
                 return new Tuple<string, bool>("语法错误！！！", false);
             }
         }
@@ -91,7 +91,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
                 return 0;
             }
         }
@@ -105,7 +105,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICallBack).log(ex.ToString());
+                (can as ICanCallBack).log(ex.ToString());
                 return 0;
             }
         }
