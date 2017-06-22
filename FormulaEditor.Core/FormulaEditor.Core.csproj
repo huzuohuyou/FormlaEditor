@@ -82,7 +82,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AbsWork.cs" />
     <Compile Include="Controllers\FormulaByWebApiController.cs" />
-    <Compile Include="Interfaces\ICallBack.cs" />
+    <Compile Include="Interfaces\ICanCallBack.cs" />
     <Compile Include="Interfaces\ICanDo.cs" />
     <Compile Include="Interfaces\ICanInitFormulaBody.cs" />
     <Compile Include="Interfaces\ICanInitKPIList.cs" />

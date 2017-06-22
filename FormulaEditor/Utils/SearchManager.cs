@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace ScintillaNET.Demo.Utils {
-	internal class SearchManager {
+namespace ScintillaNET.Demo.Utils
+{
+    internal class SearchManager {
 
 		public static ScintillaNET.Scintilla TextArea;
 		public static TextBox SearchBox;

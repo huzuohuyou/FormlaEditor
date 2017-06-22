@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
-namespace ScintillaNET.Demo.Utils {
-	internal class HotKeyManager {
+namespace ScintillaNET.Demo.Utils
+{
+    internal class HotKeyManager {
 
 		public static bool Enable = true;
 

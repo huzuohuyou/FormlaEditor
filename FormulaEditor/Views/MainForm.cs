@@ -1,10 +1,8 @@
 ﻿using FormulaEditor.Core;
 using FormulaEditor.Core.Interfaces;
 using FormulaEditor.Model;
-using FormulaEditor.utils;
 using FormulaEditor.Views;
 using ScintillaNET;
-using ScintillaNET.Demo.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

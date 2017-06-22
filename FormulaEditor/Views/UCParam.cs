@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FormulaEditor.Views;
-using FormulaEditor.Core;
 using FormulaEditor.Model;
 
 namespace FormulaEditor

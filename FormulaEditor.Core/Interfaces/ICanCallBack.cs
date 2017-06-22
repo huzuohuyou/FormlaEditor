@@ -1,6 +1,4 @@
-﻿using FormulaEditor.Core;
-using FormulaEditor.Model;
-using FormulaEditor.utils;
+﻿using FormulaEditor.Model;
 using System.Collections.Generic;
 
 namespace FormulaEditor.Core

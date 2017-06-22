@@ -1,12 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 
@@ -14,7 +10,7 @@ namespace FormulaEditor.Utils.WebApi
 {
     public static class WebApiHelper
     {
-        public static readonly string BaseUrl = "http://localhost:6920//";
+        public static readonly string BaseUrl = "http://localhost:8087//";
 
         #region 字典传参
 
