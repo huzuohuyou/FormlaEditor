@@ -101,6 +101,7 @@
     <Compile Include="Controllers\KPIByWebApiController.cs" />
     <Compile Include="Controllers\KPIByEFController.cs" />
     <Compile Include="Modules\GetKPIResult.cs" />
+    <Compile Include="Modules\ShowDataItemDict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\ShowKPIForBody.cs" />
     <Compile Include="Modules\ShowKPIParams.cs" />

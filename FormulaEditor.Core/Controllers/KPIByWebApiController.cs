@@ -9,8 +9,8 @@ namespace FormulaEditor.Core
 {
     public class KPIByWebApiController : AbsWork, IKPI
     {
-
-        public KPIByWebApiController(ICanDo c):base(c) {}
+        SendMessage send;
+        public KPIByWebApiController(ICanDo c, SendMessage s) :base(c,s) { send = s; }
 
         public override void Do(string json)
         {
@@ -20,7 +20,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.Message);
+                send(ex.Message);
             }
         }
 
@@ -32,7 +32,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.Message);
+                send(ex.Message);
             }
         }
 
@@ -44,7 +44,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.Message);
+                send(ex.Message);
             }
         }
        

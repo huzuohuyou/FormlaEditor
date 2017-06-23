@@ -6,22 +6,29 @@ using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FormulaEditor
 {
     public partial class MainForm : Form, ICanCallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult
     {
+        ILoading startform = new frmLoading();
+        
         IKPI controller;
         KPINode currentKpi;
         public Scintilla TextArea;
-
+        SendMessage dlog ;
         public MainForm()
         {
+            startform.OnLoading();
+            Thread.Sleep(3000);
+            this.Visible = false;
             InitializeComponent();
-            controller =new KPIByWebApiController(this);
+            controller =new KPIByWebApiController(this,dlog);
             TextArea = new CodEditor(TextPanel, cms_code_manager).TextArea;
             controller.ShowKPIDict();
+            dlog = new SendMessage(log);
         }
 
         private void debug_pyfile_Click(object sender, EventArgs e)
@@ -58,7 +65,7 @@ namespace FormulaEditor
 
         private void create_fun_Click(object sender, EventArgs e)
         {
-            frmCreateFormula frm = new frmCreateFormula(this,currentKpi);
+            frmCreateFormula frm = new frmCreateFormula(this,currentKpi,dlog);
             frm.ShowDialog();
             
         }
@@ -133,6 +140,8 @@ namespace FormulaEditor
                     typeNode.Nodes.Add(kpiNode);
                 }
             }
+            startform.StopLoading();
+            this.Visible = true;
         }
 
         private void tv_singal_MouseDown(object sender, MouseEventArgs e)

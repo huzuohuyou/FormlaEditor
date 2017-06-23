@@ -18,8 +18,8 @@ namespace FormulaEditor
             Application.EnableVisualStyles();
             
             Application.SetCompatibleTextRenderingDefault(false);
-            ILoading startform = new frmLoading();
-            startform.OnLoading();
+            //ILoading startform = new frmLoading();
+            //startform.OnLoading();
             
             Application.Run(new MainForm());
         }

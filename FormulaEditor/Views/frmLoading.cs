@@ -28,7 +28,7 @@ namespace FormulaEditor.Views
         public void OnLoading()
         {
             
-            this.ShowDialog();
+            this.Show();
             SendLoadingInfo("..loading this.");
             SendLoadingInfo("..loading that.");
             SendLoadingInfo("..loading the other.");
@@ -41,6 +41,7 @@ namespace FormulaEditor.Views
 
         public void SendLoadingInfo(string msg)
         {
+            //lb_loading.DataBindings.Add(Text,msg,msg);
             lb_loading.Text = msg;
         }
     }

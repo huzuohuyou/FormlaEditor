@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public interface ICanInitDataItemDict
+    public interface ICanInitDataItemDict:ICanDo
     {
         void InitDataItemDict(List<Param> list);
     }

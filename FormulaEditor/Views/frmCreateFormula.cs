@@ -13,6 +13,7 @@ namespace FormulaEditor
     public partial class frmCreateFormula : Form, ICanCallBack, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanShowSaveResult
     {
         KPINode kpi;
+        SendMessage send;
         ICanCallBack callback;
         List<ucDataItem> ucList = new List<ucDataItem>();
         List<Param> ParamList
@@ -59,14 +60,15 @@ namespace FormulaEditor
         /// 分母公式
         /// </summary>
         public Scintilla rtb_denominator;
-        public frmCreateFormula(ICanCallBack cb, KPINode p)
+        public frmCreateFormula(ICanCallBack cb, KPINode p, SendMessage s)
         {
             
             kpi = p;
             callback = cb;
+            send = s;
             InitializeComponent();
             panel_param.AllowDrop = true;
-            controller = new FormulaByWebApiController(this);
+            controller = new FormulaByWebApiController(this,send);
             controller.ShowDataItemDict(kpi.SD_CODE);
             controller.ShowKPIForParams(kpi.KPI_ID);
             controller.ShowKPIForBody(kpi.KPI_ID);
@@ -115,7 +117,7 @@ namespace FormulaEditor
             }
             catch (Exception ex)
             {
-                callback.log(ex.Message);
+                send(ex.Message);
             }
         }
 
@@ -222,11 +224,11 @@ namespace FormulaEditor
         {
             try
             {
-                callback.log(controller.CheckFormula(TempScript, ParamList).Item1);
+                send(controller.CheckFormula(TempScript, ParamList).Item1);
             }
             catch (Exception ex)
             {
-                callback.log(ex.ToString());
+                send(ex.ToString());
             }
             
         }
@@ -283,7 +285,7 @@ namespace FormulaEditor
 
         public void ShowResult(string msg)
         {
-            callback.log(msg);
+            send(msg);
         }
 
         public void CallBackParams(List<Param> list)

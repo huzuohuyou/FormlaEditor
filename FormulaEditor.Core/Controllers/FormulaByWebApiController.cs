@@ -4,36 +4,25 @@ using System.Collections.Generic;
 using FormulaEditor.Model;
 using Newtonsoft.Json;
 using FormulaEditor.Core.Controllers;
+using FormulaEditor.Core.Modules;
 
 namespace FormulaEditor.Core
 {
-    public class FormulaByWebApiController : AbsWork,IFormula
+    public class FormulaByWebApiController : IFormula
     {
-
-        public FormulaByWebApiController(ICanDo c):base(c) { }
-
-        public override void Do(string json)
-        {
-            try
-            {
-                (can as ICanInitDataItemDict).InitDataItemDict(JsonConvert.DeserializeObject<List<Param>>(json));
-            }
-            catch (Exception ex)
-            {
-                (can as ICanCallBack).log(ex.ToString());
-            }
-        }
+        ICanDo can;
+        SendMessage send;
+        public FormulaByWebApiController(ICanDo c, SendMessage s) { can = c;send = s; }
 
         public void ShowDataItemDict(string sdCode)
         {
             try
             {
-                WebApiHelper.doPost("formula/datatiemdict", new Dictionary<string, string>() { { "", sdCode } }, this);
-
+                WebApiHelper.doPost("formula/datatiemdict", new Dictionary<string, string>() { { "", sdCode } }, new ShowDataItemDict(can as ICanInitDataItemDict));
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.ToString());
+                send(ex.ToString());
             }
         }
 
@@ -46,7 +35,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.ToString());
+                send(ex.ToString());
             }
         }
 
@@ -59,7 +48,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.ToString());
+                send(ex.ToString());
             }
         }
 
@@ -73,7 +62,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.ToString());
+                send(ex.ToString());
                 return new Tuple<string, bool>("语法错误！！！", false);
             }
         }
@@ -88,7 +77,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.ToString());
+                send(ex.ToString());
                 return 0;
             }
         }
@@ -102,7 +91,7 @@ namespace FormulaEditor.Core
             }
             catch (Exception ex)
             {
-                (can as ICanCallBack).log(ex.ToString());
+                send(ex.ToString());
                 return 0;
             }
         }

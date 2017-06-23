@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEditor.Utils", "Form
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEditor.Model", "FormulaEditor.Data\FormulaEditor.Model.csproj", "{4CDC7621-24BB-4112-8063-4A00965D9EFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Wfcl", "Common.Wfcl\Common.Wfcl.csproj", "{824E52C6-F9DA-4358-A2DB-81F3C9B83526}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4CDC7621-24BB-4112-8063-4A00965D9EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CDC7621-24BB-4112-8063-4A00965D9EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CDC7621-24BB-4112-8063-4A00965D9EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{824E52C6-F9DA-4358-A2DB-81F3C9B83526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824E52C6-F9DA-4358-A2DB-81F3C9B83526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824E52C6-F9DA-4358-A2DB-81F3C9B83526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824E52C6-F9DA-4358-A2DB-81F3C9B83526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

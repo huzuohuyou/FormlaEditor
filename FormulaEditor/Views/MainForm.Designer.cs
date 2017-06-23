@@ -106,7 +106,7 @@
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.close_frm_Click);
             // 
@@ -121,7 +121,7 @@
             // 开始调试ToolStripMenuItem
             // 
             this.开始调试ToolStripMenuItem.Name = "开始调试ToolStripMenuItem";
-            this.开始调试ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.开始调试ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.开始调试ToolStripMenuItem.Text = "开始调试";
             this.开始调试ToolStripMenuItem.Click += new System.EventHandler(this.debug_pyfile_Click);
             // 
@@ -136,7 +136,7 @@
             // rUN_KPI
             // 
             this.rUN_KPI.Name = "rUN_KPI";
-            this.rUN_KPI.Size = new System.Drawing.Size(152, 22);
+            this.rUN_KPI.Size = new System.Drawing.Size(103, 22);
             this.rUN_KPI.Text = "RUN";
             this.rUN_KPI.Click += new System.EventHandler(this.rUN_KPI_Click);
             // 
@@ -316,7 +316,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.ms_singel;
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormulaEditor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

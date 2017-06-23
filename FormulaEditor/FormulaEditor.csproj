@@ -98,12 +98,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\ucAge.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ucAge.Designer.cs">
+      <DependentUpon>ucAge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CodEditor.cs" />
     <Compile Include="Views\frmConnSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmConnSetting.Designer.cs">
       <DependentUpon>frmConnSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmDemo.Designer.cs">
+      <DependentUpon>frmDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmLoading.cs">
       <SubType>Form</SubType>
@@ -149,11 +161,17 @@
     </Compile>
     <Compile Include="Utils\HotKeyManager.cs" />
     <Compile Include="Utils\SearchManager.cs" />
+    <EmbeddedResource Include="Views\ucAge.resx">
+      <DependentUpon>ucAge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmConnSetting.resx">
       <DependentUpon>frmConnSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmCreateFormula.resx">
       <DependentUpon>frmCreateFormula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmDemo.resx">
+      <DependentUpon>frmDemo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmLoading.resx">
       <DependentUpon>frmLoading.cs</DependentUpon>
@@ -195,6 +213,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.Wfcl\Common.Wfcl.csproj">
+      <Project>{824E52C6-F9DA-4358-A2DB-81F3C9B83526}</Project>
+      <Name>Common.Wfcl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormulaEditor.Core\FormulaEditor.Core.csproj">
       <Project>{33e2dd11-49ad-4bc2-90e4-485b60116bfc}</Project>
       <Name>FormulaEditor.Core</Name>
