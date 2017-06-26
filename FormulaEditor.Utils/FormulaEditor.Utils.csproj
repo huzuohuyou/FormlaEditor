@@ -67,6 +67,7 @@
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApi\IWork.cs" />
+    <Compile Include="WebApi\ServiceEntity.cs" />
     <Compile Include="WebApi\WebApiHelper.cs" />
   </ItemGroup>
   <ItemGroup>

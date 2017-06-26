@@ -22,7 +22,7 @@ namespace FormulaEditor.Views
 
         public void StopLoading()
         {
-            this.Close();
+            this.FindForm().Close();
         }
 
         public void OnLoading()

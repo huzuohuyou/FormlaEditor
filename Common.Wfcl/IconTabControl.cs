@@ -13,7 +13,7 @@ namespace Common.Wfcl
 {
     public class IconTabControl : TabControl
     {
-        public static Color ACColor = Color.FromArgb(35, 168, 109);
+        public static Color ACColor = Color.FromArgb(0, 122, 204);
         private int W;
         private int H;
         protected override void CreateHandle()
@@ -59,14 +59,16 @@ namespace Common.Wfcl
         public IconTabControl()
         {
 
-            SetStyle(ControlStyles.AllPaintingInWmPaint |
-ControlStyles.UserPaint | ControlStyles.ResizeRedraw |
-ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint 
+                | ControlStyles.UserPaint 
+                | ControlStyles.ResizeRedraw 
+                | ControlStyles.OptimizedDoubleBuffer, true);
             DoubleBuffered = true;
-            BackColor = Color.FromArgb(60, 70, 73);
+            BackColor = Color.FromArgb(45, 45, 48);
             Font = new Font("Segoe UI", 10);
             SizeMode = TabSizeMode.Fixed;
-            ItemSize = new Size(120, 40);
+            ItemSize = new Size(120, 24);
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -80,6 +82,11 @@ ControlStyles.OptimizedDoubleBuffer, true);
             _withG.PixelOffsetMode = PixelOffsetMode.HighQuality;
             _withG.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
             _withG.Clear(_BaseColor);
+
+            Rectangle LineSize = new Rectangle(
+                    new Point(4, 26),
+                    new Size(Width - 8, 2));
+            _withG.FillRectangle(new SolidBrush(_ActiveColor), LineSize);
             try
             {
                 SelectedTab.BackColor = BGColor;
@@ -89,16 +96,18 @@ ControlStyles.OptimizedDoubleBuffer, true);
             }
             for (int i = 0; i <= TabCount - 1; i++)
             {
-                Rectangle Base = new Rectangle(new Point(GetTabRect(i).Location.X
-+ 2, GetTabRect(i).Location.Y), new Size(GetTabRect(i).Width,
-GetTabRect(i).Height));
-                Rectangle BaseSize = new Rectangle(Base.Location, new
-Size(Base.Width, Base.Height));
+                Rectangle Base = new Rectangle(
+                    new Point(GetTabRect(i).Location.X + 2, 
+                    GetTabRect(i).Location.Y), 
+                    new Size(GetTabRect(i).Width,
+                    GetTabRect(i).Height));
+                Rectangle BaseSize = new Rectangle(
+                    Base.Location, 
+                    new Size(Base.Width, Base.Height));
                 if (i == SelectedIndex)
                 {
                     _withG.FillRectangle(new SolidBrush(_BaseColor), BaseSize);
-                    _withG.FillRectangle(new SolidBrush(_ActiveColor),
-BaseSize);
+                    _withG.FillRectangle(new SolidBrush(_ActiveColor),BaseSize);
                     if (ImageList != null)
                     {
                         try
@@ -106,16 +115,25 @@ BaseSize);
                             //有对应的ImageList，我们可以流出空间来绘制image 
                             if (ImageList.Images[TabPages[i].ImageIndex] != null)
                             {
-                                _withG.DrawImage(ImageList.Images[TabPages[i].ImageIndex], new
-                            Point(BaseSize.Location.X + 8, BaseSize.Location.Y + 6));
-                                _withG.DrawString("      " + TabPages[i].Text,
-Font, Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                                _withG.DrawImage(
+                                    ImageList.Images[TabPages[i].ImageIndex], 
+                                    new Point(BaseSize.Location.X + 8, BaseSize.Location.Y + 6));
+                                _withG.DrawString(
+                                    "      " + TabPages[i].Text,
+                                    Font, 
+                                    Brushes.White,  
+                                    BaseSize, 
+                                    GDIHelpers.CenterSF);
                             }
                             else
                             {
                                 //绘制页签标题 
-                                _withG.DrawString(TabPages[i].Text, Font,
-Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                                _withG.DrawString(
+                                    TabPages[i].Text, 
+                                    Font,
+                                    Brushes.White, 
+                                    BaseSize, 
+                                    GDIHelpers.CenterSF);
                             }
                         }
                         catch (Exception ex)
@@ -130,18 +148,28 @@ Brushes.White, BaseSize, GDIHelpers.CenterSF);
                             if (IconTexts[i] != "")
                             {
                                 //绘制字符图标 
-                                _withG.DrawString(IconTexts[i], new Font("Wingdings",
-22), new SolidBrush(_BaseColor), new Point(BaseSize.Location.X + 8,
-BaseSize.Location.Y + 6));
+                                _withG.DrawString(
+                                    IconTexts[i], 
+                                    new Font("Wingdings",22), 
+                                    new SolidBrush(_BaseColor), 
+                                    new Point(BaseSize.Location.X + 8,
+                                    BaseSize.Location.Y + 6));
                                 //绘制页签标题 
-                                _withG.DrawString("      " + TabPages[i].Text, Font,
-Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                                _withG.DrawString(
+                                    "      " + TabPages[i].Text, 
+                                    Font,
+                                    Brushes.White, 
+                                    BaseSize, 
+                                    GDIHelpers.CenterSF);
                             }
                             else
                             {
                                 //只绘制页签标题 
-                                _withG.DrawString(TabPages[i].Text, Font,
-Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                                _withG.DrawString(
+                                    TabPages[i].Text, 
+                                    Font,Brushes.White, 
+                                    BaseSize, 
+                                    GDIHelpers.CenterSF);
                             }
                         }
                         catch (Exception ex)
@@ -151,8 +179,11 @@ Brushes.White, BaseSize, GDIHelpers.CenterSF);
                     }
                     else
                     {
-                        _withG.DrawString(TabPages[i].Text, Font,
-Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                        _withG.DrawString(
+                            TabPages[i].Text, 
+                            Font,Brushes.White, 
+                            BaseSize, 
+                            GDIHelpers.CenterSF);
                     }
                 }
                 else
@@ -164,23 +195,31 @@ Brushes.White, BaseSize, GDIHelpers.CenterSF);
                         {
                             if (ImageList.Images[TabPages[i].ImageIndex] != null)
                             {
-                                _withG.DrawImage(ImageList.Images[TabPages[i].ImageIndex], new
-                            Point(BaseSize.Location.X + 8, BaseSize.Location.Y + 6));
-                                _withG.DrawString("      " + TabPages[i].Text,
-Font, new SolidBrush(Color.White), BaseSize, new StringFormat
-{
-    LineAlignment = StringAlignment.Center,
-    Alignment = StringAlignment.Center
-});
+                                _withG.DrawImage(
+                                    ImageList.Images[TabPages[i].ImageIndex], 
+                                    new Point(BaseSize.Location.X + 8, BaseSize.Location.Y + 6));
+                                _withG.DrawString(
+                                    "      " + TabPages[i].Text,
+                                    Font, new SolidBrush(Color.White), 
+                                    BaseSize, 
+                                    new StringFormat
+                                    {
+                                        LineAlignment = StringAlignment.Center,
+                                        Alignment = StringAlignment.Center
+                                    });
                             }
                             else
                             {
-                                _withG.DrawString(TabPages[i].Text, Font, new
-SolidBrush(Color.White), BaseSize, new StringFormat
-{
-    LineAlignment = StringAlignment.Center,
-    Alignment = StringAlignment.Center
-});
+                                _withG.DrawString(
+                                    TabPages[i].Text, 
+                                    Font, 
+                                    new SolidBrush(Color.White), 
+                                    BaseSize, 
+                                    new StringFormat
+                                    {
+                                        LineAlignment = StringAlignment.Center,
+                                        Alignment = StringAlignment.Center
+                                    });
                             }
                         }
                         catch (Exception ex)
@@ -194,16 +233,27 @@ SolidBrush(Color.White), BaseSize, new StringFormat
                         {
                             if (IconTexts[i] != "")
                             {
-                                _withG.DrawString(IconTexts[i], new Font("Wingdings",
-22), new SolidBrush(_ActiveColor), new Point(BaseSize.Location.X + 8,
-BaseSize.Location.Y + 6));
-                                _withG.DrawString("      " + TabPages[i].Text, Font,
-Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                                _withG.DrawString(
+                                    IconTexts[i], 
+                                    new Font("Wingdings",22), 
+                                    new SolidBrush(_ActiveColor), 
+                                    new Point(BaseSize.Location.X + 8,
+                                    BaseSize.Location.Y + 6));
+                                _withG.DrawString(
+                                    "      " + TabPages[i].Text, 
+                                    Font,
+                                    Brushes.White, 
+                                    BaseSize, 
+                                    GDIHelpers.CenterSF);
                             }
                             else
                             {
-                                _withG.DrawString(TabPages[i].Text, Font,
-Brushes.White, BaseSize, GDIHelpers.CenterSF);
+                                _withG.DrawString(
+                                    TabPages[i].Text, 
+                                    Font,
+                                    Brushes.White, 
+                                    BaseSize, 
+                                    GDIHelpers.CenterSF);
                             }
                         }
                         catch (Exception ex)
@@ -213,12 +263,17 @@ Brushes.White, BaseSize, GDIHelpers.CenterSF);
                     }
                     else
                     {
-                        _withG.DrawString(TabPages[i].Text, Font, new
-SolidBrush(Color.White), BaseSize, new StringFormat
-{
-    LineAlignment = StringAlignment.Center,
-    Alignment = StringAlignment.Center
-});
+                        _withG.DrawString(
+                            TabPages[i].Text, 
+                            Font, 
+                            new
+                            SolidBrush(Color.White), 
+                            BaseSize, 
+                            new StringFormat
+                            {
+                                LineAlignment = StringAlignment.Center,
+                                Alignment = StringAlignment.Center
+                            });
                     }
                 }
             }

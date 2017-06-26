@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FormulaEditor.Core
 {
-    public interface ICanShowSaveResult:ICanDo
+    public interface ICanRefreshSavParameResult:ICanDo
     {
-        void ShowResult(string msg);
+        void RefreshSavParameResult(string msg);
     }
 }

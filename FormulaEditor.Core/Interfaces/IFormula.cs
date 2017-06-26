@@ -16,9 +16,11 @@ namespace FormulaEditor.Core
         void ShowKPIForParams(int kpiId);
 
         void ShowKPIForBody(int kpiId);
-        int SaveFormulaParam(List<Param> list);
 
-        int SavaFormulaBody(FormulaBody body);
+        void SaveFormulaParam(List<Param> list, ICanCallBack callback);
+
+        //int SavaFormulaBody(FormulaBody body);
+        void SavaFormulaBody(FormulaBody formulaBody, ICanCallBack callback);
         //void RefreshKpiScript(int kPI_ID);
     }
 }

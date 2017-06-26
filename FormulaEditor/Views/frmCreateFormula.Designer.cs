@@ -104,6 +104,8 @@
             // 
             // rtb_note
             // 
+            this.rtb_note.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_note.Location = new System.Drawing.Point(58, 20);
             this.rtb_note.Name = "rtb_note";
             this.rtb_note.Size = new System.Drawing.Size(441, 53);
@@ -161,7 +163,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_save);
             this.splitContainer2.Panel2.Controls.Add(this.btn_test);
             this.splitContainer2.Size = new System.Drawing.Size(505, 247);
-            this.splitContainer2.SplitterDistance = 219;
+            this.splitContainer2.SplitterDistance = 209;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -172,7 +174,7 @@
             this.TextPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextPanel.Location = new System.Drawing.Point(0, 0);
             this.TextPanel.Name = "TextPanel";
-            this.TextPanel.Size = new System.Drawing.Size(505, 219);
+            this.TextPanel.Size = new System.Drawing.Size(505, 209);
             this.TextPanel.TabIndex = 0;
             this.TextPanel.TabStop = false;
             this.TextPanel.Text = "方法体";
@@ -191,8 +193,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.gb_fz);
-            this.splitContainer4.Size = new System.Drawing.Size(499, 199);
-            this.splitContainer4.SplitterDistance = 99;
+            this.splitContainer4.Size = new System.Drawing.Size(499, 189);
+            this.splitContainer4.SplitterDistance = 94;
             this.splitContainer4.TabIndex = 0;
             // 
             // gb_fm
@@ -200,7 +202,7 @@
             this.gb_fm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_fm.Location = new System.Drawing.Point(0, 0);
             this.gb_fm.Name = "gb_fm";
-            this.gb_fm.Size = new System.Drawing.Size(499, 99);
+            this.gb_fm.Size = new System.Drawing.Size(499, 94);
             this.gb_fm.TabIndex = 0;
             this.gb_fm.TabStop = false;
             this.gb_fm.Text = "分母公式";
@@ -210,7 +212,7 @@
             this.gb_fz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_fz.Location = new System.Drawing.Point(0, 0);
             this.gb_fz.Name = "gb_fz";
-            this.gb_fz.Size = new System.Drawing.Size(499, 96);
+            this.gb_fz.Size = new System.Drawing.Size(499, 91);
             this.gb_fz.TabIndex = 1;
             this.gb_fz.TabStop = false;
             this.gb_fz.Text = "分子公式";
@@ -228,7 +230,8 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(419, 0);
+            this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_save.Location = new System.Drawing.Point(419, 4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 11;
@@ -238,7 +241,8 @@
             // 
             // btn_test
             // 
-            this.btn_test.Location = new System.Drawing.Point(338, 0);
+            this.btn_test.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_test.Location = new System.Drawing.Point(338, 4);
             this.btn_test.Name = "btn_test";
             this.btn_test.Size = new System.Drawing.Size(75, 23);
             this.btn_test.TabIndex = 12;

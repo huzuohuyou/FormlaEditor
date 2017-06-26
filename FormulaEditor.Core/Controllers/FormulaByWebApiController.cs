@@ -10,9 +10,10 @@ namespace FormulaEditor.Core
 {
     public class FormulaByWebApiController : IFormula
     {
+        KPINode kpi;
         ICanDo can;
         SendMessage send;
-        public FormulaByWebApiController(ICanDo c, SendMessage s) { can = c;send = s; }
+        public FormulaByWebApiController(ICanDo c, SendMessage s, KPINode k) { can = c;send = s;kpi = k; }
 
         public void ShowDataItemDict(string sdCode)
         {
@@ -67,32 +68,27 @@ namespace FormulaEditor.Core
             }
         }
 
-        public int SavaFormulaBody(FormulaBody body)
+        public void SavaFormulaBody(FormulaBody body ,ICanCallBack callback)
         {
             try
             {
-                WebApiHelper.doPut("formula/kpibody", body, new ShowSaveParamResult(can as ICanShowSaveResult));
-                return 1;
-                
+                WebApiHelper.doPut("formula/kpibody", body, callback);
             }
             catch (Exception ex)
             {
                 send(ex.ToString());
-                return 0;
             }
         }
 
-        public int SaveFormulaParam(List<Param> list)
+        public void SaveFormulaParam(List<Param> list, ICanCallBack callback)
         {
             try
             {
-                WebApiHelper.doPut("formula/kpiparam", list, new ShowSaveParamResult(can as ICanShowSaveResult));
-                return 1;
+                WebApiHelper.doPut("formula/kpiparam", list, callback);
             }
             catch (Exception ex)
             {
                 send(ex.ToString());
-                return 0;
             }
         }
         

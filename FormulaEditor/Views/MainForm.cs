@@ -72,7 +72,6 @@ namespace FormulaEditor
         {
             frmCreateFormula frm = new frmCreateFormula(this,currentKpi,dlog);
             frm.ShowDialog();
-            
         }
 
         private void cms_zb_manager_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -161,8 +160,6 @@ namespace FormulaEditor
                 }
             }
         }
-
-        
         
         public void log(string msg)
         {

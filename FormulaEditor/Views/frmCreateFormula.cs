@@ -10,7 +10,7 @@ using FormulaEditor.Views;
 
 namespace FormulaEditor
 {
-    public partial class frmCreateFormula : Form, ICanCallBack, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanShowSaveResult
+    public partial class frmCreateFormula : Form, ICanCallBack, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanRefreshSavParameResult
     {
         KPINode kpi;
         SendMessage send;
@@ -68,7 +68,7 @@ namespace FormulaEditor
             send = s;
             InitializeComponent();
             panel_param.AllowDrop = true;
-            controller = new FormulaByWebApiController(this,send);
+            controller = new FormulaByWebApiController(this,send,kpi);
             controller.ShowDataItemDict(kpi.SD_CODE);
             controller.ShowKPIForParams(kpi.KPI_ID);
             controller.ShowKPIForBody(kpi.KPI_ID);
@@ -100,11 +100,11 @@ namespace FormulaEditor
                         list.Add(r.param);
                     }
                     );
-                    controller.SavaFormulaBody(new FormulaBody() { KPIId = kpi?.KPI_ID.ToString(), Note = rtb_note.Text.Trim(), FenMu = rtb_denominator.Text.Trim(), FenZi = rtb_numerator.Text.Trim() });
+                    controller.SavaFormulaBody(new FormulaBody() { KPIId = kpi?.KPI_ID.ToString(), Note = rtb_note.Text.Trim(), FenMu = rtb_denominator.Text.Trim(), FenZi = rtb_numerator.Text.Trim() }, callback);
 
 
-                    controller.SaveFormulaParam(list);
-                    callback.RefreshKpiScript(kpi.KPI_ID);
+                    controller.SaveFormulaParam(list, callback);
+                    //callback.RefreshKpiScript(kpi.KPI_ID);
                     FindForm().Close();
                     
                 }
@@ -283,7 +283,7 @@ namespace FormulaEditor
 
         
 
-        public void ShowResult(string msg)
+        public void RefreshSavParameResult(string msg)
         {
             send(msg);
         }
@@ -301,6 +301,16 @@ namespace FormulaEditor
         public void log(string msg)
         {
             callback.log(msg);
+        }
+
+        public void Do(string json)
+        {
+            callback.RefreshKpiScript(kpi.KPI_ID);
+        }
+
+        public void SendExMsg(string msg)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,7 +15,8 @@ namespace FormulaEditor.Utils.WebApi
         {
             get
             {
-                var url = ConfigHelper.GetAppConfig("BaseUrl");
+                ServiceEntity entity = new ServiceEntity() {IP= ConfigHelper.GetAppConfig("IP"),Port= ConfigHelper.GetAppConfig("Port") };
+                var url = entity.Url;
                 if (url == null)
                 {
                     throw new Exception("BaseUrl未设置!!!");

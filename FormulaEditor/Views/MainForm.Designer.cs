@@ -39,6 +39,8 @@
             this.开始调试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rUN_KPI = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ServiceUrlSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tv_singal = new System.Windows.Forms.TreeView();
@@ -53,8 +55,6 @@
             this.rtb_log = new System.Windows.Forms.RichTextBox();
             this.cms_console = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ServiceUrlSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.cms_code_manager.SuspendLayout();
             this.ms_singel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -143,6 +143,21 @@
             this.rUN_KPI.Text = "RUN";
             this.rUN_KPI.Click += new System.EventHandler(this.rUN_KPI_Click);
             // 
+            // 工具ToolStripMenuItem
+            // 
+            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ServiceUrlSetting});
+            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.工具ToolStripMenuItem.Text = "工具";
+            // 
+            // ServiceUrlSetting
+            // 
+            this.ServiceUrlSetting.Name = "ServiceUrlSetting";
+            this.ServiceUrlSetting.Size = new System.Drawing.Size(136, 22);
+            this.ServiceUrlSetting.Text = "服务器设置";
+            this.ServiceUrlSetting.Click += new System.EventHandler(this.ServiceUrlSetting_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -177,6 +192,7 @@
             // 
             // tv_singal
             // 
+            this.tv_singal.BackColor = System.Drawing.SystemColors.Window;
             this.tv_singal.ContextMenuStrip = this.cms_zb_manager;
             this.tv_singal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tv_singal.FullRowSelect = true;
@@ -308,21 +324,6 @@
             this.清空ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.clear_console_Click);
-            // 
-            // 工具ToolStripMenuItem
-            // 
-            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ServiceUrlSetting});
-            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.工具ToolStripMenuItem.Text = "工具";
-            // 
-            // ServiceUrlSetting
-            // 
-            this.ServiceUrlSetting.Name = "ServiceUrlSetting";
-            this.ServiceUrlSetting.Size = new System.Drawing.Size(152, 22);
-            this.ServiceUrlSetting.Text = "服务器设置";
-            this.ServiceUrlSetting.Click += new System.EventHandler(this.ServiceUrlSetting_Click);
             // 
             // MainForm
             // 
