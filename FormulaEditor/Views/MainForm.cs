@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, ICanCallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult
+    public partial class MainForm : Form, ICanCallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult, ICanRefreshKPIDict
     {
         ILoading startform = new frmLoading();
         
@@ -22,13 +22,18 @@ namespace FormulaEditor
         public MainForm()
         {
             startform.OnLoading();
-            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
             this.Visible = false;
             InitializeComponent();
             controller =new KPIByWebApiController(this,dlog);
             TextArea = new CodEditor(TextPanel, cms_code_manager).TextArea;
-            controller.ShowKPIDict();
+            RefreshKPIDict();
             dlog = new SendMessage(log);
+        }
+
+        public void RefreshKPIDict()
+        {
+            controller.ShowKPIDict();
         }
 
         private void debug_pyfile_Click(object sender, EventArgs e)
@@ -193,6 +198,12 @@ namespace FormulaEditor
         public void ShowKPIResult(string result)
         {
             log(result);
+        }
+
+        private void ServiceUrlSetting_Click(object sender, EventArgs e)
+        {
+            frmServiceUrl frm = new frmServiceUrl(this);
+            frm.ShowDialog();
         }
     }
 }

@@ -98,6 +98,7 @@
     <Compile Include="SD_ITEM_INFO.cs">
       <DependentUpon>Formula.tt</DependentUpon>
     </Compile>
+    <Compile Include="ServiceEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

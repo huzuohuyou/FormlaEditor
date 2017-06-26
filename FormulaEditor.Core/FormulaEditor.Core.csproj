@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\ICanInitFormulaBody.cs" />
     <Compile Include="Interfaces\ICanInitKPIList.cs" />
     <Compile Include="Interfaces\ICanInitKPIParam.cs" />
+    <Compile Include="Interfaces\ICanRefreshKPIDict.cs" />
     <Compile Include="Interfaces\ICanShowKPIResult.cs" />
     <Compile Include="Interfaces\ICanShowKpiScript.cs" />
     <Compile Include="Interfaces\ICanSaveFormulaBody.cs" />

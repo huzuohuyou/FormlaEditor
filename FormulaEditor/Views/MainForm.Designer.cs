@@ -53,6 +53,8 @@
             this.rtb_log = new System.Windows.Forms.RichTextBox();
             this.cms_console = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ServiceUrlSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.cms_code_manager.SuspendLayout();
             this.ms_singel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -88,7 +90,8 @@
             this.ms_singel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
             this.调试ToolStripMenuItem,
-            this.kPIToolStripMenuItem});
+            this.kPIToolStripMenuItem,
+            this.工具ToolStripMenuItem});
             this.ms_singel.Location = new System.Drawing.Point(0, 0);
             this.ms_singel.Name = "ms_singel";
             this.ms_singel.Size = new System.Drawing.Size(1008, 25);
@@ -306,6 +309,21 @@
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.clear_console_Click);
             // 
+            // 工具ToolStripMenuItem
+            // 
+            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ServiceUrlSetting});
+            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.工具ToolStripMenuItem.Text = "工具";
+            // 
+            // ServiceUrlSetting
+            // 
+            this.ServiceUrlSetting.Name = "ServiceUrlSetting";
+            this.ServiceUrlSetting.Size = new System.Drawing.Size(152, 22);
+            this.ServiceUrlSetting.Text = "服务器设置";
+            this.ServiceUrlSetting.Click += new System.EventHandler(this.ServiceUrlSetting_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -364,6 +382,8 @@
         private System.Windows.Forms.ImageList il_data_satate;
         private System.Windows.Forms.ToolStripMenuItem kPIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rUN_KPI;
+        private System.Windows.Forms.ToolStripMenuItem 工具ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ServiceUrlSetting;
     }
 }
 

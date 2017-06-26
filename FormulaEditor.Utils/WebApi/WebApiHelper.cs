@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormulaEditor.Utils.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,7 +11,18 @@ namespace FormulaEditor.Utils.WebApi
 {
     public static class WebApiHelper
     {
-        public static readonly string BaseUrl = "http://localhost:8087//";
+        public static string BaseUrl
+        {
+            get
+            {
+                var url = ConfigHelper.GetAppConfig("BaseUrl");
+                if (url == null)
+                {
+                    throw new Exception("BaseUrl未设置!!!");
+                }
+                return url;
+            }
+        }
 
         #region 字典传参
 
