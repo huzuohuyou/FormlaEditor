@@ -5,6 +5,7 @@ using FormulaEditor.Model;
 using Newtonsoft.Json;
 using FormulaEditor.Core.Controllers;
 using FormulaEditor.Core.Modules;
+using FormulaEditor.Core.Interfaces;
 
 namespace FormulaEditor.Core
 {
@@ -68,29 +69,18 @@ namespace FormulaEditor.Core
             }
         }
 
-        public void SavaFormulaBody(FormulaBody body ,ICanCallBack callback)
-        {
-            try
-            {
-                WebApiHelper.doPut("formula/kpibody", body, callback);
-            }
-            catch (Exception ex)
-            {
-                send(ex.ToString());
-            }
-        }
-
-        public void SaveFormulaParam(List<Param> list, ICanCallBack callback)
-        {
-            try
-            {
-                WebApiHelper.doPut("formula/kpiparam", list, callback);
-            }
-            catch (Exception ex)
-            {
-                send(ex.ToString());
-            }
-        }
         
+
+        public void SavaFormula(FormulaEntity entity, ICanDo ican)
+        {
+            try
+            {
+                WebApiHelper.doPut("formula/current", entity,new RefreshKPIScript( ican as ICanRefreshKPIScript));
+            }
+            catch (Exception ex)
+            {
+                send(ex.ToString());
+            }
+        }
     }
 }

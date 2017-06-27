@@ -18,7 +18,7 @@ namespace FormulaEditor.Core.Controllers
 
         public void SendExMsg(string msg)
         {
-            (can as ICanCallBack)?.log(msg);
+            (can as ICanConsoleLog)?.log(msg);
             //send(msg);
         }
     }

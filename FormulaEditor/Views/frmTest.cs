@@ -1,4 +1,5 @@
 ﻿using FormulaEditor.Core;
+using FormulaEditor.Core.Interfaces;
 using FormulaEditor.Model;
 using FormulaEditor.Views;
 using System;
@@ -8,19 +9,29 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class frmTest : Form, IManageParam
+    public partial class frmTest : Form, IManageParam, ICanTestFormula
     {
         private UCParam ucParam1;
         private UCParam ucParam2;
         private UCParam ucParam3;
-        ICanCallBack callback;
+        SendMessage send;
         List<UCParam> uclist;
-        public frmTest(ICanCallBack cb)
+
+        public frmTest(SendMessage s):this(s,null)
         {
             InitializeComponent();
-            this.callback = cb;
+            this.send = s;
             InitUCParam();
             uclist = new List<UCParam>() { ucParam1, ucParam2, ucParam3};
+        }
+
+        public frmTest(SendMessage s,KPINode currentKpi)
+        {
+            this.currentKpi = currentKpi;
+            InitializeComponent();
+            this.send = s;
+            InitUCParam();
+            uclist = new List<UCParam>() { ucParam1, ucParam2, ucParam3 };
         }
 
         public void InitUCParam() {
@@ -53,7 +64,7 @@ namespace FormulaEditor
                 list.Add(r.GetParam());
             });
 
-            callback.CallBackParams(list);
+            TestFormula(list);
         }
 
         public void AddParam()
@@ -75,6 +86,13 @@ namespace FormulaEditor
                 this.Controls.Remove(uc);
             }
             
+        }
+        
+
+        public void TestFormula(List<Param> list)
+        {
+            UsingPython python = new UsingPython(currentKpi);
+            send(python.ExcuteScriptFile(list).ToString());
         }
     }
 }

@@ -11,24 +11,46 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, ICanCallBack, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult, ICanRefreshKPIDict
+    public partial class MainForm : Form, ICanConsoleLog, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult, ICanRefreshKPIDict, ICanRefreshKPIScript
     {
         ILoading startform = new frmLoading();
         
         IKPI controller;
         KPINode currentKpi;
         public Scintilla TextArea;
-        SendMessage dlog ;
+        SendMessage send ;
         public MainForm()
         {
             startform.OnLoading();
             //Thread.Sleep(3000);
-            this.Visible = false;
+            
             InitializeComponent();
-            controller =new KPIByWebApiController(this,dlog);
+            controller =new KPIByWebApiController(this,send);
             TextArea = new CodEditor(TextPanel, cms_code_manager).TextArea;
             RefreshKPIDict();
-            dlog = new SendMessage(log);
+            send = new SendMessage(log);
+            HideForm();
+        }
+
+        /// <summary>
+        /// 要在InitializeComponent后运行
+        /// </summary>
+        public void HideForm()
+        {
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+            SetVisibleCore(false);
+        }
+
+        public void ShowForm()
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.ShowInTaskbar = true;
+            SetVisibleCore(true);
+        }
+        protected override void SetVisibleCore(bool value)
+        {
+            base.SetVisibleCore(value);
         }
 
         public void RefreshKPIDict()
@@ -40,12 +62,12 @@ namespace FormulaEditor
         {
             try
             {
-                frmTest frm = new frmTest(this);
+                frmTest frm = new frmTest(send,currentKpi);
                 frm.ShowDialog();
             }
             catch (Exception ex)
             {
-                log(ex.ToString());
+                send(ex.ToString());
             }
             
         }
@@ -58,19 +80,19 @@ namespace FormulaEditor
                     &&  tv_singal.SelectedNode.Tag!=null)
                 {
                     currentKpi = tv_singal.SelectedNode.Tag as KPINode;
-                    TextArea.Text = currentKpi.ScriptString; 
+                    controller.RefreshKpiScript(currentKpi.KPI_ID);// currentKpi.ScriptString; 
                 }
             }
             catch (Exception ex)
             {
-                log(ex.ToString());
+                send(ex.ToString());
             }
             
         }
 
         private void create_fun_Click(object sender, EventArgs e)
         {
-            frmCreateFormula frm = new frmCreateFormula(this,currentKpi,dlog);
+            frmCreateFormula frm = new frmCreateFormula(this,currentKpi,send);
             frm.ShowDialog();
         }
 
@@ -103,11 +125,7 @@ namespace FormulaEditor
             TextPanel.Controls.Add(this.TextArea);
         }
 
-        public void CallBackParams(List<Param> list)
-        {
-            UsingPython python = new UsingPython(currentKpi);
-            log(python.ExcuteScriptFile(list).ToString());
-        }
+        
 
         public void InitKPIDict(List<KPINode> list)
         {
@@ -145,7 +163,7 @@ namespace FormulaEditor
                 }
             }
             startform.StopLoading();
-            this.Visible = true;
+            ShowForm();
         }
 
         private void tv_singal_MouseDown(object sender, MouseEventArgs e)
@@ -178,12 +196,14 @@ namespace FormulaEditor
             {
                 if (tv_singal.SelectedNode.Nodes.Count == 0)
                 {
+                    currentKpi.ScriptString = script;
                     TextArea.Text = script;
+                    //TextArea.DataBindings.Add("Text",currentKpi,"ScriptString");
                 }
             }
             catch (Exception ex)
             {
-                log(ex.ToString());
+                send(ex.ToString());
             }
         }
 
@@ -194,7 +214,7 @@ namespace FormulaEditor
 
         public void ShowKPIResult(string result)
         {
-            log(result);
+            send(result);
         }
 
         private void ServiceUrlSetting_Click(object sender, EventArgs e)
@@ -202,5 +222,7 @@ namespace FormulaEditor
             frmServiceUrl frm = new frmServiceUrl(this);
             frm.ShowDialog();
         }
+
+       
     }
 }

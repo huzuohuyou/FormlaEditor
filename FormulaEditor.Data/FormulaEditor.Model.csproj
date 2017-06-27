@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormulaBody.cs" />
+    <Compile Include="FormulaEntity.cs" />
     <Compile Include="KPIContext.cs" />
     <Compile Include="KPIFormula.cs" />
     <Compile Include="DataItem.cs" />

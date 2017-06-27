@@ -155,5 +155,10 @@ namespace FormulaEditor.Core
         {
             throw new NotImplementedException();
         }
+
+        public void SavaFormula(FormulaEntity entity, ICanDo ican)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

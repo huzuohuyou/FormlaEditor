@@ -7,14 +7,15 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using FormulaEditor.Views;
+using FormulaEditor.Core.Interfaces;
 
 namespace FormulaEditor
 {
-    public partial class frmCreateFormula : Form, ICanCallBack, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanRefreshSavParameResult
+    public partial class frmCreateFormula : Form, ICanConsoleLog, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanRefreshSavParameResult
     {
         KPINode kpi;
         SendMessage send;
-        ICanCallBack callback;
+        ICanDo ICan;
         List<ucDataItem> ucList = new List<ucDataItem>();
         List<Param> ParamList
         {
@@ -50,7 +51,6 @@ namespace FormulaEditor
                 return string.Format("{1}{0}", body, param);
             }
         }
-
         IFormula controller;
         /// <summary>
         /// 分子公式
@@ -60,11 +60,11 @@ namespace FormulaEditor
         /// 分母公式
         /// </summary>
         public Scintilla rtb_denominator;
-        public frmCreateFormula(ICanCallBack cb, KPINode p, SendMessage s)
+        public frmCreateFormula(ICanDo cb, KPINode p, SendMessage s)
         {
             
             kpi = p;
-            callback = cb;
+            ICan = cb;
             send = s;
             InitializeComponent();
             panel_param.AllowDrop = true;
@@ -100,18 +100,14 @@ namespace FormulaEditor
                         list.Add(r.param);
                     }
                     );
-                    controller.SavaFormulaBody(new FormulaBody() { KPIId = kpi?.KPI_ID.ToString(), Note = rtb_note.Text.Trim(), FenMu = rtb_denominator.Text.Trim(), FenZi = rtb_numerator.Text.Trim() }, callback);
-
-
-                    controller.SaveFormulaParam(list, callback);
-                    //callback.RefreshKpiScript(kpi.KPI_ID);
+                    controller.SavaFormula(new FormulaEntity() {Param = list,Body = new FormulaBody() { KPIId = kpi?.KPI_ID.ToString(), Note = rtb_note.Text.Trim(), FenMu = rtb_denominator.Text.Trim(), FenZi = rtb_numerator.Text.Trim() } }, ICan as ICanRefreshKPIScript);
                     FindForm().Close();
                     
                 }
                 else
                 {
-                    callback.log("存在语法错误请校验修正后保存！！！");
-                    callback.log(checkInfo.Item1);
+                    send("存在语法错误请校验修正后保存！！！");
+                    send(checkInfo.Item1);
                     return;
                 }
             }
@@ -281,8 +277,6 @@ namespace FormulaEditor
             Invalidate();
         }
 
-        
-
         public void RefreshSavParameResult(string msg)
         {
             send(msg);
@@ -293,24 +287,11 @@ namespace FormulaEditor
             throw new NotImplementedException();
         }
 
-        public void RefreshKpiScript(int kpiid)
-        {
-            throw new NotImplementedException();
-        }
-
         public void log(string msg)
         {
-            callback.log(msg);
+            send(msg);
         }
 
-        public void Do(string json)
-        {
-            callback.RefreshKpiScript(kpi.KPI_ID);
-        }
-
-        public void SendExMsg(string msg)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
