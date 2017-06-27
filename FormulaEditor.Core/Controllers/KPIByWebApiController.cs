@@ -9,8 +9,7 @@ namespace FormulaEditor.Core
 {
     public class KPIByWebApiController : AbsWork, IKPI
     {
-        SendMessage send;
-        public KPIByWebApiController(ICanDo c, SendMessage s) :base(c,s) { send = s; }
+        public KPIByWebApiController(ICanDo c, SendMessage s) :base(c,s) {}
 
         public override void Do(string json)
         {

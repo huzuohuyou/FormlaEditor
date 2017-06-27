@@ -11,24 +11,19 @@ using System.Windows.Forms;
 
 namespace FormulaEditor
 {
-    public partial class MainForm : Form, ICanConsoleLog, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult, ICanRefreshKPIDict, ICanRefreshKPIScript
+    public partial class MainForm : BaseForm, ICanConsoleLog, ICanInitKPIDict, ICanShowKpiScript, ICanShowKPIResult, ICanRefreshKPIDict, ICanRefreshKPIScript
     {
         ILoading startform = new frmLoading();
-        
-        IKPI controller;
-        KPINode currentKpi;
         public Scintilla TextArea;
-        SendMessage send ;
+        
         public MainForm()
         {
             startform.OnLoading();
-            //Thread.Sleep(3000);
-            
             InitializeComponent();
+            send = new SendMessage(log);
             controller =new KPIByWebApiController(this,send);
             TextArea = new CodEditor(TextPanel, cms_code_manager).TextArea;
             RefreshKPIDict();
-            send = new SendMessage(log);
             HideForm();
         }
 
@@ -55,7 +50,7 @@ namespace FormulaEditor
 
         public void RefreshKPIDict()
         {
-            controller.ShowKPIDict();
+            (controller as KPIByWebApiController).ShowKPIDict();
         }
 
         private void debug_pyfile_Click(object sender, EventArgs e)
@@ -80,7 +75,7 @@ namespace FormulaEditor
                     &&  tv_singal.SelectedNode.Tag!=null)
                 {
                     currentKpi = tv_singal.SelectedNode.Tag as KPINode;
-                    controller.RefreshKpiScript(currentKpi.KPI_ID);// currentKpi.ScriptString; 
+                    (controller as KPIByWebApiController).RefreshKpiScript(currentKpi.KPI_ID);// currentKpi.ScriptString; 
                 }
             }
             catch (Exception ex)
@@ -209,7 +204,7 @@ namespace FormulaEditor
 
         public void RefreshKpiScript(int kpiid)
         {
-            controller.RefreshKpiScript(kpiid);
+            (controller as KPIByWebApiController).RefreshKpiScript(kpiid);
         }
 
         public void ShowKPIResult(string result)

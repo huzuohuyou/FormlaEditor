@@ -4,19 +4,18 @@ using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using FormulaEditor.Views;
 using FormulaEditor.Core.Interfaces;
 
 namespace FormulaEditor
 {
-    public partial class frmCreateFormula : Form, ICanConsoleLog, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanRefreshSavParameResult
+    public partial class frmCreateFormula : BaseForm, ICanConsoleLog, ICanClear, ICanInitDataItemDict, ICanInitKPIParam,ICanInitFormulaBody, ICanRefreshSavParameResult
     {
-        KPINode kpi;
-        SendMessage send;
         ICanDo ICan;
+
         List<ucDataItem> ucList = new List<ucDataItem>();
+
         List<Param> ParamList
         {
             get
@@ -30,6 +29,7 @@ namespace FormulaEditor
                 return temp;
             }
         }
+
         string TempScript
         {
             get
@@ -51,28 +51,29 @@ namespace FormulaEditor
                 return string.Format("{1}{0}", body, param);
             }
         }
-        IFormula controller;
+        
         /// <summary>
         /// 分子公式
         /// </summary>
         public Scintilla rtb_numerator;
+
         /// <summary>
         /// 分母公式
         /// </summary>
         public Scintilla rtb_denominator;
+
         public frmCreateFormula(ICanDo cb, KPINode p, SendMessage s)
         {
             
-            kpi = p;
+            currentKpi = p;
             ICan = cb;
             send = s;
             InitializeComponent();
             panel_param.AllowDrop = true;
-            controller = new FormulaByWebApiController(this,send,kpi);
-            controller.ShowDataItemDict(kpi.SD_CODE);
-            controller.ShowKPIForParams(kpi.KPI_ID);
-            controller.ShowKPIForBody(kpi.KPI_ID);
-
+            controller = new FormulaByWebApiController(this,send,currentKpi);
+            (controller as FormulaByWebApiController).ShowDataItemDict(currentKpi.SD_CODE);
+            (controller as FormulaByWebApiController).ShowKPIForParams(currentKpi.KPI_ID);
+            (controller as FormulaByWebApiController).ShowKPIForBody(currentKpi.KPI_ID);
             rtb_numerator = new CodEditor(gb_fz, null).TextArea;
             rtb_denominator = new CodEditor(gb_fm, null).TextArea;
             panel_param.VerticalScroll.Visible = true;
@@ -90,17 +91,17 @@ namespace FormulaEditor
         {
             try
             {
-                Tuple<string,bool> checkInfo=controller.CheckFormula(TempScript, ParamList);
+                Tuple<string,bool> checkInfo= (controller as FormulaByWebApiController).CheckFormula(TempScript, ParamList);
                 if (checkInfo.Item2)
                 {
                     List<Param> list = new List<Param>();
                     ucList.ForEach(r =>
                     {
-                        r.param.KPIId = kpi.KPI_ID;
+                        r.param.KPIId = currentKpi.KPI_ID;
                         list.Add(r.param);
                     }
                     );
-                    controller.SavaFormula(new FormulaEntity() {Param = list,Body = new FormulaBody() { KPIId = kpi?.KPI_ID.ToString(), Note = rtb_note.Text.Trim(), FenMu = rtb_denominator.Text.Trim(), FenZi = rtb_numerator.Text.Trim() } }, ICan as ICanRefreshKPIScript);
+                    (controller as FormulaByWebApiController).SavaFormula(new FormulaEntity() {Param = list,Body = new FormulaBody() { KPIId = currentKpi?.KPI_ID.ToString(), Note = rtb_note.Text.Trim(), FenMu = rtb_denominator.Text.Trim(), FenZi = rtb_numerator.Text.Trim() } }, ICan as ICanRefreshKPIScript);
                     FindForm().Close();
                     
                 }
@@ -220,7 +221,7 @@ namespace FormulaEditor
         {
             try
             {
-                send(controller.CheckFormula(TempScript, ParamList).Item1);
+                send((controller as FormulaByWebApiController).CheckFormula(TempScript, ParamList).Item1);
             }
             catch (Exception ex)
             {
@@ -292,6 +293,5 @@ namespace FormulaEditor
             send(msg);
         }
 
-       
     }
 }

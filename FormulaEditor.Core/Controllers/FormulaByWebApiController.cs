@@ -9,12 +9,10 @@ using FormulaEditor.Core.Interfaces;
 
 namespace FormulaEditor.Core
 {
-    public class FormulaByWebApiController : IFormula
+    public class FormulaByWebApiController : AbsWork, IFormula
     {
-        KPINode kpi;
-        ICanDo can;
-        SendMessage send;
-        public FormulaByWebApiController(ICanDo c, SendMessage s, KPINode k) { can = c;send = s;kpi = k; }
+        
+        public FormulaByWebApiController(ICanDo c, SendMessage s, KPINode k) : base(c, s,k) {   }
 
         public void ShowDataItemDict(string sdCode)
         {
@@ -81,6 +79,11 @@ namespace FormulaEditor.Core
             {
                 send(ex.ToString());
             }
+        }
+
+        public override void Do(string json)
+        {
+            throw new NotImplementedException();
         }
     }
 }

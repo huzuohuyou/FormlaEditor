@@ -100,7 +100,6 @@ namespace FormulaEditor
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button25;
-        private KPINode currentKpi;
 
         
     }
