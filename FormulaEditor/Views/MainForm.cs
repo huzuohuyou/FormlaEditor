@@ -39,9 +39,10 @@ namespace FormulaEditor
 
         public void ShowForm()
         {
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             SetVisibleCore(true);
+            startform.StopLoading();
         }
         protected override void SetVisibleCore(bool value)
         {
@@ -50,7 +51,15 @@ namespace FormulaEditor
 
         public void RefreshKPIDict()
         {
-            (controller as KPIByWebApiController).ShowKPIDict();
+            try
+            {
+                (controller as KPIByWebApiController).ShowKPIDict();
+            }
+            catch (Exception ex)
+            {
+                send(ex.Message);
+            }
+            
         }
 
         private void debug_pyfile_Click(object sender, EventArgs e)
@@ -124,40 +133,47 @@ namespace FormulaEditor
 
         public void InitKPIDict(List<KPINode> list)
         {
-            TreeNode rootNode = null;
-            TreeNode typeNode = null;
-            foreach (var item in list)
+            try
             {
-                if (!tv_singal.Nodes.ContainsKey(item.SD_CODE))
+                TreeNode rootNode = null;
+                TreeNode typeNode = null;
+                foreach (var item in list)
                 {
-                    rootNode = new TreeNode(item.SD_CODE);
-                    rootNode.Name = item.SD_CODE;
-                    tv_singal.Nodes.Add(rootNode);
-                }
-                if (!rootNode.Nodes.ContainsKey(item.KPI_TYPE_CODE))
-                {
-                    typeNode = new TreeNode(item.KPI_TYPE_CODE);
-                    typeNode.Name = item.KPI_TYPE_CODE;
-                    rootNode.Nodes.Add(typeNode);
-                }
-                if (typeNode != null)
-                {
-                    TreeNode kpiNode = new TreeNode(item.KPI_NAME);
-                    kpiNode.Name = item.KPI_ID.ToString();
-                    kpiNode.Tag = item;
-                    if (item.Status == null||item.Status==1)
+                    if (!tv_singal.Nodes.ContainsKey(item.SD_CODE))
                     {
-                        kpiNode.ForeColor = Color.Green;
+                        rootNode = new TreeNode(item.SD_CODE);
+                        rootNode.Name = item.SD_CODE;
+                        tv_singal.Nodes.Add(rootNode);
                     }
-                    else
+                    if (!rootNode.Nodes.ContainsKey(item.KPI_TYPE_CODE))
                     {
-                        kpiNode.ForeColor = Color.Red;
+                        typeNode = new TreeNode(item.KPI_TYPE_CODE);
+                        typeNode.Name = item.KPI_TYPE_CODE;
+                        rootNode.Nodes.Add(typeNode);
                     }
-                    //kpiNode.ImageIndex = item.Status == null ? 1 : (int)item.Status;
-                    typeNode.Nodes.Add(kpiNode);
+                    if (typeNode != null)
+                    {
+                        TreeNode kpiNode = new TreeNode(item.KPI_NAME);
+                        kpiNode.Name = item.KPI_ID.ToString();
+                        kpiNode.Tag = item;
+                        if (item.Status == null || item.Status == 1)
+                        {
+                            kpiNode.ForeColor = Color.Green;
+                        }
+                        else
+                        {
+                            kpiNode.ForeColor = Color.Red;
+                        }
+                        //kpiNode.ImageIndex = item.Status == null ? 1 : (int)item.Status;
+                        typeNode.Nodes.Add(kpiNode);
+                    }
                 }
             }
-            startform.StopLoading();
+            catch (Exception ex)
+            {
+                send(ex.Message);
+            }
+            
             ShowForm();
         }
 
@@ -173,11 +189,14 @@ namespace FormulaEditor
                 }
             }
         }
-        
+
         public void log(string msg)
         {
+            if (!ShowInTaskbar)
+            {
+                ShowForm();
+            }
             rtb_log.Text = string.Format("{0} : {1}\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg) + rtb_log.Text;
-
         }
 
         private void rUN_KPI_Click(object sender, EventArgs e)

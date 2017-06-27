@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FormulaEditor.Core;
+using FormulaEditor.Utils.WebApi;
+using System;
 using System.Windows.Forms;
 
 namespace FormulaEditor.Views
@@ -18,7 +20,15 @@ namespace FormulaEditor.Views
 
         private void frmLoading_Load(object sender, EventArgs e)
         {
-
+            //try
+            //{
+            //    WebApiHelper.doGet("app/baseinfo",  new ShowKpiScript(can as ICanShowKpiScript));
+            //}
+            //catch (Exception ex)
+            //{
+            //    frmServiceUrl frm = new frmServiceUrl();
+            //    frm.ShowDialog();
+            //}
         }
 
         public void StopLoading()
