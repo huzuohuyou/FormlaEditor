@@ -23,7 +23,7 @@ namespace FormulaEditor
                 List<Param> temp = new List<Param>();
                 ucList.ForEach(r =>
                 {
-                    r.param.Value = "1";
+                    r.param.Value = r.param.DebugValue;
                     temp.Add(r.param);
                 });
                 return temp;

@@ -11,7 +11,7 @@ namespace FormulaEditor.Model
         public string Name { get; set; }
         public string Type { get; set; }
         public string DataType { get; set; }
-        public string Value { private get; set; }
+        public dynamic Value { private get; set; }
         public string Note
         {
             get { return string.Format("字段：{0} 描述：{1} 数据类型：{2}", Code.Trim(), Name.Trim(),DataType).Trim(); }
