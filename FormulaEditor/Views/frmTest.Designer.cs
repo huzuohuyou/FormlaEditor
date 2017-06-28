@@ -78,7 +78,7 @@ namespace FormulaEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 143);
+            this.ClientSize = new System.Drawing.Size(437, 50);
             this.Controls.Add(this.button25);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

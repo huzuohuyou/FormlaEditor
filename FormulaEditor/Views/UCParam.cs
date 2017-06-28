@@ -8,6 +8,7 @@ namespace FormulaEditor
     public partial class UCParam : UserControl, IParam
     {
         IManageParam manager;
+        private Param r;
         public UCParam()
         {
             InitializeComponent();
@@ -17,7 +18,13 @@ namespace FormulaEditor
             InitializeComponent();
             manager = p;
         }
-
+        public UCParam(IManageParam p, Param r) : this(p)
+        {
+            this.r = r;
+            txt_name.DataBindings.Add("Text", r, "Code");
+            cmb_type.DataBindings.Add("Text", r, "DataType");
+            txt_value.DataBindings.Add("Text", r, "DebugValue");
+        }
         public bool CheckDate()
         {
             DateTime  result;
@@ -36,6 +43,16 @@ namespace FormulaEditor
                 return true;
             }
             throw new Exception(txt_value.Text + "无法转换成double类型!");
+        }
+
+        public bool CheckInt()
+        {
+            int result;
+            if (int.TryParse(txt_value.Text, out result))
+            {
+                return true;
+            }
+            throw new Exception(txt_value.Text + "无法转换成int类型!");
         }
 
         public Param GetParam()
@@ -59,7 +76,11 @@ namespace FormulaEditor
 
         public bool CheckType()
         {
-            if (cmb_type.Text == "double")
+            if (cmb_type.Text == "int")
+            {
+                return CheckInt();
+            }
+            else if (cmb_type.Text == "double")
             {
                 return CheckDouble();
             }
@@ -73,7 +94,7 @@ namespace FormulaEditor
             }
             else
             {
-                throw new Exception("un know type");
+                throw new Exception("unknow type" + cmb_type.Text + typeof(UCParam));
             }
         }
 

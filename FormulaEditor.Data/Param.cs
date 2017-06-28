@@ -38,5 +38,28 @@ namespace FormulaEditor.Model
                 }
             }
         }
+
+        public dynamic DebugValue
+        {
+            get
+            {
+                if (DataType == "int")
+                {
+                    return 1;
+                }
+                else if (DataType == "double")
+                {
+                    return 1.2;
+                }
+                else if (DataType == "datetime")
+                {
+                    return DateTime.Now;
+                }
+                else
+                {
+                    return "测试字符串";
+                }
+            }
+        }
     }
 }

@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("节点0");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("节点2");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("节点1", new System.Windows.Forms.TreeNode[] {
-            treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("节点1");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("节点2");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("节点0", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode19});
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("节点3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("节点1");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("节点2");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("节点0", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("节点3");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("节点0");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("节点2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("节点1", new System.Windows.Forms.TreeNode[] {
+            treeNode2});
             this.iconTabControl1 = new Common.Wfcl.IconTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cTreeView1 = new Common.Wfcl.CTreeView();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.treeViewEX1 = new Common.Wfcl.TreeViewEX();
             this.iconTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -71,7 +71,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage1.Controls.Add(this.cTreeView1);
+            this.tabPage1.Controls.Add(this.treeViewEX1);
             this.tabPage1.Controls.Add(this.treeView1);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.menuStrip1);
@@ -81,42 +81,23 @@
             this.tabPage1.Size = new System.Drawing.Size(669, 426);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
-            // 
-            // cTreeView1
-            // 
-            this.cTreeView1.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(147)))), ((int)(((byte)(49)))));
-            this.cTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.cTreeView1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.cTreeView1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cTreeView1.Location = new System.Drawing.Point(240, 122);
-            this.cTreeView1.Name = "cTreeView1";
-            treeNode15.Name = "节点0";
-            treeNode15.Text = "节点0";
-            treeNode16.Name = "节点2";
-            treeNode16.Text = "节点2";
-            treeNode17.Name = "节点1";
-            treeNode17.Text = "节点1";
-            this.cTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode17});
-            this.cTreeView1.Size = new System.Drawing.Size(121, 97);
-            this.cTreeView1.TabIndex = 3;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(37, 56);
             this.treeView1.Name = "treeView1";
-            treeNode18.Name = "节点1";
-            treeNode18.Text = "节点1";
-            treeNode19.Name = "节点2";
-            treeNode19.Text = "节点2";
-            treeNode20.Name = "节点0";
-            treeNode20.Text = "节点0";
-            treeNode21.Name = "节点3";
-            treeNode21.Text = "节点3";
+            treeNode4.Name = "节点1";
+            treeNode4.Text = "节点1";
+            treeNode5.Name = "节点2";
+            treeNode5.Text = "节点2";
+            treeNode6.Name = "节点0";
+            treeNode6.Text = "节点0";
+            treeNode7.Name = "节点3";
+            treeNode7.Text = "节点3";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode20,
-            treeNode21});
+            treeNode6,
+            treeNode7});
             this.treeView1.Size = new System.Drawing.Size(121, 97);
             this.treeView1.TabIndex = 2;
             // 
@@ -158,6 +139,29 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // treeViewEX1
+            // 
+            this.treeViewEX1.BackColor = System.Drawing.Color.White;
+            this.treeViewEX1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewEX1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeViewEX1.Font = new System.Drawing.Font("微软雅黑", 9.7F);
+            this.treeViewEX1.FullRowSelect = true;
+            this.treeViewEX1.HideSelection = false;
+            this.treeViewEX1.HotTracking = true;
+            this.treeViewEX1.Location = new System.Drawing.Point(359, 89);
+            this.treeViewEX1.Name = "treeViewEX1";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "节点0";
+            treeNode2.Name = "节点2";
+            treeNode2.Text = "节点2";
+            treeNode3.Name = "节点1";
+            treeNode3.Text = "节点1";
+            this.treeViewEX1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode3});
+            this.treeViewEX1.Size = new System.Drawing.Size(121, 97);
+            this.treeViewEX1.TabIndex = 3;
+            // 
             // frmDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -184,6 +188,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TreeView treeView1;
-        private Common.Wfcl.CTreeView cTreeView1;
+        private Common.Wfcl.TreeViewEX treeViewEX1;
     }
 }

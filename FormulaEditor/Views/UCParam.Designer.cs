@@ -1,4 +1,7 @@
-﻿namespace FormulaEditor
+﻿using FormulaEditor.Model;
+using FormulaEditor.Views;
+
+namespace FormulaEditor
 {
     partial class UCParam
     {
@@ -40,8 +43,9 @@
             this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_type.FormattingEnabled = true;
             this.cmb_type.Items.AddRange(new object[] {
-            "string",
+            "int",
             "double",
+            "string",
             "datetime"});
             this.cmb_type.Location = new System.Drawing.Point(231, 5);
             this.cmb_type.Name = "cmb_type";
@@ -106,5 +110,8 @@
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button1;
+        
+
+        
     }
 }

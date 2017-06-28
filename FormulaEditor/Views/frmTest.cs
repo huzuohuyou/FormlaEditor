@@ -8,21 +8,24 @@ using System.Drawing;
 
 namespace FormulaEditor
 {
-    public partial class frmTest : BaseForm, IManageParam, ICanTestFormula
+    public partial class frmTest : BaseForm, IManageParam, ICanTestFormula,ICanInitKPIParam
     {
         private UCParam ucParam1;
         private UCParam ucParam2;
         private UCParam ucParam3;
-        List<UCParam> uclist;
+        List<UCParam> uclist  = new List<UCParam>() ;
 
         public frmTest(SendMessage s, KPINode currentKpi)
         {
             this.currentKpi = currentKpi;
             InitializeComponent();
             this.send = s;
-            InitUCParam();
-            uclist = new List<UCParam>() { ucParam1, ucParam2, ucParam3 };
+            controller = new FormulaByWebApiController(this, send, currentKpi);
+            (controller as FormulaByWebApiController).ShowKPIForParams(currentKpi.KPI_ID);
+            //InitUCParam();
+            //uclist = new List<UCParam>() { ucParam1, ucParam2, ucParam3 };
         }
+
 
         public void InitUCParam()
         {
@@ -50,13 +53,20 @@ namespace FormulaEditor
 
         private void button25_Click(object sender, EventArgs e)
         {
-            List<Param> list = new List<Param>();
-            uclist.ForEach(r =>
+            try
             {
-                list.Add(r.GetParam());
-            });
-
-            TestFormula(list);
+                List<Param> list = new List<Param>();
+                uclist.ForEach(r =>
+                {
+                    list.Add(r.GetParam());
+                });
+                TestFormula(list);
+            }
+            catch (Exception ex)
+            {
+                send(ex.ToString());
+            }
+            
         }
 
         public void AddParam()
@@ -77,13 +87,25 @@ namespace FormulaEditor
                 this.Height = this.Height - 30;
                 this.Controls.Remove(uc);
             }
-
         }
 
         public void TestFormula(List<Param> list)
         {
             UsingPython python = new UsingPython(currentKpi);
             send(python.ExcuteScriptFile(list).ToString());
+        }
+
+        public void InitKPIParam(List<Param> list)
+        {
+            list.ForEach(r =>
+            {
+                UCParam ucp = new UCParam(this,r);
+                ucp.Location = new Point(0, 42 + 30 * uclist.Count);
+                uclist.Add(ucp);
+                this.Controls.Add(ucp);
+                this.Height = this.Height + 30;
+            }
+                );
         }
     }
 }

@@ -42,12 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CTreeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CTreeView.Designer.cs">
-      <DependentUpon>CTreeView.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDemo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +63,12 @@
     <Compile Include="TabPanel.Designer.cs">
       <DependentUpon>TabPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="TreeViewEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TreeViewEX.Designer.cs">
+      <DependentUpon>TreeViewEX.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TabPanel.resx">
       <DependentUpon>TabPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeViewEX.resx">
+      <DependentUpon>TreeViewEX.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

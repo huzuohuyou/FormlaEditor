@@ -1,113 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Common.Wfcl
 {
-    public class API
-    {
-        private const int WS_HSCROLL = 0x100000;
-        private const int WS_VSCROLL = 0x200000;
-        private const int GWL_STYLE = (-16);
-
-        [DllImport("User32.dll")]
-        public static extern IntPtr LoadCursor(IntPtr hInstance, CursorType cursor);
-
-        [DllImport("user32.dll")]
-        public static extern int GetWindowLong(IntPtr hwnd, int nIndex);
-
-        [DllImport("user32.dll")]
-        public static extern bool ShowScrollBar(IntPtr hWnd, int wBar, bool bShow);
-
-
-        public const int WM_PRINTCLIENT = 0x0318;
-        public const int PRF_CLIENT = 0x00000004;
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-
-
-        /// <summary>
-        /// 显示系统光标小手
-        /// 像Win7非经典主题的小手光标
-        /// </summary>
-        public static Cursor Hand
-        {
-            get
-            {
-                IntPtr h = LoadCursor(IntPtr.Zero, CursorType.IDC_HAND);
-                return new Cursor(h);
-            }
-        }
-
-        public static bool IsWinXP
-        {
-            get
-            {
-                OperatingSystem OS = Environment.OSVersion;
-                return (OS.Platform == PlatformID.Win32NT) &&
-                    ((OS.Version.Major > 5) || ((OS.Version.Major == 5) && (OS.Version.Minor == 1)));
-            }
-        }
-
-        public static bool IsWinVista
-        {
-            get
-            {
-                OperatingSystem OS = Environment.OSVersion;
-                return (OS.Platform == PlatformID.Win32NT) && (OS.Version.Major >= 6);
-            }
-        }
-
-        /// <summary>
-        /// 判断是否出现垂直滚动条
-        /// </summary>
-        /// <param name="ctrl">待测控件</param>
-        /// <returns>出现垂直滚动条返回true，否则为false</returns>
-        public static bool IsVerticalScrollBarVisible(Control ctrl)
-        {
-            if (!ctrl.IsHandleCreated)
-                return false;
-
-            return (GetWindowLong(ctrl.Handle, GWL_STYLE) & WS_VSCROLL) != 0;
-        }
-
-        /// <summary>
-        /// 判断是否出现水平滚动条
-        /// </summary>
-        /// <param name="ctrl">待测控件</param>
-        /// <returns>出现水平滚动条返回true，否则为false</returns>
-        public static bool IsHorizontalScrollBarVisible(Control ctrl)
-        {
-            if (!ctrl.IsHandleCreated)
-                return false;
-            return (GetWindowLong(ctrl.Handle, GWL_STYLE) & WS_HSCROLL) != 0;
-        }
-    }
-
-    public enum CursorType : uint
-    {
-        IDC_ARROW = 32512U,
-        IDC_IBEAM = 32513U,
-        IDC_WAIT = 32514U,
-        IDC_CROSS = 32515U,
-        IDC_UPARROW = 32516U,
-        IDC_SIZE = 32640U,
-        IDC_ICON = 32641U,
-        IDC_SIZENWSE = 32642U,
-        IDC_SIZENESW = 32643U,
-        IDC_SIZEWE = 32644U,
-        IDC_SIZENS = 32645U,
-        IDC_SIZEALL = 32646U,
-        IDC_NO = 32648U,
-        //小手
-        IDC_HAND = 32649U,
-        IDC_APPSTARTING = 32650U,
-        IDC_HELP = 32651U
-    }
-
-    public partial class CTreeView : TreeView
+    
+    public partial class TreeViewEX : TreeView
     {
         #region 双缓存重绘
 
@@ -153,9 +58,9 @@ namespace Common.Wfcl
             base.OnPaint(e);
         }
         #endregion
-
-        public CTreeView()
+        public TreeViewEX()
         {
+            InitializeComponent();
             treeView1 = this;
             treeView1.HotTracking = true;
             treeView1.HideSelection = false;
@@ -176,23 +81,17 @@ namespace Common.Wfcl
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
             this.treeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyDown);
+
         }
 
-
+        //protected override void OnPaint(PaintEventArgs pe)
+        //{
+        //    base.OnPaint(pe);
+        //}
 
         #region DrawNode
 
-        public ImageList arrowImageList
-        {
-            get
-            {
-                return arrowImageList1;
-            }
-            set
-            {
-                arrowImageList1 = value;
-            }
-        }
+        
 
 
         /*1节点被选中 ,TreeView有焦点*/
@@ -207,6 +106,7 @@ namespace Common.Wfcl
         private SolidBrush brush3 = new SolidBrush(Color.FromArgb(229, 243, 251));
         private Pen pen3 = new Pen(Color.FromArgb(112, 192, 231), 1);
 
+        
 
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
@@ -248,11 +148,11 @@ namespace Common.Wfcl
 
             #region 2     +-号绘制=========================================
             Rectangle plusRect = new Rectangle(e.Node.Bounds.Left - 32, nodeRect.Top + 7, 9, 9); // +-号的大小 是9 * 9
-
+            Bitmap bb = new Bitmap(9, 9);
             if (e.Node.IsExpanded)
                 e.Graphics.DrawImage(arrowImageList.Images[1], plusRect);
             else if (e.Node.IsExpanded == false && e.Node.Nodes.Count > 0)
-                e.Graphics.DrawImage(arrowImageList.Images[0], plusRect);
+                e.Graphics.DrawImage(arrowImageList.Images[1], plusRect);
 
 
             /*测试用 画出+-号出现的矩形*/
@@ -379,8 +279,107 @@ namespace Common.Wfcl
 
         private bool ArrowKeyUp = false;
         private bool ArrowKeyDown = false;
-        private System.Windows.Forms.ImageList arrowImageList1;
         private TreeView treeView1;
+    }
+    public class API
+    {
+        private const int WS_HSCROLL = 0x100000;
+        private const int WS_VSCROLL = 0x200000;
+        private const int GWL_STYLE = (-16);
 
+        [DllImport("User32.dll")]
+        public static extern IntPtr LoadCursor(IntPtr hInstance, CursorType cursor);
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowLong(IntPtr hwnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowScrollBar(IntPtr hWnd, int wBar, bool bShow);
+
+
+        public const int WM_PRINTCLIENT = 0x0318;
+        public const int PRF_CLIENT = 0x00000004;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
+
+        /// <summary>
+        /// 显示系统光标小手
+        /// 像Win7非经典主题的小手光标
+        /// </summary>
+        public static Cursor Hand
+        {
+            get
+            {
+                IntPtr h = LoadCursor(IntPtr.Zero, CursorType.IDC_HAND);
+                return new Cursor(h);
+            }
+        }
+
+        public static bool IsWinXP
+        {
+            get
+            {
+                OperatingSystem OS = Environment.OSVersion;
+                return (OS.Platform == PlatformID.Win32NT) &&
+                    ((OS.Version.Major > 5) || ((OS.Version.Major == 5) && (OS.Version.Minor == 1)));
+            }
+        }
+
+        public static bool IsWinVista
+        {
+            get
+            {
+                OperatingSystem OS = Environment.OSVersion;
+                return (OS.Platform == PlatformID.Win32NT) && (OS.Version.Major >= 6);
+            }
+        }
+
+        /// <summary>
+        /// 判断是否出现垂直滚动条
+        /// </summary>
+        /// <param name="ctrl">待测控件</param>
+        /// <returns>出现垂直滚动条返回true，否则为false</returns>
+        public static bool IsVerticalScrollBarVisible(Control ctrl)
+        {
+            if (!ctrl.IsHandleCreated)
+                return false;
+
+            return (GetWindowLong(ctrl.Handle, GWL_STYLE) & WS_VSCROLL) != 0;
+        }
+
+        /// <summary>
+        /// 判断是否出现水平滚动条
+        /// </summary>
+        /// <param name="ctrl">待测控件</param>
+        /// <returns>出现水平滚动条返回true，否则为false</returns>
+        public static bool IsHorizontalScrollBarVisible(Control ctrl)
+        {
+            if (!ctrl.IsHandleCreated)
+                return false;
+            return (GetWindowLong(ctrl.Handle, GWL_STYLE) & WS_HSCROLL) != 0;
+        }
+    }
+
+    public enum CursorType : uint
+    {
+        IDC_ARROW = 32512U,
+        IDC_IBEAM = 32513U,
+        IDC_WAIT = 32514U,
+        IDC_CROSS = 32515U,
+        IDC_UPARROW = 32516U,
+        IDC_SIZE = 32640U,
+        IDC_ICON = 32641U,
+        IDC_SIZENWSE = 32642U,
+        IDC_SIZENESW = 32643U,
+        IDC_SIZEWE = 32644U,
+        IDC_SIZENS = 32645U,
+        IDC_SIZEALL = 32646U,
+        IDC_NO = 32648U,
+        //小手
+        IDC_HAND = 32649U,
+        IDC_APPSTARTING = 32650U,
+        IDC_HELP = 32651U
     }
 }
